@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Connect 4 Game Online 2 Players — Prism Arcade</title>
+  <meta name="description" content="Play Connect 4 online for two players. Drop discs, build four-in-a-row lines, and win with tactical board strategy. Free and no download." />
+  <meta property="og:title" content="Connect 4 Game Online 2 Players | Prism Arcade" />
+  <meta property="og:description" content="A compact two-player strategy board game." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/connect4.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="tic-tac-toe.html">Tic Tac Toe</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">Strategy Duel</p>
+      <h1>Connect 4 Lite</h1>
+      <p class="lead">A lighter take on the classic board game. Drop discs into the grid and race to form a four-in-a-row line.</p>
+    </section>
+    <section>
+      <div class="play-shell">
+        <div class="play-stage">
+          <div class="hud"><span>Turn <strong id="turn">Red</strong></span><span>Winner <strong id="result">—</strong></span></div>
+          <div class="memory-grid" id="board" style="grid-template-columns:repeat(7,1fr); aspect-ratio:7/6; width:min(420px, 46vw, 60vh)"></div>
+          <div class="game-controls"><button class="btn btn-ghost" id="reset">New Game</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
+        </div>
+        <aside class="side-panel">
+          <h3>Game Rules</h3>
+          <p>Red and Blue alternate turns. A disc falls to the lowest open row in the chosen column.</p>
+          <ul class="list">
+            <li>Win with four in a row horizontally, vertically, or diagonally.</li>
+            <li>Board full with no winner counts as a draw.</li>
+            <li>Use <em>New Game</em> to reset the board.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>A clean, English-first arcade for strategy and casual play.</p></div><div><h3>More</h3><ul><li><a href="tic-tac-toe.html">Tic Tac Toe</a></li><li><a href="sliding-number.html">Number Slide</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <style>
+    .c4-cell{display:grid;place-items:center;border-radius:50%;background:var(--panel-2);border:1px solid var(--line);aspect-ratio:1;font-weight:900}
+    .c4-cell.red{background:rgba(255,82,82,.85)}
+    .c4-cell.blue{background:rgba(91,182,255,.85)}
+    .c4-cell.win{outline:3px solid var(--good); outline-offset:2px}
+  </style>
+  <script src="_shared.js"></script>
+  <script>
+    const boardEl = document.getElementById('board');
+    const turnEl = document.getElementById('turn');
+    const resultEl = document.getElementById('result');
+    const resetBtn = document.getElementById('reset');
+    const ROWS = 6;
+    const COLS = 7;
+    let board;
+    let current = 'red';
+    let active = true;
+    let cells = [];
+
+    function emptyBoard() {
+      board = Array.from({ length: ROWS }, () => Array(COLS).fill(''));
+      active = true;
+      current = 'red';
+      turnEl.textContent = 'Red';
+      resultEl.textContent = '—';
+    }
+
+    function render() {
+      boardEl.innerHTML = '';
+      cells = [];
+      for (let r = 0; r < ROWS; r += 1) {
+        for (let c = 0; c < COLS; c += 1) {
+          const cell = document.createElement('div');
+          cell.className = `c4-cell ${board[r][c] || ''}`;
+          cell.dataset.r = r;
+          cell.dataset.c = c;
+          cell.addEventListener('click', () => drop(c));
+          boardEl.appendChild(cell);
+          cells.push(cell);
+        }
+      }
+    }
+
+    function drop(col) {
+      if (!active) return;
+      for (let row = ROWS - 1; row >= 0; row -= 1) {
+        if (!board[row][col]) {
+          board[row][col] = current;
+          const winLine = checkWin(row, col);
+          if (winLine) {
+            active = false;
+            const name = current === 'red' ? 'Red' : 'Blue';
+            resultEl.textContent = `${name} wins`;
+            PA.sfx.win();
+            PA.toast(`${name} wins!`, 'good');
+            winLine.forEach(([r, c]) => cells[r * COLS + c].classList.add('win'));
+          } else if (board.every((line) => line.every(Boolean))) {
+            active = false;
+            resultEl.textContent = 'Draw';
+            PA.sfx.lose();
+            PA.toast('Draw.', 'bad');
+          } else {
+            PA.sfx.move();
+            current = current === 'red' ? 'blue' : 'red';
+            turnEl.textContent = current === 'red' ? 'Red' : 'Blue';
+          }
+          render();
+          return;
+        }
+      }
+    }
+
+    function checkWin(r, c) {
+      const color = board[r][c];
+      const dirs = [[0,1],[1,0],[1,1],[-1,1]];
+      for (const [dr, dc] of dirs) {
+        const line = [[r, c]];
+        for (const sign of [1, -1]) {
+          let rr = r + dr * sign;
+          let cc = c + dc * sign;
+          while (rr >= 0 && rr < ROWS && cc >= 0 && cc < COLS && board[rr][cc] === color) {
+            line.push([rr, cc]);
+            rr += dr * sign;
+            cc += dc * sign;
+          }
+        }
+        if (line.length >= 4) return line;
+      }
+      return [];
+    }
+
+    resetBtn.addEventListener('click', () => { emptyBoard(); render(); });
+    emptyBoard();
+    render();
+  </script>
+</body>
+</html>

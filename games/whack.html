@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Whack-a-Mole Style Reflex Game Online — Prism Arcade</title>
+  <meta name="description" content="Play a whack-a-mole style reflex game online. Swat the dots as they pop up and chase a high score before the clock runs out — free and instant." />
+  <meta property="og:title" content="Whack-a-Mole Style Reflex Game Online | Prism Arcade" />
+  <meta property="og:description" content="Swat the dots and beat the clock." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/whack.html" />
+  <link rel="canonical" href="https://prismarcade.example/games/whack.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .whack-stage{display:flex; flex-direction:column; min-height:0}
+    .whack-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; width:100%; max-width:420px; margin-inline:auto; aspect-ratio:1; flex:1; min-height:0}
+    .whack-hole{border-radius:14px; background:var(--panel-2); border:1px solid var(--line); display:grid; place-items:center; cursor:pointer; font-size:2.4rem; user-select:none; transition:transform .08s ease}
+    .whack-hole:active{transform:scale(.94)}
+    .whack-hole.up{background:rgba(255,179,71,.28)}
+  </style>
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="quick-tap.html">Quick Tap</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero" style="padding:28px 0 12px">
+      <p class="kicker">Reflex Aim</p>
+      <h1 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Whack-a-Dot</h1>
+    </section>
+    <section>
+      <div class="play-shell" style="grid-template-columns:1fr; gap:14px">
+        <div class="play-stage whack-stage">
+          <div class="hud"><span>Time <strong id="time">30</strong></span><span>Score <strong id="score">0</strong></span><span>Best <strong id="best">0</strong></span></div>
+          <div class="whack-grid" id="grid"></div>
+          <div class="game-controls" style="justify-content:center; margin-top:12px">
+            <button class="btn btn-primary" id="start">Start</button>
+            <button class="btn btn-ghost" id="restart">Restart</button>
+            <button class="btn btn-ghost" data-mute-toggle>Silence</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free reflex, puzzle, and strategy games for international players.</p></div><div><h3>More</h3><ul><li><a href="quick-tap.html">Quick Tap Grid</a></li><li><a href="reflex-relay.html">Rhythm Reflex Relay</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+    const grid = document.getElementById('grid');
+    const timeEl = document.getElementById('time');
+    const scoreEl = document.getElementById('score');
+    const bestEl = document.getElementById('best');
+    const startBtn = document.getElementById('start');
+    const restartBtn = document.getElementById('restart');
+    const holes = Array.from({ length: 9 }, () => {
+      const hole = document.createElement('div');
+      hole.className = 'whack-hole';
+      hole.textContent = '';
+      hole.addEventListener('pointerdown', () => whack(hole));
+      grid.appendChild(hole);
+      return hole;
+    });
+    let time = 30, score = 0, best = Number(localStorage.getItem('whackBest') || 0);
+    let running = false, popTimer = null, tickTimer = null, currentHole = null;
+
+    function reset() {
+      time = 30; score = 0; running = false;
+      clearHole();
+      timeEl.textContent = '30'; scoreEl.textContent = '0'; bestEl.textContent = String(best);
+    }
+
+    function clearHole() {
+      if (currentHole) currentHole.textContent = '';
+      currentHole = null;
+    }
+
+    function popUp() {
+      clearHole();
+      currentHole = holes[Math.floor(Math.random() * 9)];
+      currentHole.textContent = '🟢';
+      currentHole.classList.add('up');
+    }
+
+    function whack(hole) {
+      if (!running || hole !== currentHole) return;
+      score += 1;
+      PA.sfx.click();
+      scoreEl.textContent = String(score);
+      clearHole();
+      popUp();
+    }
+
+    function start() {
+      reset();
+      running = true;
+      popUp();
+      tickTimer = setInterval(() => {
+        time -= 1;
+        timeEl.textContent = String(time);
+        if (time <= 0) endRound();
+      }, 1000);
+      popTimer = setInterval(() => {
+        if (running) popUp();
+      }, 900);
+    }
+
+    function endRound() {
+      running = false;
+      clearInterval(tickTimer);
+      clearInterval(popTimer);
+      clearHole();
+      if (score > best) {
+        best = score;
+        localStorage.setItem('whackBest', String(best));
+        PA.sfx.win();
+        PA.toast('New best: ' + best + '!', 'good');
+      } else {
+        PA.sfx.lose();
+        PA.toast('Round over. Score ' + score + '.', 'bad');
+      }
+      bestEl.textContent = String(best);
+    }
+
+    startBtn.addEventListener('click', start);
+    restartBtn.addEventListener('click', start);
+    reset();
+  </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Play Tic Tac Toe Online 2 Players Free — Prism Arcade</title>
+  <meta name="description" content="Play free two-player tic tac toe online. Sharp logic duels with instant scoring and quick rematch pacing — no download, no sign-up." />
+  <meta property="og:title" content="Play Tic Tac Toe Online 2 Players Free | Prism Arcade" />
+  <meta property="og:description" content="A fast browser-based Tic Tac Toe game with local two-player support." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/tic-tac-toe.html" />
+  <link rel="canonical" href="https://prismarcade.example/games/tic-tac-toe.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="snake.html">Neon Snake</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">Strategy Board</p>
+      <h1>Tic Tac Toe</h1>
+      <p class="lead">A fast two-player logic match. Get three in a row to win. Best for quick breaks and casual strategy play.</p>
+    </section>
+    <section>
+      <div class="play-shell">
+        <div class="play-stage">
+          <div class="hud"><span>Status <strong id="status">Player X</strong></span><span>Score X <strong id="scoreX">0</strong></span><span>Score O <strong id="scoreO">0</strong></span><span>Draws <strong id="scoreD">0</strong></span></div>
+          <div class="board-grid" id="board" style="max-width:300px"></div>
+          <div class="game-controls"><button class="btn btn-ghost" id="resetBtn">New Round</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
+        </div>
+        <aside class="side-panel">
+          <h3>How to Play</h3>
+          <p>Two players share the screen. Place your mark in any empty cell. The first player to line up three in a row wins.</p>
+          <ul class="list">
+            <li><strong>Player X</strong> always goes first.</li>
+            <li>The match continues until a line is formed or the board fills.</li>
+            <li>Use <em>New Round</em> to reset only the board, keeping scores.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Built for international players with a clean, English-first experience.</p></div><div><h3>More Games</h3><ul><li><a href="snake.html">Neon Snake</a></li><li><a href="memory.html">Memory Pairs</a></li><li><a href="connect4.html">Connect 4 Lite</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+    const board = document.getElementById('board');
+    const status = document.getElementById('status');
+    const scoreX = document.getElementById('scoreX');
+    const scoreO = document.getElementById('scoreO');
+    const scoreD = document.getElementById('scoreD');
+    const resetBtn = document.getElementById('resetBtn');
+    let cells = Array(9).fill('');
+    let turn = 'X';
+    let scores = { X: 0, O: 0, D: 0 };
+
+    const lines = [
+      [0,1,2],[3,4,5],[6,7,8],
+      [0,3,6],[1,4,7],[2,5,8],
+      [0,4,8],[2,4,6]
+    ];
+
+    function render() {
+      board.innerHTML = '';
+      cells.forEach((value, i) => {
+        const cell = document.createElement('div');
+        cell.className = `board-cell ${value.toLowerCase()}`;
+        cell.textContent = value;
+        cell.addEventListener('click', () => play(i));
+        board.appendChild(cell);
+      });
+    }
+
+    function winner(state) {
+      for (const [a,b,c] of lines) if (state[a] && state[a] === state[b] && state[a] === state[c]) return state[a];
+      return state.every(Boolean) ? 'D' : null;
+    }
+
+    function play(i) {
+      if (cells[i] || winner(cells)) return;
+      cells[i] = turn;
+      PA.sfx.click();
+      const result = winner(cells);
+      if (result === 'X' || result === 'O') {
+        scores[result] += 1;
+        status.textContent = `Player ${result} wins`;
+        PA.sfx.win();
+        PA.toast(`Player ${result} wins!`, 'good');
+      } else if (result === 'D') {
+        scores.D += 1;
+        status.textContent = 'Draw';
+        PA.sfx.match();
+        PA.toast('It is a draw.', '');
+      } else {
+        turn = turn === 'X' ? 'O' : 'X';
+        status.textContent = `Player ${turn}`;
+      }
+      scoreX.textContent = scores.X;
+      scoreO.textContent = scores.O;
+      scoreD.textContent = scores.D;
+      render();
+    }
+
+    resetBtn.addEventListener('click', () => {
+      cells = Array(9).fill('');
+      turn = 'X';
+      status.textContent = 'Player X';
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>

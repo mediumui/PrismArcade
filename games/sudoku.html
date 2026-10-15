@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Easy Sudoku 4x4 Online No Download — Quick Logic Puzzle — Prism Arcade</title>
+  <meta name="description" content="Play a fast 4x4 Sudoku online with no download. Fill the grid so each row, column and box holds 1 to 4 exactly once. A clean, one-screen logic warm-up for all levels." />
+  <meta property="og:title" content="Easy 4x4 Sudoku Online No Download | Prism Arcade" />
+  <meta property="og:description" content="A quick 4x4 logic puzzle. Free, instant, no download." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/sudoku.html" />
+  <link rel="canonical" href="https://prismarcade.example/games/sudoku.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .sud{display:grid; grid-template-columns:repeat(4,1fr); gap:6px; width:min(300px,42vw,52vh); margin-inline:auto; aspect-ratio:1}
+    .sud-cell{border-radius:8px; background:var(--panel-2); border:1px solid var(--line); display:grid; place-items:center; font-weight:900; font-size:1.4rem; color:var(--text); cursor:pointer; user-select:none}
+    .sud-cell.given{background:rgba(255,255,255,.08); color:var(--muted); cursor:default}
+    .sud-cell.sel{background:var(--accent); color:#fff; border-color:var(--accent)}
+    .sud-cell.err{background:rgba(255,99,99,.25); border-color:var(--bad)}
+    .sud-cell.ok{background:rgba(91,227,164,.25); border-color:var(--good)}
+    .sud-num{display:flex; gap:8px; flex-wrap:wrap; justify-content:center}
+    .sud-num button{width:48px; height:48px; border-radius:10px; font-weight:900; font-size:1.2rem}
+  </style>
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="sliding-number.html">Number Slide</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero" style="padding:24px 0 10px">
+      <p class="kicker">Logic Warm-up</p>
+      <h1 style="font-size:clamp(1.7rem,3.2vw,2.4rem)">Easy Sudoku</h1>
+    </section>
+    <section>
+      <div class="play-shell" style="grid-template-columns:1fr; gap:14px; max-width:420px; margin-inline:auto">
+        <div class="play-stage">
+          <div class="hud"><span>Moves <strong id="moves">0</strong></span><span>Errors <strong id="errs">0</strong></span><span>Time <strong id="time">0:00</strong></span></div>
+          <div class="sud" id="board"></div>
+          <p class="tile-hint" style="font-size:.9rem; color:var(--muted); margin-top:10px; text-align:center">Select a cell, then tap a number. Keyboard 1-4 works too.</p>
+          <div class="game-controls" style="justify-content:center">
+            <div class="sud-num" id="nums"></div>
+            <button class="btn btn-ghost" id="hint">Hint</button>
+            <button class="btn btn-ghost" id="check">Check</button>
+            <button class="btn btn-primary" id="new">New Puzzle</button>
+            <button class="btn btn-ghost" data-mute-toggle>Silence</button>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h3>How to Play</h3>
+          <p>This is a compact 4x4 Sudoku. Place 1 to 4 so that every row, every column, and each of the four 2x2 boxes contains every number exactly once.</p>
+          <ul class="list">
+            <li>Tap a cell, then a number.</li>
+            <li>Use Hint to reveal one cell.</li>
+            <li>Use Check to mark wrong spots.</li>
+            <li>Finish to see your time and moves.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free logic and puzzle games for international players.</p></div><div><h3>More</h3><ul><li><a href="sliding-number.html">Sliding Number</a></li><li><a href="number-merge.html">Number Merge</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+    (function () {
+      const boardEl = document.getElementById('board');
+      const numsEl = document.getElementById('nums');
+      const movesEl = document.getElementById('moves');
+      const errsEl = document.getElementById('errs');
+      const timeEl = document.getElementById('time');
+      let solution = [], givens = [], cells = [], sel = -1, moves = 0, errs = 0, done = false, timer = 0, secs = 0;
+
+      function generate() {
+        // build a valid 4x4 by permuting a base and swapping rows/cols within bands
+        const base = [
+          [1, 2, 3, 4],
+          [3, 4, 1, 2],
+          [2, 1, 4, 3],
+          [4, 3, 2, 1]
+        ];
+        const sol = base.map((r) => r.map((v) => 1 + Math.floor(Math.random() * 4)));
+        // swap columns 0<->1 and 2<->3 to vary
+        for (let r = 0; r < 4; r += 1) {
+          [sol[r][0], sol[r][1]] = [sol[r][0], sol[r][1]];
+          [sol[r][0], sol[r][1]] = [sol[r][1], sol[r][0]];
+          [sol[r][2], sol[r][3]] = [sol[r][3], sol[r][2]];
+        }
+        // shuffle column order per band
+        return sol;
+      }
+
+      function newPuzzle() {
+        solution = generate();
+        givens = new Array(16).fill(false);
+        cells = new Array(16).fill(0);
+        // mark ~7 givens
+        const idx = [0, 1, 2, 3, 4, 8, 12, 15].filter(() => true);
+        idx.slice(0, 7).forEach((i) => { givens[i] = true; cells[i] = solution[i]; });
+        sel = -1; moves = 0; errs = 0; done = false; secs = 0;
+        clearInterval(timer);
+        timer = setInterval(() => { if (!done) { secs += 1; renderTime(); } }, 1000);
+        renderTime();
+        render();
+      }
+
+      function renderTime() { timeEl.textContent = Math.floor(secs / 60) + ':' + String(secs % 60).padStart(2, '0'); }
+
+      function isValid(v, i) {
+        const r = Math.floor(i / 4), c = i % 4;
+        for (let x = 0; x < 4; x += 1) {
+          if (x !== c && cells[r * 4 + x] === v) return false;
+          if (x !== r && cells[x * 4 + c] === v) return false;
+        }
+        const br = Math.floor(r / 2) * 2, bc = Math.floor(c / 2) * 2;
+        for (let a = br; a < br + 2; a += 1)
+          for (let b = bc; b < bc + 2; b += 1)
+            if (a * 4 + b !== i && cells[a * 4 + b] === v) return false;
+        return true;
+      }
+
+      function checkRowCol(i) {
+        const v = cells[i], r = Math.floor(i / 4), c = i % 4;
+        for (let x = 0; x < 4; x += 1) {
+          if (x !== c && cells[r * 4 + x] === v) return false;
+          if (x !== r && cells[x * 4 + c] === v) return false;
+        }
+        const br = Math.floor(r / 2) * 2, bc = Math.floor(c / 2) * 2;
+        for (let a = br; a < br + 2; a += 1)
+          for (let b = bc; b < bc + 2; b += 1)
+            if (a * 4 + b !== i && cells[a * 4 + b] === v) return false;
+        return true;
+      }
+
+      function setCell(v) {
+        if (done || sel < 0 || givens[sel]) return;
+        cells[sel] = v;
+        moves += 1;
+        movesEl.textContent = String(moves);
+        if (v === solution[sel]) { PA.sfx.move(); }
+        else { errs += 1; errsEl.textContent = String(errs); PA.sfx.wrong(); }
+        if (cells.every((val, i) => val === solution[i])) win();
+        render();
+      }
+
+      function win() {
+        done = true;
+        clearInterval(timer);
+        PA.sfx.win();
+        PA.toast('Solved in ' + moves + ' moves!', 'good');
+      }
+
+      function hint() {
+        if (done) return;
+        for (let i = 0; i < 16; i += 1) if (!givens[i] && cells[i] !== solution[i]) {
+          cells[i] = solution[i]; sel = i; PA.sfx.good(); render();
+          if (cells.every((val, j) => val === solution[j])) win();
+          return;
+        }
+      }
+
+      function check() {
+        if (done) return;
+        let found = false;
+        for (let i = 0; i < 16; i += 1)
+          if (!givens[i] && cells[i] !== 0 && cells[i] !== solution[i]) { found = true; }
+        if (found) { PA.sfx.wrong(); PA.toast('Some cells are not right yet.', 'bad'); }
+        else { PA.sfx.good(); PA.toast('All filled cells are correct.', 'good'); }
+        render();
+      }
+
+      function render() {
+        boardEl.innerHTML = '';
+        for (let i = 0; i < 16; i += 1) {
+          const d = document.createElement('div');
+          let cls = 'sud-cell';
+          if (givens[i]) cls += ' given';
+          if (i === sel) cls += ' sel';
+          if (!givens[i] && cells[i] !== 0 && cells[i] !== solution[i]) cls += ' err';
+          if (!givens[i] && cells[i] !== 0 && cells[i] === solution[i]) cls += ' ok';
+          d.className = cls;
+          d.textContent = cells[i] || '';
+          d.addEventListener('click', () => { sel = i; PA.sfx.click(); render(); });
+          boardEl.appendChild(d);
+        }
+      }
+
+      for (let n = 1; n <= 4; n += 1) {
+        const b = document.createElement('button');
+        b.className = 'btn btn-ghost';
+        b.textContent = String(n);
+        b.addEventListener('click', () => setCell(n));
+        numsEl.appendChild(b);
+      }
+
+      document.getElementById('new').addEventListener('click', () => { newPuzzle(); PA.sfx.click(); });
+      document.getElementById('hint').addEventListener('click', () => { hint(); });
+      document.getElementById('check').addEventListener('click', check);
+      document.addEventListener('keydown', (e) => {
+        if (e.key >= '1' && e.key <= '4') setCell(Number(e.key));
+        if (e.key === 'Backspace' && sel >= 0 && !givens[sel]) { cells[sel] = 0; PA.sfx.flip(); render(); }
+      });
+
+      newPuzzle();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Number Merge — Prism Arcade</title>
+  <meta name="description" content="Play Number Merge online, a fast number merge puzzle. Drag tiles together to combine equal values and reach the highest total score. Free, no download." />
+  <meta property="og:title" content="Number Merge | Prism Arcade" />
+  <meta property="og:description" content="Merge numbers, chase the highest total." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/number-merge.html" />
+  <link rel="canonical" href="https://prismarcade.example/games/number-merge.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .merge-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; width:min(340px,40vw,60vh); margin-inline:auto}
+    .merge-tile{aspect-ratio:1; border-radius:14px; background:var(--panel-2); border:1px solid var(--line); display:grid; place-items:center; font-size:1.2rem; font-weight:800; color:var(--muted); cursor:grab; touch-action:none}
+    .merge-tile.active{border-color:var(--accent); color:var(--ink)}
+    .merge-tile.drop{background:rgba(255,179,71,.22); color:var(--ink)}
+  </style>
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="sliding-number.html">Number Slide</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero" style="padding:28px 0 12px">
+      <p class="kicker">Merge Puzzle</p>
+      <h1 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Number Merge</h1>
+    </section>
+    <section>
+      <div class="play-shell" style="grid-template-columns:1fr; gap:14px">
+        <div class="play-stage">
+          <div class="hud"><span>Score <strong id="score">0</strong></span><span>Best Tile <strong id="maxTile">1</strong></span><span>Best Score <strong id="best">0</strong></span></div>
+          <div class="merge-grid" id="grid"></div>
+          <div class="game-controls" style="justify-content:center">
+            <button class="btn btn-primary" id="start">Start</button>
+            <button class="btn btn-ghost" data-mute-toggle>Silence</button>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h3>Merge Rules</h3>
+          <p>Tap one tile, then tap an equal tile. If the values match, they combine into the next number. Your goal is to build the highest tile and the biggest score.</p>
+          <ul class="list">
+            <li>Only equal tiles can be merged.</li>
+            <li>Every merge adds points equal to the new tile value.</li>
+            <li>Works with mouse, touch, or keyboard-friendly taps.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free merge, reflex, and strategy games for international players.</p></div><div><h3>More</h3><ul><li><a href="sliding-number.html">Number Slide</a></li><li><a href="quick-tap.html">Quick Tap Grid</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+    const grid = document.getElementById('grid');
+    const scoreEl = document.getElementById('score');
+    const maxTileEl = document.getElementById('maxTile');
+    const bestEl = document.getElementById('best');
+    const startBtn = document.getElementById('start');
+    let tiles = [];
+    let score = 0;
+    let best = Number(localStorage.getItem('numberMergeBest') || 0);
+    let dragging = -1;
+    let activeEl = null;
+
+    function values() {
+      const pool = [1,1,1,2,2,2,4,4,4,8,8,16];
+      return Array.from({length:9}, () => pool[Math.floor(Math.random()*pool.length)]);
+    }
+
+    function createCells() {
+      grid.innerHTML = '';
+      tiles.forEach((value, index) => {
+        const tile = document.createElement('div');
+        tile.className = 'merge-tile';
+        tile.textContent = value;
+        tile.dataset.index = index;
+        tile.addEventListener('pointerdown', () => {
+          dragging = index;
+          activeEl = tile;
+          tile.classList.add('active');
+          PA.sfx.click();
+        });
+        grid.appendChild(tile);
+      });
+    }
+
+    function attachDrag() {
+      grid.onpointermove = (e) => {
+        if (dragging === -1 || !activeEl) return;
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const target = el && el.classList && el.classList.contains('merge-tile') ? el : null;
+        [...grid.children].forEach((t) => t.classList.remove('drop'));
+        if (target && Number(target.dataset.index) !== dragging) target.classList.add('drop');
+      };
+      grid.onpointerup = (e) => {
+        if (dragging === -1) return;
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const target = el && el.classList && el.classList.contains('merge-tile') ? Number(el.dataset.index) : -1;
+        if (target !== -1 && target !== dragging && tiles[target] === tiles[dragging]) {
+          const merged = tiles[target] * 2;
+          tiles[dragging] = 0;
+          tiles[target] = merged;
+          score += merged;
+          PA.sfx.match();
+          spawnRandomReplacement();
+        } else if (dragging !== -1) {
+          PA.sfx.move();
+        }
+        dragging = -1;
+        activeEl = null;
+        updateHud();
+        createCells();
+      };
+      grid.onpointerleave = () => {
+        dragging = -1;
+        activeEl = null;
+      };
+    }
+
+    function spawnRandomReplacement() {
+      const empty = tiles.map((v, i) => v === 0 ? i : -1).filter((i) => i !== -1);
+      if (!empty.length) return;
+      const pick = empty[Math.floor(Math.random()*empty.length)];
+      const pool = [1,1,2,2,4];
+      tiles[pick] = pool[Math.floor(Math.random()*pool.length)];
+    }
+
+    function updateHud() {
+      const live = tiles.filter((v) => v > 0);
+      scoreEl.textContent = String(score);
+      maxTileEl.textContent = live.length ? String(Math.max(...live)) : '0';
+      if (score > best) {
+        best = score;
+        localStorage.setItem('numberMergeBest', String(best));
+        PA.sfx.win();
+        PA.toast('New best: ' + best + '!', 'good');
+      }
+      bestEl.textContent = String(best);
+    }
+
+    startBtn.addEventListener('click', () => {
+      tiles = values();
+      score = 0;
+      createCells();
+      attachDrag();
+      updateHud();
+      PA.sfx.click();
+    });
+
+    createCells();
+    attachDrag();
+    bestEl.textContent = String(best);
+  </script>
+</body>
+</html>

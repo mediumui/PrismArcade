@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Endless Runner Jump Game Online — Prism Arcade</title>
+  <meta name="description" content="Play an endless runner jump game online. Tap to leap over obstacles, build distance, and beat your best run. Free, one-click, no download." />
+  <meta property="og:title" content="Endless Runner Jump Game | Prism Arcade" />
+  <meta property="og:description" content="Tap to jump, dodge obstacles, chase your best run." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/runner.html" />
+  <link rel="canonical" href="https://prismarcade.example/games/runner.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .run-canvas{width:100%; max-width:620px; display:block; margin-inline:auto; border-radius:14px; background:#0a0b1c}
+  </style>
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="snake.html">Neon Snake</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero" style="padding:24px 0 10px">
+      <p class="kicker">Endless Runner</p>
+      <h1 style="font-size:clamp(1.7rem,3.2vw,2.4rem)">Jump Runner</h1>
+    </section>
+    <section>
+      <div class="play-shell" style="grid-template-columns:1fr; gap:14px">
+        <div class="play-stage">
+          <div class="hud"><span>Distance <strong id="dist">0</strong></span><span>Best <strong id="best">0</strong></span><span>State <strong id="state">Ready</strong></span></div>
+          <canvas id="run" class="run-canvas" width="620" height="240"></canvas>
+          <p class="tile-hint" style="text-align:center">Press Space / tap the canvas to jump. Dodge the spikes.</p>
+          <div class="game-controls" style="justify-content:center">
+            <button class="btn btn-primary" id="start">Start</button>
+            <button class="btn btn-ghost" data-mute-toggle>Silence</button>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h3>How to Play</h3>
+          <p>Keep your runner moving. Tap to jump the spikes that scroll toward you. The longer you survive, the faster it gets.</p>
+          <ul class="list">
+            <li>Space bar or a canvas tap triggers a jump.</li>
+            <li>One collision ends the run.</li>
+            <li>Your best distance is saved on this device.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free reflex and runner games for international players.</p></div><div><h3>More</h3><ul><li><a href="quick-tap.html">Quick Tap Grid</a></li><li><a href="whack.html">Whack-a-Dot</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+    const canvas = document.getElementById('run');
+    const ctx = canvas.getContext('2d');
+    const distEl = document.getElementById('dist');
+    const bestEl = document.getElementById('best');
+    const stateEl = document.getElementById('state');
+    const startBtn = document.getElementById('start');
+    const W = canvas.width, H = canvas.height;
+    const GROUND = H - 40;
+    const GRAVITY = 0.85;
+    let player = { x: 90, y: GROUND, vy: 0, w: 34, h: 34, jumping: false };
+    let obstacles = [];
+    let speed = 6;
+    let dist = 0;
+    let best = Number(localStorage.getItem('runnerBest') || 0);
+    let running = false;
+    let spawnTimer = 0;
+
+    function reset() {
+      player = { x: 90, y: GROUND, vy: 0, w: 34, h: 34, jumping: false };
+      obstacles = [];
+      speed = 6;
+      dist = 0;
+      spawnTimer = 0;
+      running = false;
+      stateEl.textContent = 'Ready';
+      distEl.textContent = '0';
+      draw();
+    }
+
+    function jump() {
+      if (!player.jumping && running) {
+        player.vy = -13;
+        player.jumping = true;
+        PA.sfx.click();
+      }
+    }
+
+    function step() {
+      // player physics
+      player.y += player.vy;
+      player.vy += GRAVITY;
+      if (player.y >= GROUND - player.h) {
+        player.y = GROUND - player.h;
+        player.vy = 0;
+        player.jumping = false;
+      }
+      // scroll world
+      dist += 1;
+      speed = 6 + Math.min(6, dist / 400);
+      spawnTimer -= 1;
+      if (spawnTimer <= 0) {
+        obstacles.push({ x: W, y: GROUND - 26, w: 26, h: 26 });
+        spawnTimer = 55 + Math.random() * 45;
+      }
+      obstacles.forEach((o) => { o.x -= speed; });
+      obstacles = obstacles.filter((o) => o.x + o.w > -10);
+      // collision
+      for (const o of obstacles) {
+        const px = player.x, py = player.y, pw = player.w, ph = player.h;
+        if (px < o.x + o.w && px + pw > o.x && py < o.y + o.h && py + ph > o.y) {
+          running = false;
+          if (dist > best) {
+            best = dist;
+            localStorage.setItem('runnerBest', String(best));
+            PA.sfx.win();
+            PA.toast('New best: ' + dist + '!', 'good');
+          } else {
+            PA.sfx.lose();
+            PA.toast('Crashed at ' + dist + '.', 'bad');
+          }
+          stateEl.textContent = 'Crashed';
+          distEl.textContent = String(dist);
+          bestEl.textContent = String(best);
+          return;
+        }
+      }
+      distEl.textContent = String(dist);
+      bestEl.textContent = String(Math.max(best, dist));
+      draw();
+    }
+
+    function draw() {
+      ctx.fillStyle = '#0a0b1c';
+      ctx.fillRect(0, 0, W, H);
+      ctx.strokeStyle = 'rgba(255,255,255,.18)';
+      ctx.beginPath();
+      ctx.moveTo(0, GROUND + player.h);
+      ctx.lineTo(W, GROUND + player.h);
+      ctx.stroke();
+      // player
+      ctx.fillStyle = '#ffb347';
+      ctx.fillRect(player.x, player.y, player.w, player.h);
+      // obstacles
+      ctx.fillStyle = '#7c5cff';
+      obstacles.forEach((o) => {
+        ctx.beginPath();
+        ctx.moveTo(o.x, o.y + o.h);
+        ctx.lineTo(o.x + o.w / 2, o.y);
+        ctx.lineTo(o.x + o.w, o.y + o.h);
+        ctx.closePath();
+        ctx.fill();
+      });
+    }
+
+    function loop() {
+      if (!running) return;
+      step();
+      requestAnimationFrame(loop);
+    }
+
+    function start() {
+      reset();
+      running = true;
+      stateEl.textContent = 'Running';
+      requestAnimationFrame(loop);
+    }
+
+    startBtn.addEventListener('click', start);
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        if (!running) start();
+        jump();
+      }
+    });
+    canvas.addEventListener('pointerdown', () => {
+      if (!running) start();
+      jump();
+    });
+
+    bestEl.textContent = String(best);
+    reset();
+  </script>
+</body>
+</html>

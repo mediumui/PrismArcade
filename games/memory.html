@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free Memory Game Online No Download — Prism Arcade</title>
+  <meta name="description" content="Play a free memory matching game online with no download. Flip cards, track moves, and clear the board in as few flips as possible." />
+  <meta property="og:title" content="Free Memory Game Online No Download | Prism Arcade" />
+  <meta property="og:description" content="A calm observation-based card matching game." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/memory.html" />
+  <link rel="canonical" href="https://prismarcade.example/games/memory.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="sequence.html">Sequence Echo</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">Memory Puzzle</p>
+      <h1>Memory Pairs</h1>
+      <p class="lead">Flip two cards at a time and find every matching pair. Fewer moves means a stronger result.</p>
+    </section>
+    <section>
+      <div class="play-shell">
+        <div class="play-stage">
+          <div class="hud"><span>Moves <strong id="moves">0</strong></span><span>Pairs <strong id="pairs">0 / 8</strong></span></div>
+          <div class="memory-grid" id="grid"></div>
+          <div class="game-controls"><button class="btn btn-ghost" id="restart">Restart</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
+        </div>
+        <aside class="side-panel">
+          <h3>How It Works</h3>
+          <p>Each round uses eight symbol pairs. Open two cards per turn. If they match, they stay open and you keep going.</p>
+          <ul class="list">
+            <li>You win when all pairs are revealed.</li>
+            <li>Your move counter tracks total flips.</li>
+            <li>Use <em>Restart</em> to generate a fresh board.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Fast, English-first games for international audiences.</p></div><div><h3>More</h3><ul><li><a href="quiz.html">Brain Quiz</a></li><li><a href="sliding-number.html">Number Slide</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+    const grid = document.getElementById('grid');
+    const movesEl = document.getElementById('moves');
+    const pairsEl = document.getElementById('pairs');
+    const restartBtn = document.getElementById('restart');
+    const symbols = ['A','B','C','D','E','F','G','H'];
+    let open = [];
+    let locked = false;
+    let moves = 0;
+    let matched = 0;
+
+    function shuffle(arr) {
+      return arr.slice().sort(() => Math.random() - 0.5);
+    }
+
+    function start() {
+      open = [];
+      locked = false;
+      moves = 0;
+      matched = 0;
+      const deck = shuffle([...symbols, ...symbols]);
+      grid.innerHTML = '';
+      deck.forEach((symbol, index) => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'memory-card';
+        card.dataset.symbol = symbol;
+        card.textContent = '?';
+        card.addEventListener('click', () => flip(card));
+        grid.appendChild(card);
+      });
+      movesEl.textContent = '0';
+      pairsEl.textContent = '0 / 8';
+    }
+
+    function flip(card) {
+      if (locked || card.classList.contains('open') || card.classList.contains('done')) return;
+      PA.sfx.flip();
+      card.classList.add('open');
+      card.textContent = card.dataset.symbol;
+      open.push(card);
+      if (open.length === 2) {
+        moves += 1;
+        movesEl.textContent = String(moves);
+        if (open[0].dataset.symbol === open[1].dataset.symbol) {
+          open.forEach((c) => { c.classList.remove('open'); c.classList.add('done'); });
+          open = [];
+          matched += 1;
+          pairsEl.textContent = `${matched} / 8`;
+          if (matched === 8) {
+            PA.sfx.win();
+            PA.toast(`Cleared in ${moves} moves!`, 'good');
+          } else {
+            PA.sfx.match();
+          }
+        } else {
+          PA.sfx.wrong();
+          locked = true;
+          setTimeout(() => {
+            open.forEach((c) => { c.classList.remove('open'); c.textContent = '?'; });
+            open = [];
+            locked = false;
+          }, 550);
+        }
+      }
+    }
+
+    restartBtn.addEventListener('click', start);
+    start();
+  </script>
+</body>
+</html>

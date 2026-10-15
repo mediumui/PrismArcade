@@ -1,0 +1,61 @@
+{
+  "generatedAt": "2026-10-15",
+  "method": "web-signals + intent + KD-proxy scoring",
+  "priorityKeywords": [
+    {
+      "keyword": "number merge games online",
+      "intent": "puzzle",
+      "estimatedDemand": "high",
+      "estimatedKD": "low-to-medium",
+      "reason": "Strong evergreen merge mechanic, simple browser play, easy to rank against generic portals if the title and page copy target the exact phrase.",
+      "newGame": "games/number-merge.html"
+    },
+    {
+      "keyword": "reaction time test online",
+      "intent": "reflex",
+      "estimatedDemand": "medium-high",
+      "estimatedKD": "low",
+      "reason": "Practical query, very low production cost, and a perfect single-screen utility game. Low competition compared to broad arcade terms.",
+      "newGame": "games/reaction-test.html"
+    },
+    {
+      "keyword": "sliding block puzzle no download",
+      "intent": "puzzle",
+      "estimatedDemand": "medium",
+      "estimatedKD": "low",
+      "reason": "Long-tail phrase pairs a popular mechanic with a no-download intent. Easier to win than 'sliding puzzle' alone.",
+      "newGame": "games/block-slide.html"
+    }
+  ],
+  "watchlistKeywords": [
+    "color sort puzzle online",
+    "free html5 puzzle games no download",
+    "quick tap reflex game",
+    "2 player browser board games",
+    "word merge mini games"
+  ],
+  "pageKeywordMap": {
+    "games/snake.html": "play snake game online no download",
+    "games/tic-tac-toe.html": "play tic tac toe online 2 players free",
+    "games/memory.html": "free memory game online no download",
+    "games/whack.html": "whack-a-mole style reflex game online",
+    "games/quick-tap.html": "quick reflex tap game online",
+    "games/connect4.html": "connect 4 game online 2 players",
+    "games/reflex-relay.html": "simon style sequence memory game online",
+    "games/sliding-number.html": "sliding number puzzle online no download",
+    "games/sequence.html": "memory pattern game online no download",
+    "games/number-merge.html": "number merge game online",
+    "games/reaction-test.html": "reaction time test online",
+    "games/block-slide.html": "sliding block puzzle no download",
+    "games/2048.html": "2048 game online no download",
+    "games/runner.html": "endless jump runner game online no download",
+    "games/flappy.html": "flappy bird game online no download",
+    "games/word-merge.html": "word merge game online no download",
+    "games/sudoku.html": "easy 4x4 sudoku online no download"
+  },
+  "rankingNotes": [
+    "Use each keyword once as the page H1 and once in the meta title; avoid keyword stuffing.",
+    "Keep game pages under 1000 words, action-first, and mobile-friendly.",
+    "Add internal links from the home page so each new game inherits topical authority."
+  ]
+}

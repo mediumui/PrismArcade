@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quick Reflex Tap Game Online — Prism Arcade</title>
+  <meta name="description" content="Play a quick reflex tap game online. Hit the glowing targets before they disappear and build your fastest streak. Free, instant, no download." />
+  <meta property="og:title" content="Quick Reflex Tap Game Online | Prism Arcade" />
+  <meta property="og:description" content="Hit targets fast and chase your best streak." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/quick-tap.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="snake.html">Neon Snake</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">Reflex Challenge</p>
+      <h1>Quick Tap Grid</h1>
+      <p class="lead">Tap glowing cells as fast as you can before the round timer ends. Build streaks, chase your best, and keep your focus locked.</p>
+    </section>
+    <section>
+      <div class="play-shell">
+        <div class="play-stage">
+          <div class="hud"><span>Time <strong id="time">30</strong></span><span>Score <strong id="score">0</strong></span><span>Best <strong id="best">0</strong></span></div>
+          <div class="memory-grid" id="grid" style="grid-template-columns:repeat(4, 1fr); aspect-ratio:1; width:min(340px, 40vw, 60vh)"></div>
+          <div class="game-controls"><button class="btn btn-ghost" id="start">Start</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
+        </div>
+        <aside class="side-panel">
+          <h3>Reflex Rules</h3>
+          <p>The grid lights one random cell at a time. Tap it to score. If you miss the target or run out of time, the round ends.</p>
+          <ul class="list">
+            <li>Each successful tap adds one point.</li>
+            <li>Consecutive correct taps raise your streak.</li>
+            <li>Your best run is saved on this device.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Fast, lightweight games built for global players.</p></div><div><h3>More</h3><ul><li><a href="reflex-relay.html">Rhythm Reflex Relay</a></li><li><a href="quick-tap.html">Quick Tap Grid</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <style>
+    .board-cell.target{background:rgba(255,179,71,.32)}
+    .board-cell.flash{background:rgba(91,227,164,.26)}
+  </style>
+  <script src="_shared.js"></script>
+  <script>
+    const grid = document.getElementById('grid');
+    const timeEl = document.getElementById('time');
+    const scoreEl = document.getElementById('score');
+    const bestEl = document.getElementById('best');
+    const startBtn = document.getElementById('start');
+    const cells = Array.from({ length: 16 }, (_, i) => {
+      const cell = document.createElement('div');
+      cell.className = 'board-cell';
+      cell.addEventListener('click', () => tap(i, cell));
+      grid.appendChild(cell);
+      return cell;
+    });
+    let time = 30;
+    let score = 0;
+    let best = Number(localStorage.getItem('quickTapBest') || 0);
+    let target = -1;
+    let timer = null;
+
+    function spawn() {
+      if (target !== -1) cells[target].classList.remove('target');
+      target = Math.floor(Math.random() * 16);
+      cells[target].classList.add('target');
+    }
+
+    function tap(index, cell) {
+      if (!timer || index !== target) return;
+      cell.classList.remove('target');
+      cell.classList.add('flash');
+      setTimeout(() => cell.classList.remove('flash'), 180);
+      target = -1;
+      score += 1;
+      PA.sfx.eat();
+      scoreEl.textContent = String(score);
+      spawn();
+    }
+
+    function endRound() {
+      timer = null;
+      target = -1;
+      cells.forEach((c) => c.classList.remove('target'));
+      if (score > best) {
+        best = score;
+        localStorage.setItem('quickTapBest', String(best));
+        PA.sfx.win();
+        PA.toast('New best: ' + best + '!', 'good');
+      } else {
+        PA.sfx.lose();
+        PA.toast('Score ' + score + '. Go again.', 'bad');
+      }
+      bestEl.textContent = String(best);
+      timeEl.textContent = '0';
+    }
+
+    startBtn.addEventListener('click', () => {
+      if (timer) clearInterval(timer);
+      time = 30;
+      score = 0;
+      scoreEl.textContent = '0';
+      target = -1;
+      spawn();
+      timer = setInterval(() => {
+        time -= 1;
+        timeEl.textContent = String(time);
+        if (time === 0) endRound();
+      }, 1000);
+    });
+
+    bestEl.textContent = String(best);
+  </script>
+</body>
+</html>

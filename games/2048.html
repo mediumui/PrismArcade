@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2048 Number Merge Game Online No Download — Prism Arcade</title>
+  <meta name="description" content="Play 2048 online with no download. Slide the tiles to merge equal numbers and chase the 2048 tile. A fast, one-screen merge puzzle." />
+  <meta property="og:title" content="2048 Game Online No Download | Prism Arcade" />
+  <meta property="og:description" content="Merge tiles to reach 2048. Free, instant, no download." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/2048.html" />
+  <link rel="canonical" href="https://prismarcade.example/games/2048.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .g2048{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; width:min(340px,42vw,58vh); margin-inline:auto; aspect-ratio:1}
+    .g2048-cell{border-radius:10px; background:var(--panel-2); border:1px solid var(--line); display:grid; place-items:center; font-weight:900; font-size:1.1rem; color:var(--muted)}
+    .g2048-cell.has{color:#141527; background:#dfe3ff}
+    .g2048-cell.big{background:#ffd166; font-size:1.4rem}
+    .g2048-cell.top{background:var(--good); font-size:1.5rem}
+    .tile-hint{font-size:.9rem; color:var(--muted); margin-top:12px; text-align:center}
+  </style>
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="number-merge.html">Number Merge</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero" style="padding:24px 0 10px">
+      <p class="kicker">Merge Classic</p>
+      <h1 style="font-size:clamp(1.7rem,3.2vw,2.4rem)">2048</h1>
+    </section>
+    <section>
+      <div class="play-shell" style="grid-template-columns:1fr; gap:14px">
+        <div class="play-stage">
+          <div class="hud"><span>Score <strong id="score">0</strong></span><span>Best <strong id="best">0</strong></span><span>State <strong id="state">Play</strong></span></div>
+          <div class="g2048" id="grid"></div>
+          <p class="tile-hint">Use the arrow keys or tap Swipe buttons to move.</p>
+          <div class="game-controls" style="justify-content:center">
+            <button class="btn btn-ghost" id="btnL">Left</button>
+            <button class="btn btn-ghost" id="btnU">Up</button>
+            <button class="btn btn-ghost" id="btnR">Right</button>
+            <button class="btn btn-ghost" id="btnD">Down</button>
+            <button class="btn btn-ghost" id="reset">New Game</button>
+            <button class="btn btn-ghost" data-mute-toggle>Silence</button>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h3>How to Play</h3>
+          <p>Every move slides all tiles. When two tiles with the same number touch, they merge into one. Build your way up to the 2048 tile.</p>
+          <ul class="list">
+            <li>Arrow keys work on desktop.</li>
+            <li>The Swipe buttons work on touch.</li>
+            <li>Game ends when no moves are left.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free merge and puzzle games for international players.</p></div><div><h3>More</h3><ul><li><a href="number-merge.html">Number Merge</a></li><li><a href="sliding-number.html">Sliding Number Puzzle</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+    const grid = document.getElementById('grid');
+    const scoreEl = document.getElementById('score');
+    const bestEl = document.getElementById('best');
+    const stateEl = document.getElementById('state');
+    let board = Array.from({length:4}, () => Array(4).fill(0));
+    let score = 0;
+    let best = Number(localStorage.getItem('g2048Best') || 0);
+    let over = false;
+
+    function spawn() {
+      const empty = [];
+      board.forEach((row, r) => row.forEach((v, c) => { if (v === 0) empty.push([r, c]); }));
+      if (!empty.length) return;
+      const [r, c] = empty[Math.floor(Math.random() * empty.length)];
+      board[r][c] = Math.random() < 0.9 ? 2 : 4;
+    }
+
+    function reset() {
+      board = Array.from({length:4}, () => Array(4).fill(0));
+      score = 0;
+      over = false;
+      stateEl.textContent = 'Play';
+      spawn(); spawn();
+      render();
+    }
+
+    function slideLeft(row) {
+      const vals = row.filter((v) => v !== 0);
+      let merged = 0;
+      const out = [];
+      for (let i = 0; i < vals.length; i += 1) {
+        if (vals[i] === vals[i + 1]) {
+          out.push(vals[i] * 2);
+          score += vals[i] * 2;
+          merged += 1;
+          i += 1;
+        } else out.push(vals[i]);
+      }
+      while (out.length < 4) out.push(0);
+      return { out, merged };
+    }
+
+    function move(dir) {
+      if (over) return;
+      const before = JSON.stringify(board);
+      if (dir === 'L' || dir === 'R') {
+        for (let r = 0; r < 4; r += 1) {
+          let row = board[r].slice();
+          if (dir === 'R') row = row.slice().reverse();
+          const res = slideLeft(row);
+          if (dir === 'R') res.out.reverse();
+          board[r] = res.out;
+        }
+      } else {
+        for (let c = 0; c < 4; c += 1) {
+          let col = [board[0][c], board[1][c], board[2][c], board[3][c]];
+          if (dir === 'D') col = col.slice().reverse();
+          const res = slideLeft(col);
+          if (dir === 'D') res.out.reverse();
+          for (let r = 0; r < 4; r += 1) board[r][c] = res.out[r];
+        }
+      }
+      if (JSON.stringify(board) !== before) {
+        PA.sfx.move();
+        spawn();
+        render();
+        if (JSON.stringify(board) === beforeAfter(board)) { /* noop */ }
+      }
+      checkOver();
+    }
+
+    function beforeAfter(b) { return JSON.stringify(b); }
+
+    function canMove() {
+      for (let r = 0; r < 4; r += 1)
+        for (let c = 0; c < 4; c += 1) {
+          if (board[r][c] === 0) return true;
+          if (c < 3 && board[r][c] === board[r][c + 1]) return true;
+          if (r < 3 && board[r][c] === board[r + 1][c]) return true;
+        }
+      return false;
+    }
+
+    function checkOver() {
+      if (!canMove()) {
+        over = true;
+        stateEl.textContent = 'Over';
+        if (score > best) { best = score; localStorage.setItem('g2048Best', String(best)); }
+        PA.sfx.lose();
+        PA.toast('No moves left. Score ' + score + '.', 'bad');
+      } else if (board.flat().some((v) => v === 2048) && score > 0) {
+        PA.sfx.win();
+      }
+    }
+
+    function render() {
+      grid.innerHTML = '';
+      board.forEach((row) => row.forEach((v) => {
+        const cell = document.createElement('div');
+        let cls = 'g2048-cell';
+        if (v >= 1024) cls += ' top';
+        else if (v >= 256) cls += ' big';
+        else if (v > 0) cls += ' has';
+        cell.className = cls;
+        cell.textContent = v || '';
+        grid.appendChild(cell);
+      }));
+      scoreEl.textContent = String(score);
+      bestEl.textContent = String(Math.max(best, score));
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const map = { ArrowLeft: 'L', ArrowRight: 'R', ArrowUp: 'U', ArrowDown: 'D' };
+      if (map[e.key]) { e.preventDefault(); move(map[e.key]); }
+    });
+    document.getElementById('btnL').addEventListener('click', () => move('L'));
+    document.getElementById('btnR').addEventListener('click', () => move('R'));
+    document.getElementById('btnU').addEventListener('click', () => move('U'));
+    document.getElementById('btnD').addEventListener('click', () => move('D'));
+    document.getElementById('reset').addEventListener('click', () => { reset(); PA.sfx.click(); });
+
+    bestEl.textContent = String(best);
+    reset();
+  </script>
+</body>
+</html>

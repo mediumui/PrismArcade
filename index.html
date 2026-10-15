@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prism Arcade — Free Online Games for Curious Players</title>
+    <meta name="description" content="Prism Arcade is a fast, all-English web arcade with brain, reflex, strategy, and puzzle games. No downloads, no sign-up, and one-click play for players worldwide." />
+    <meta name="keywords" content="free online games, web games, arcade games, brain games, puzzle games, reflex games, English games" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://prismarcade.example/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Prism Arcade — Free Online Games for Curious Players" />
+    <meta property="og:description" content="Jump into a hand-built web arcade of arcade classics, brain games, and quick-play puzzle modes." />
+    <meta property="og:url" content="https://prismarcade.example/" />
+    <meta property="og:site_name" content="Prism Arcade" />
+    <meta property="og:image" content="https://prismarcade.example/og/home.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Prism Arcade — Free Online Games" />
+    <meta name="twitter:description" content="A lightweight English web arcade built for discovery and quick play." />
+    <meta name="twitter:image" content="https://prismarcade.example/og/home.jpg" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Prism Arcade",
+      "url": "https://prismarcade.example/",
+      "description": "An all-English web arcade with free browser games for players around the world.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://prismarcade.example/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="home">
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="index.html" aria-label="Prism Arcade home">
+          <span class="brand-mark">P</span>
+          <span>Prism Arcade</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#games">Games</a>
+          <a href="#featured">Featured</a>
+          <a href="games/tic-tac-toe.html">Play</a>
+          <a href="games/snake.html">New</a>
+        </nav>
+        <a class="btn btn-primary" href="games/snake.html">Start Playing</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-copy">
+          <div>
+            <p class="kicker">Free Browser Arcade</p>
+            <h1>Small games, big personality.</h1>
+            <p class="lead">Prism Arcade is a hand-crafted web arcade for players who like instant play, clean interfaces, and a lineup of different game types. No installs, no paywalls, no clutter — just pick a mode and start.</p>
+            <div class="hero-card" style="margin-top:20px">
+              <h3>Why players like it</h3>
+              <p>Built for mobile and desktop, optimized for fast loading, and designed so every screen is clear at a glance. Pick a mode, tap, and start in under a second.</p>
+              <div class="stats">
+                <div class="stat"><strong>15</strong><span>Playable titles</span></div>
+                <div class="stat"><strong>0</strong><span>Sign-up steps</span></div>
+                <div class="stat"><strong>2s</strong><span>To first move</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-card" style="background:linear-gradient(145deg,rgba(124,92,255,.12),rgba(255,179,71,.1))">
+            <h3>Today's Featured Pick</h3>
+            <p>Start with Neon Snake: a compact reflex loop with satisfying pacing, clean feedback, and a strong sense of progression from the first run.</p>
+            <a class="btn btn-primary" href="games/snake.html">Play Snake</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="games" class="container">
+        <div class="section-title">
+          <div>
+            <h2>All Games</h2>
+            <p>A compact catalog across reflex, puzzle, strategy, and memory game types.</p>
+          </div>
+          <div class="filters" role="tablist" aria-label="Game filters">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="reflex">Reflex</button>
+            <button class="chip" data-filter="puzzle">Puzzle</button>
+            <button class="chip" data-filter="strategy">Strategy</button>
+            <button class="chip" data-filter="memory">Memory</button>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="card game-card" data-category="strategy">
+            <div class="thumb">♟</div>
+            <h3>Tic Tac Toe</h3>
+            <p>A sharp two-player logic duel with scoring and quick rematch pacing.</p>
+            <div class="badge-row"><span class="badge">Strategy</span><span class="badge">2 Players</span></div>
+            <a class="btn btn-ghost" href="games/tic-tac-toe.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="reflex">
+            <div class="thumb">⚡</div>
+            <h3>Neon Snake</h3>
+            <p>Chase glowing dots, manage your own growth, and master the rhythm.</p>
+            <div class="badge-row"><span class="badge">Reflex</span><span class="badge">Classic</span></div>
+            <a class="btn btn-ghost" href="games/snake.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="puzzle">
+            <div class="thumb">🧩</div>
+            <h3>Memory Pairs</h3>
+            <p>Flip cards, track positions, and clear the board in as few moves as possible.</p>
+            <div class="badge-row"><span class="badge">Memory</span><span class="badge">Casual</span></div>
+            <a class="btn btn-ghost" href="games/memory.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="reflex">
+            <div class="thumb">🎯</div>
+            <h3>Quick Tap Grid</h3>
+            <p>A fast target-hitting loop designed for short sessions and score chasing.</p>
+            <div class="badge-row"><span class="badge">Reflex</span><span class="badge">Quick</span></div>
+            <a class="btn btn-ghost" href="games/quick-tap.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="strategy">
+            <div class="thumb">🗂</div>
+            <h3>Connect 4 Lite</h3>
+            <p>Simple rules, tactical depth, and satisfying endgame patterns.</p>
+            <div class="badge-row"><span class="badge">Strategy</span><span class="badge">Board</span></div>
+            <a class="btn btn-ghost" href="games/connect4.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="reflex">
+            <div class="thumb">🏏</div>
+            <h3>Whack-a-Dot</h3>
+            <p>Swat the dots as they pop up and chase a high score before the clock runs out.</p>
+            <div class="badge-row"><span class="badge">Reflex</span><span class="badge">Aim</span></div>
+            <a class="btn btn-ghost" href="games/whack.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="puzzle">
+            <div class="thumb">🧮</div>
+            <h3>Number Merge</h3>
+            <p>Drag equal tiles together and stack the highest number you can. A fast merge puzzle.</p>
+            <div class="badge-row"><span class="badge">Puzzle</span><span class="badge">Merge</span></div>
+            <a class="btn btn-ghost" href="games/number-merge.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="reflex">
+            <div class="thumb">⏱</div>
+            <h3>Reaction Time Test</h3>
+            <p>Measure your speed in milliseconds. Wait for green, then tap as fast as you can.</p>
+            <div class="badge-row"><span class="badge">Reflex</span><span class="badge">Benchmark</span></div>
+            <a class="btn btn-ghost" href="games/reaction-test.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="puzzle">
+            <div class="thumb">🧱</div>
+            <h3>Block Slide Puzzle</h3>
+            <p>Slide the blocks into the open space and clear the green targets. No download needed.</p>
+            <div class="badge-row"><span class="badge">Puzzle</span><span class="badge">Slide</span></div>
+            <a class="btn btn-ghost" href="games/block-slide.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="reflex">
+            <div class="thumb">🐤</div>
+            <h3>Flappy Bird</h3>
+            <p>Tap to flap, glide the bird through the pipes, and chase the longest run you can.</p>
+            <div class="badge-row"><span class="badge">Reflex</span><span class="badge">Classic</span></div>
+            <a class="btn btn-ghost" href="games/flappy.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="puzzle">
+            <div class="thumb">🔤</div>
+            <h3>Word Merge</h3>
+            <p>Tap letters to build real words, merge them into the bin, and clear the pool to level up.</p>
+            <div class="badge-row"><span class="badge">Puzzle</span><span class="badge">Words</span></div>
+            <a class="btn btn-ghost" href="games/word-merge.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="strategy">
+            <div class="thumb">🔢</div>
+            <h3>Easy Sudoku</h3>
+            <p>A fast 4x4 logic warm-up. Fill the grid so every row, column and box holds 1 to 4 exactly once.</p>
+            <div class="badge-row"><span class="badge">Puzzle</span><span class="badge">Logic</span></div>
+            <a class="btn btn-ghost" href="games/sudoku.html">Play</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="featured" class="container">
+        <div class="section-title">
+          <div>
+            <h2>Featured Experiences</h2>
+            <p>Three high-quality modes built to show different arcade personalities: precision, observation, and decision-making.</p>
+          </div>
+        </div>
+        <div class="featured">
+          <article class="card game-card" data-category="reflex">
+            <div class="thumb">🔁</div>
+            <h3>Rhythm Reflex Relay</h3>
+            <p>Tap in sequence, keep the combo alive, and climb the leaderboard as speed ramps up.</p>
+            <div class="badge-row"><span class="badge">Reflex</span><span class="badge">Combo</span></div>
+            <a class="btn btn-ghost" href="games/reflex-relay.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="puzzle">
+            <div class="thumb">🧮</div>
+            <h3>Number Slide</h3>
+            <p>A clean sliding number puzzle that rewards spatial planning and patience.</p>
+            <div class="badge-row"><span class="badge">Puzzle</span><span class="badge">Logic</span></div>
+            <a class="btn btn-ghost" href="games/sliding-number.html">Play</a>
+          </article>
+
+          <article class="card game-card" data-category="memory">
+            <div class="thumb">🔮</div>
+            <h3>Sequence Echo</h3>
+            <p>Watch the light, repeat the pattern, and push your memory as the sequence grows.</p>
+            <div class="badge-row"><span class="badge">Memory</span><span class="badge">Progressive</span></div>
+            <a class="btn btn-ghost" href="games/sequence.html">Play</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="hero-card">
+          <h3>Designed for international players</h3>
+          <p style="margin:12px 0 0; color:var(--muted); line-height:1.6">
+            Prism Arcade keeps every interface, button, rule set, and result screen in English.
+            It is built for fast loading, keyboard and touch controls, and a calm dark theme that works well in
+            both short commutes and longer sitting sessions.
+          </p>
+          <div class="stats" style="margin-top:18px">
+            <div class="stat"><strong>Fast</strong><span>Light static pages</span></div>
+            <div class="stat"><strong>Clean</strong><span>Minimal controls</span></div>
+            <div class="stat"><strong>Multiplayer</strong><span>Local two-player modes</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <h3>Prism Arcade</h3>
+          <p>A lightweight English web arcade made for quick play, discovery, and replay. No account required.</p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="games/tic-tac-toe.html">Tic Tac Toe</a></li>
+            <li><a href="games/snake.html">Neon Snake</a></li>
+            <li><a href="games/memory.html">Memory Pairs</a></li>
+            <li><a href="games/whack.html">Whack-a-Dot</a></li>
+            <li><a href="games/number-merge.html">Number Merge</a></li>
+            <li><a href="games/reaction-test.html">Reaction Time Test</a></li>
+            <li><a href="games/block-slide.html">Block Slide Puzzle</a></li>
+            <li><a href="games/flappy.html">Flappy Bird</a></li>
+            <li><a href="games/word-merge.html">Word Merge</a></li>
+            <li><a href="games/sudoku.html">Easy Sudoku</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>More</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#games">Browse Games</a></li>
+            <li><a href="#featured">Featured</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/site.js"></script>
+  </body>
+</html>

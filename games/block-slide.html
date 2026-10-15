@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Block Slide Puzzle — Prism Arcade</title>
+  <meta name="description" content="Play Block Slide Puzzle online, a no-download sliding block game. Move the boxes, clear the board, and finish each level with satisfying spatial planning." />
+  <meta property="og:title" content="Block Slide Puzzle | Prism Arcade" />
+  <meta property="og:description" content="A clean sliding block puzzle you can play in the browser." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/block-slide.html" />
+  <link rel="canonical" href="https://prismarcade.example/games/block-slide.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .bs-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; width:min(360px,42vw,60vh); margin-inline:auto; aspect-ratio:1}
+    .bs-cell{aspect-ratio:1; border-radius:12px; background:var(--panel-2); border:1px solid var(--line); display:grid; place-items:center; font-weight:900; color:var(--muted)}
+    .bs-cell.block{background:rgba(124,92,255,.28); color:#f7f8ff}
+    .bs-cell.target{background:rgba(91,227,164,.22); color:#dffef2}
+  </style>
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="sliding-number.html">Number Slide</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero" style="padding:28px 0 12px">
+      <p class="kicker">Sliding Block</p>
+      <h1 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Block Slide Puzzle</h1>
+    </section>
+    <section>
+      <div class="play-shell" style="grid-template-columns:1fr; gap:14px">
+        <div class="play-stage">
+          <div class="hud"><span>Level <strong id="level">1</strong></span><span>Moves <strong id="moves">0</strong></span></div>
+          <div class="bs-grid" id="grid"></div>
+          <div class="game-controls" style="justify-content:center">
+            <button class="btn btn-primary" id="next">Next Level</button>
+            <button class="btn btn-ghost" data-mute-toggle>Silence</button>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h3>Slide the Blocks</h3>
+          <p>Move a block into an empty space to clear it from the board. Your goal is to clear the level in as few moves as possible.</p>
+          <ul class="list">
+            <li>Tap a block next to an empty cell to slide it.</li>
+            <li>Sliding a block into a green target clears both cells.</li>
+            <li>Each level has its own block pattern.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free browser puzzle games built for quick, satisfying play.</p></div><div><h3>More</h3><ul><li><a href="sliding-number.html">Number Slide</a></li><li><a href="number-merge.html">Number Merge</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+    const grid = document.getElementById('grid');
+    const levelEl = document.getElementById('level');
+    const movesEl = document.getElementById('moves');
+    const nextBtn = document.getElementById('next');
+    const CELLS = 16;
+    let level = 1;
+    let moves = 0;
+    let blocks = [];
+    let targets = [];
+
+    function makeLevel() {
+      blocks = [];
+      targets = [];
+      const count = 4 + Math.min(level, 5);
+      for (let i = 0; i < count; i += 1) {
+        let idx = Math.floor(Math.random() * CELLS);
+        while (blocks.includes(idx) || targets.includes(idx)) {
+          idx = Math.floor(Math.random() * CELLS);
+        }
+        blocks.push(idx);
+      }
+      const targetCount = 1 + Math.min(level, 3);
+      for (let i = 0; i < targetCount; i += 1) {
+        let idx = Math.floor(Math.random() * CELLS);
+        while (blocks.includes(idx) || targets.includes(idx)) {
+          idx = Math.floor(Math.random() * CELLS);
+        }
+        targets.push(idx);
+      }
+      moves = 0;
+      render();
+    }
+
+    function neighbors(index) {
+      const r = Math.floor(index / 4);
+      const c = index % 4;
+      const out = [];
+      if (r > 0) out.push(index - 4);
+      if (r < 3) out.push(index + 4);
+      if (c > 0) out.push(index - 1);
+      if (c < 3) out.push(index + 1);
+      return out;
+    }
+
+    function isAdjacent(a, b) {
+      return neighbors(a).includes(b);
+    }
+
+    function clickBlock(index) {
+      if (!blocks.includes(index)) return;
+      const emptyNeighbors = neighbors(index).filter((n) => !blocks.includes(n) && !targets.includes(n));
+      if (emptyNeighbors.length === 0) {
+        PA.sfx.wrong();
+        PA.toast('No open space next to that block.', 'bad');
+        return;
+      }
+      const dest = emptyNeighbors[Math.floor(Math.random() * emptyNeighbors.length)];
+      blocks = blocks.filter((b) => b !== index);
+      if (targets.includes(dest)) {
+        targets = targets.filter((t) => t !== dest);
+        PA.sfx.match();
+        PA.toast('Block cleared!', 'good');
+        moves += 1;
+      } else {
+        blocks.push(dest);
+        PA.sfx.move();
+        moves += 1;
+      }
+      levelEl.textContent = String(level);
+      movesEl.textContent = String(moves);
+      render();
+      if (targets.length === 0) {
+        PA.sfx.win();
+        PA.toast('Level ' + level + ' cleared!', 'good');
+        setTimeout(() => {
+          level += 1;
+          makeLevel();
+        }, 900);
+      }
+    }
+
+    function render() {
+      grid.innerHTML = '';
+      for (let i = 0; i < CELLS; i += 1) {
+        const cell = document.createElement('div');
+        cell.className = 'bs-cell' + (blocks.includes(i) ? ' block' : '') + (targets.includes(i) ? ' target' : '');
+        cell.textContent = blocks.includes(i) ? '#' : (targets.includes(i) ? '+' : '');
+        cell.addEventListener('click', () => clickBlock(i));
+        grid.appendChild(cell);
+      }
+    }
+
+    nextBtn.addEventListener('click', () => {
+      level += 1;
+      makeLevel();
+      PA.sfx.click();
+    });
+
+    makeLevel();
+  </script>
+</body>
+</html>

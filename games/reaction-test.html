@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reaction Time Test — Prism Arcade</title>
+  <meta name="description" content="Test your reaction time online. Wait for the green screen, then tap as fast as you can. A fast, one-click reflex benchmark for players who want to measure their speed." />
+  <meta property="og:title" content="Reaction Time Test | Prism Arcade" />
+  <meta property="og:description" content="Measure your reaction speed in milliseconds. Free and instant." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/reaction-test.html" />
+  <link rel="canonical" href="https://prismarcade.example/games/reaction-test.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .react-zone{height:min(420px,52vh); border-radius:18px; display:grid; place-items:center; font-size:1.4rem; font-weight:800; cursor:pointer; text-align:center; padding:20px; transition:background .15s ease}
+    .react-zone.wait{background:rgba(124,92,255,.18); color:#f7f8ff}
+    .react-zone.ready{background:rgba(91,227,164,.24); color:#14211b}
+    .react-zone.go{background:rgba(91,227,164,.5); color:#0e1a14}
+    .react-zone early{background:rgba(255,99,99,.28)}
+  </style>
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="quick-tap.html">Quick Tap</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero" style="padding:28px 0 12px">
+      <p class="kicker">Reflex Benchmark</p>
+      <h1 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Reaction Time Test</h1>
+    </section>
+    <section>
+      <div class="play-shell" style="grid-template-columns:1fr; gap:14px">
+        <div class="play-stage">
+          <div class="hud"><span>Result <strong id="result">— ms</strong></span><span>Best <strong id="best">—</strong></span><span>Attempts <strong id="tries">0</strong></span></div>
+          <div class="react-zone wait" id="zone">Tap to start</div>
+          <div class="game-controls" style="justify-content:center">
+            <button class="btn btn-primary" id="startBtn">Start</button>
+            <button class="btn btn-ghost" data-mute-toggle>Silence</button>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h3>How to Measure</h3>
+          <p>Wait for the screen to turn green, then click or tap as fast as you can. A typical adult lands between 200 and 250 milliseconds.</p>
+          <ul class="list">
+            <li>If you tap too early, the round resets.</li>
+            <li>Your fastest time is saved on this device.</li>
+            <li>Run a few attempts for a fair result.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free reflex, puzzle, and strategy games for international players.</p></div><div><h3>More</h3><ul><li><a href="quick-tap.html">Quick Tap Grid</a></li><li><a href="whack.html">Whack-a-Dot</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+    const zone = document.getElementById('zone');
+    const resultEl = document.getElementById('result');
+    const bestEl = document.getElementById('best');
+    const triesEl = document.getElementById('tries');
+    const startBtn = document.getElementById('startBtn');
+    let state = 'idle';
+    let startTime = 0;
+    let attempts = 0;
+    let best = Number(localStorage.getItem('reactionBest') || 0);
+
+    function setZone(text, cls) {
+      zone.textContent = text;
+      zone.className = 'react-zone ' + cls;
+    }
+
+    function arm() {
+      setZone('Wait for green...', 'wait');
+      state = 'armed';
+      const delay = 1200 + Math.random() * 2400;
+      setTimeout(() => {
+        if (state !== 'armed') return;
+        setZone('CLICK NOW', 'go');
+        state = 'go';
+        startTime = performance.now();
+        PA.sfx.tick();
+      }, delay);
+    }
+
+    zone.addEventListener('pointerdown', () => {
+      if (state === 'idle') { arm(); return; }
+      if (state === 'armed') {
+        PA.sfx.wrong();
+        setZone('Too early. Tap again to retry.', 'wait');
+        state = 'idle';
+        PA.toast('Too early — wait for green.', 'bad');
+        return;
+      }
+      if (state === 'go') {
+        const ms = Math.round(performance.now() - startTime);
+        attempts += 1;
+        triesEl.textContent = String(attempts);
+        resultEl.textContent = ms + ' ms';
+        if (best === 0 || ms < best) {
+          best = ms;
+          localStorage.setItem('reactionBest', String(best));
+          PA.sfx.win();
+          PA.toast('New best: ' + ms + ' ms', 'good');
+        } else {
+          PA.sfx.click();
+        }
+        bestEl.textContent = best + ' ms';
+        setZone(ms + ' ms', 'wait');
+        state = 'idle';
+      }
+    });
+
+    startBtn.addEventListener('click', () => {
+      state = 'idle';
+      resultEl.textContent = '— ms';
+      arm();
+    });
+
+    if (best > 0) bestEl.textContent = best + ' ms';
+  </script>
+</body>
+</html>

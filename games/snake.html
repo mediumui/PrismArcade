@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Play Snake Game Online No Download — Prism Arcade</title>
+  <meta name="description" content="Play the classic snake game online with no download. Arrow keys or touch controls, a score chase loop, and a speed ramp built for quick reflex sessions." />
+  <meta property="og:title" content="Play Snake Game Online No Download | Prism Arcade" />
+  <meta property="og:description" content="Fast arcade snake with simple controls and a satisfying progression loop." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/snake.html" />
+  <link rel="canonical" href="https://prismarcade.example/games/snake.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="quick-tap.html">Quick Tap</a></nav>
+      <a class="btn btn-ghost" href="../index.html#featured">Featured</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">Reflex Classic</p>
+      <h1>Neon Snake</h1>
+      <p class="lead">Collect energy nodes, grow the trail, and stay one move ahead of yourself. Neon Snake rewards calm focus and quick reactions.</p>
+    </section>
+    <section>
+      <div class="play-shell">
+        <div class="play-stage">
+          <div class="hud"><span>Score <strong id="score">0</strong></span><span>Best <strong id="best">0</strong></span><span>Speed <strong id="speed">1</strong></span></div>
+          <canvas id="game" width="420" height="420"></canvas>
+          <div class="snake-controls">
+            <button data-dir="up">Up</button>
+            <button data-dir="left">Left</button>
+            <button data-dir="right">Right</button>
+            <button class="wide" data-dir="down">Down</button>
+            <button class="wide" id="startBtn">Start</button>
+            <button class="wide" data-mute-toggle>Silence</button>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h3>Game Notes</h3>
+          <p>Use the arrow keys or the on-screen controls to steer the snake. Every point increases your score and slowly raises the pace.</p>
+          <ul class="list">
+            <li><strong>Start</strong> begins and restarts the run.</li>
+            <li>Touch controls work on phones and tablets.</li>
+            <li>Hit a wall or your own body and the run ends.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free English arcade games for players around the world.</p></div><div><h3>Related</h3><ul><li><a href="quick-tap.html">Quick Tap Grid</a></li><li><a href="reflex-relay.html">Rhythm Reflex Relay</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    const scoreEl = document.getElementById('score');
+    const bestEl = document.getElementById('best');
+    const speedEl = document.getElementById('speed');
+    const startBtn = document.getElementById('startBtn');
+    const CELL = 21;
+    const GRID = canvas.width / CELL;
+
+    let snake = [];
+    let dir = { x: 1, y: 0 };
+    let nextDir = dir;
+    let food = null;
+    let score = 0;
+    let best = Number(localStorage.getItem('snakeBest') || 0);
+    let running = false;
+    let tickMs = 140;
+    let last = 0;
+
+    function reset() {
+      snake = [{x: Math.floor(GRID/2), y: Math.floor(GRID/2)}];
+      dir = { x: 1, y: 0 };
+      nextDir = dir;
+      score = 0;
+      tickMs = 140;
+      spawnFood();
+      running = false;
+      draw();
+    }
+
+    function spawnFood() {
+      while (true) {
+        food = { x: Math.floor(Math.random()*GRID), y: Math.floor(Math.random()*GRID) };
+        if (!snake.some((s) => s.x === food.x && s.y === food.y)) break;
+      }
+    }
+
+    function step() {
+      dir = nextDir;
+      const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+      if (head.x < 0 || head.x >= GRID || head.y < 0 || head.y >= GRID || snake.some((s) => s.x === head.x && s.y === head.y)) {
+        running = false;
+        if (score > best) {
+          best = score;
+          localStorage.setItem('snakeBest', String(best));
+        }
+        PA.sfx.lose();
+        if (score >= 10 && score >= best && best > 0) {
+          PA.toast('New record: ' + score + '!', 'good');
+        } else {
+          PA.toast('Crashed at ' + score + '. Try again.', 'bad');
+        }
+        draw();
+        return;
+      }
+      snake.unshift(head);
+      if (head.x === food.x && head.y === food.y) {
+        score += 1;
+        PA.sfx.eat();
+        tickMs = Math.max(70, tickMs - 3);
+        spawnFood();
+      } else {
+        snake.pop();
+      }
+      draw();
+    }
+
+    function draw() {
+      ctx.fillStyle = '#0a0b1c';
+      ctx.fillRect(0,0,canvas.width, canvas.height);
+      ctx.fillStyle = '#ffd166';
+      ctx.beginPath();
+      ctx.arc(food.x*CELL + CELL/2, food.y*CELL + CELL/2, CELL/3, 0, Math.PI*2);
+      ctx.fill();
+      snake.forEach((seg, i) => {
+        ctx.fillStyle = i === 0 ? '#ffb347' : '#7c5cff';
+        ctx.fillRect(seg.x*CELL + 2, seg.y*CELL + 2, CELL - 4, CELL - 4);
+      });
+      scoreEl.textContent = String(score);
+      bestEl.textContent = String(best);
+      speedEl.textContent = String(Math.round((140 - tickMs) / 10) + 1);
+    }
+
+    function loop(ts) {
+      if (!running) return;
+      if (ts - last > tickMs) {
+        last = ts;
+        step();
+      }
+      requestAnimationFrame(loop);
+    }
+
+    function setDir(name) {
+      if (name === 'up' && dir.y !== 1) nextDir = { x: 0, y: -1 };
+      if (name === 'down' && dir.y !== -1) nextDir = { x: 0, y: 1 };
+      if (name === 'left' && dir.x !== 1) nextDir = { x: -1, y: 0 };
+      if (name === 'right' && dir.x !== -1) nextDir = { x: 1, y: 0 };
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const map = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right' };
+      if (map[e.key]) {
+        e.preventDefault();
+        setDir(map[e.key]);
+      }
+    });
+
+    document.querySelectorAll('[data-dir]').forEach((btn) => {
+      btn.addEventListener('click', () => setDir(btn.dataset.dir));
+    });
+
+    startBtn.addEventListener('click', () => {
+      reset();
+      running = true;
+      last = performance.now();
+      requestAnimationFrame(loop);
+    });
+
+    reset();
+  </script>
+</body>
+</html>

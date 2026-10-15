@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sliding Number Puzzle Online No Download — Prism Arcade</title>
+  <meta name="description" content="Play a sliding number puzzle online with no download. Arrange tiles 1 to 8 in order, plan spatially, and beat your own move count." />
+  <meta property="og:title" content="Sliding Number Puzzle Online No Download | Prism Arcade" />
+  <meta property="og:description" content="A clean sliding number puzzle with instant replayability." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/sliding-number.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="memory.html">Memory Pairs</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">Puzzle Logic</p>
+      <h1>Number Slide</h1>
+      <p class="lead">Slide tiles into the empty space and arrange the numbers in order. Simple to learn, satisfying to solve, and easy to replay.</p>
+    </section>
+    <section>
+      <div class="play-shell">
+        <div class="play-stage">
+          <div class="hud"><span>Moves <strong id="moves">0</strong></span><span>Timer <strong id="timer">0:00</strong></span></div>
+          <div class="board-grid" id="board"></div>
+          <div class="game-controls"><button class="btn btn-ghost" id="shuffle">Shuffle</button><button class="btn btn-ghost" id="solveHint">Show Hint</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
+        </div>
+        <aside class="side-panel">
+          <h3>How to Play</h3>
+          <p>The goal is to arrange the tiles from 1 to 8 with the empty space in the final corner. Any tile next to the empty space can slide into it.</p>
+          <ul class="list">
+            <li>Use <em>Shuffle</em> to start a new solvable puzzle.</li>
+            <li>The hint temporarily shows the target order.</li>
+            <li>Your move counter tracks each slide.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Clean puzzle games with an international, English-first interface.</p></div><div><h3>More</h3><ul><li><a href="memory.html">Memory Pairs</a></li><li><a href="sequence.html">Sequence Echo</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+    const boardEl = document.getElementById('board');
+    const movesEl = document.getElementById('moves');
+    const timerEl = document.getElementById('timer');
+    const shuffleBtn = document.getElementById('shuffle');
+    const hintBtn = document.getElementById('solveHint');
+    let tiles = [];
+    let moves = 0;
+    let seconds = 0;
+    let timerId = null;
+
+    function createCells() {
+      boardEl.innerHTML = '';
+      tiles.forEach((value, index) => {
+        const cell = document.createElement('div');
+        cell.className = 'board-cell';
+        cell.textContent = value === 0 ? '' : value;
+        cell.addEventListener('click', () => clickTile(index));
+        boardEl.appendChild(cell);
+      });
+    }
+
+    function shuffleTiles() {
+      tiles = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+      let lastIndex = -1;
+      for (let i = 0; i < 420; i += 1) {
+        const emptyIndex = tiles.indexOf(0);
+        const candidates = moveableIndexes(emptyIndex).filter((index) => index !== lastIndex);
+        const pick = candidates[Math.floor(Math.random() * candidates.length)];
+        [tiles[pick], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[pick]];
+        lastIndex = emptyIndex;
+      }
+      moves = 0;
+      seconds = 0;
+      updateHud();
+      createCells();
+    }
+
+    function moveableIndexes(emptyIndex) {
+      const row = Math.floor(emptyIndex / 3);
+      const col = emptyIndex % 3;
+      const result = [];
+      if (row > 0) result.push(emptyIndex - 3);
+      if (row < 2) result.push(emptyIndex + 3);
+      if (col > 0) result.push(emptyIndex - 1);
+      if (col < 2) result.push(emptyIndex + 1);
+      return result;
+    }
+
+    function clickTile(index) {
+      const emptyIndex = tiles.indexOf(0);
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      const emptyRow = Math.floor(emptyIndex / 3);
+      const emptyCol = emptyIndex % 3;
+      if ((row === emptyRow && Math.abs(col - emptyCol) === 1) || (col === emptyCol && Math.abs(row - emptyRow) === 1)) {
+        [tiles[index], tiles[emptyIndex]] = [tiles[emptyIndex], tiles[index]];
+        moves += 1;
+        PA.sfx.move();
+        updateHud();
+        createCells();
+        if (isSolved()) {
+          clearInterval(timerId);
+          timerEl.textContent = `Solved in ${formatTime(seconds)}`;
+          PA.sfx.win();
+          PA.toast(`Solved in ${moves} moves!`, 'good');
+        }
+      }
+    }
+
+    function isSolved() {
+      const target = [1,2,3,4,5,6,7,8,0];
+      return tiles.every((value, index) => value === target[index]);
+    }
+
+    function startTimer() {
+      clearInterval(timerId);
+      timerId = setInterval(() => {
+        seconds += 1;
+        timerEl.textContent = formatTime(seconds);
+      }, 1000);
+    }
+
+    function formatTime(total) {
+      const m = Math.floor(total / 60);
+      const s = total % 60;
+      return `${m}:${String(s).padStart(2, '0')}`;
+    }
+
+    function updateHud() {
+      movesEl.textContent = String(moves);
+      if (!isSolved()) timerEl.textContent = formatTime(seconds);
+    }
+
+    shuffleBtn.addEventListener('click', () => {
+      shuffleTiles();
+      startTimer();
+    });
+
+    hintBtn.addEventListener('click', () => {
+      const currentBoard = boardEl.children;
+      const target = [1,2,3,4,5,6,7,8,0];
+      for (let i = 0; i < currentBoard.length; i += 1) {
+        currentBoard[i].style.outline = tiles[i] === target[i] ? '2px solid var(--good)' : '2px solid rgba(255,255,255,.14)';
+      }
+      setTimeout(() => {
+        for (let i = 0; i < currentBoard.length; i += 1) currentBoard[i].style.outline = 'none';
+      }, 1200);
+    });
+
+    shuffleTiles();
+    startTimer();
+  </script>
+</body>
+</html>

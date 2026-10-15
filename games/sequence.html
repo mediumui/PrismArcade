@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Memory Pattern Game Online No Download — Prism Arcade</title>
+  <meta name="description" content="Play a memory pattern game online with no download. Watch a growing light sequence, repeat it back, and push your recall as it gets longer." />
+  <meta property="og:title" content="Memory Pattern Game Online No Download | Prism Arcade" />
+  <meta property="og:description" content="Watch the light, repeat the pattern, and test your memory." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/sequence.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="memory.html">Memory Pairs</a></nav>
+      <a class="btn btn-ghost" href="../index.html#featured">Featured</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">Memory Pattern</p>
+      <h1>Sequence Echo</h1>
+      <p class="lead">Watch a sequence of glowing cells, then repeat it back. Each round grows the pattern and tightens the focus.</p>
+    </section>
+    <section>
+      <div class="play-shell">
+        <div class="play-stage">
+          <div class="hud"><span>Round <strong id="round">1</strong></span><span>Best <strong id="best">0</strong></span></div>
+          <div class="memory-grid" id="grid" style="grid-template-columns:repeat(3, 1fr); aspect-ratio:1; width:min(340px, 40vw, 60vh)"></div>
+          <div class="game-controls"><button class="btn btn-ghost" id="start">Start</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
+        </div>
+        <aside class="side-panel">
+          <h3>Watch, Then Repeat</h3>
+          <p>Cells light up one at a time. When the pattern finishes, your goal is to replay the exact same sequence.</p>
+          <ul class="list">
+            <li>A wrong cell ends the round.</li>
+            <li>One correct full replay advances the pattern.</li>
+            <li>Your best round is saved on this device.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>A clean, English-first arcade for international players.</p></div><div><h3>More</h3><ul><li><a href="reflex-relay.html">Rhythm Reflex Relay</a></li><li><a href="memory.html">Memory Pairs</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
+  <style>
+    .seq-cell{min-height:120px;border-radius:16px;background:var(--panel-2);border:1px solid var(--line);display:grid;place-items:center;font-size:1.4rem;color:var(--muted);cursor:pointer}
+    .seq-cell.lit{background:rgba(255,179,71,.42);color:#1b130b}
+  </style>
+  <script src="_shared.js"></script>
+  <script>
+    const grid = document.getElementById('grid');
+    const roundEl = document.getElementById('round');
+    const bestEl = document.getElementById('best');
+    const startBtn = document.getElementById('start');
+    let sequence = [];
+    let inputIndex = 0;
+    let round = 1;
+    let best = Number(localStorage.getItem('sequenceEchoBest') || 0);
+    let accepting = false;
+    let showing = false;
+
+    Array.from({ length: 9 }, (_, index) => {
+      const cell = document.createElement('div');
+      cell.className = 'seq-cell';
+      cell.dataset.index = index;
+      cell.textContent = String(index + 1);
+      cell.addEventListener('click', () => press(index));
+      grid.appendChild(cell);
+    });
+
+    async function flash(index) {
+      const cell = grid.children[index];
+      cell.classList.add('lit');
+      await new Promise((resolve) => setTimeout(resolve, 420));
+      cell.classList.remove('lit');
+    }
+
+    async function showSequence() {
+      accepting = false;
+      showing = true;
+      roundEl.textContent = String(round);
+      bestEl.textContent = String(best);
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      for (const index of sequence) {
+        await flash(index);
+        await new Promise((resolve) => setTimeout(resolve, 180));
+      }
+      showing = false;
+      accepting = true;
+      inputIndex = 0;
+    }
+
+    function press(index) {
+      if (!accepting || showing) return;
+      if (index === sequence[inputIndex]) {
+        inputIndex += 1;
+        PA.sfx.click();
+        flash(index);
+        if (inputIndex === sequence.length) {
+          accepting = false;
+          if (round > best) {
+            best = round;
+            localStorage.setItem('sequenceEchoBest', String(best));
+          }
+          PA.sfx.good();
+          PA.toast('Pattern ' + round + ' cleared!', 'good');
+          round += 1;
+          sequence.push(Math.floor(Math.random() * 9));
+          setTimeout(showSequence, 650);
+        }
+      } else {
+        accepting = false;
+        PA.sfx.wrong();
+        PA.toast('Missed it. Pattern resets.', 'bad');
+        round = 1;
+        sequence = [Math.floor(Math.random() * 9), Math.floor(Math.random() * 9)];
+        setTimeout(showSequence, 450);
+      }
+    }
+
+    startBtn.addEventListener('click', () => {
+      sequence = [Math.floor(Math.random() * 9), Math.floor(Math.random() * 9)];
+      showSequence();
+    });
+
+    bestEl.textContent = String(best);
+  </script>
+</body>
+</html>

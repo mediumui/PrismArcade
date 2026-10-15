@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brain Quiz — Prism Arcade</title>
+  <meta name="description" content="Test your knowledge with Brain Quiz, a free English quiz game with mixed topics, instant feedback, and quick replay value." />
+  <meta property="og:title" content="Brain Quiz | Prism Arcade" />
+  <meta property="og:description" content="A short English quiz loop with instant feedback." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://prismarcade.example/games/quiz.html" />
+  <link rel="canonical" href="https://prismarcade.example/games/quiz.html" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="game-page">
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html"><span class="brand-mark">P</span><span>Prism Arcade</span></a>
+      <nav class="nav-links"><a href="../index.html">Home</a><a href="../index.html#games">Games</a><a href="memory.html">Memory Pairs</a></nav>
+      <a class="btn btn-ghost" href="../index.html#games">Browse</a>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">Knowledge Challenge</p>
+      <h1>Brain Quiz</h1>
+      <p class="lead">A compact mixed-topic quiz built for international players. Answer, learn, and try again until you score a clean run.</p>
+    </section>
+    <section>
+      <div class="quiz-panel">
+        <div class="hud"><span>Question <strong id="qNum">1 / 5</strong></span><span>Score <strong id="score">0</strong></span></div>
+        <h3 style="font-size:1.35rem">What fits the prompt below?</h3>
+        <p class="quiz-q" id="question"></p>
+        <div class="option-list" id="options"></div>
+        <p class="result-line" id="feedback"></p>
+        <div class="game-controls"><button class="btn btn-ghost" id="next">Next Question</button><button class="btn btn-ghost" id="restart">Restart</button></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>A clean English arcade for casual, knowledge-based play.</p></div><div><h3>More</h3><ul><li><a href="../index.html">Home</a></li><li><a href="quick-tap.html">Quick Tap Grid</a></li><li><a href="sequence.html">Sequence Echo</a></li></ul></div></div></footer>
+  <script>
+    const questions = [
+      { q: 'Which planet is known for its prominent rings?', a: ['Saturn','Jupiter','Mars','Venus'], c: 0 },
+      { q: 'Which language is most widely used on the web today?', a: ['French','Mandarin','English','Spanish'], c: 2 },
+      { q: 'What does the abbreviation “CPU” stand for in computing?', a: ['Central Processing Unit','Computer Power Utility','Core Program Unit','Central Programming Unit'], c: 0 },
+      { q: 'Which of these is a type of renewable energy?', a: ['Coal','Wind','Diesel','Gas'], c: 1 },
+      { q: 'What color do you get when you mix blue and yellow?', a: ['Purple','Green','Orange','Brown'], c: 1 }
+    ];
+    const qNum = document.getElementById('qNum');
+    const scoreEl = document.getElementById('score');
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const feedbackEl = document.getElementById('feedback');
+    const nextBtn = document.getElementById('next');
+    const restartBtn = document.getElementById('restart');
+    let index = 0;
+    let score = 0;
+    let answered = false;
+
+    function render() {
+      answered = false;
+      const item = questions[index];
+      qNum.textContent = `${index + 1} / ${questions.length}`;
+      scoreEl.textContent = String(score);
+      questionEl.textContent = item.q;
+      feedbackEl.textContent = '';
+      optionsEl.innerHTML = '';
+      item.a.forEach((text, i) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = text;
+        button.addEventListener('click', () => choose(i, button));
+        optionsEl.appendChild(button);
+      });
+      if (index === questions.length - 1) nextBtn.textContent = 'See Result';
+    }
+
+    function choose(i, button) {
+      if (answered) return;
+      answered = true;
+      const item = questions[index];
+      if (i === item.c) {
+        score += 1;
+        button.classList.add('correct');
+        feedbackEl.textContent = 'Correct.';
+      } else {
+        button.classList.add('wrong');
+        optionsEl.children[item.c].classList.add('correct');
+        feedbackEl.textContent = `Not quite. The answer is ${item.a[item.c]}.`;
+      }
+      scoreEl.textContent = String(score);
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (!answered) return;
+      if (index === questions.length - 1) {
+        questionEl.textContent = `You scored ${score} out of ${questions.length}.`;
+        optionsEl.innerHTML = '';
+        feedbackEl.textContent = score >= 4 ? 'Excellent result.' : 'Solid effort — try one more round.';
+        nextBtn.textContent = 'Play Again';
+        return;
+      }
+      index += 1;
+      nextBtn.textContent = 'Next Question';
+      render();
+    });
+
+    restartBtn.addEventListener('click', () => { index = 0; score = 0; nextBtn.textContent = 'Next Question'; render(); });
+    render();
+  </script>
+</body>
+</html>
