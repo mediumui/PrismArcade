@@ -73,10 +73,13 @@ section{padding:42px 0}
 .badge{font-size:.72rem; padding:4px 8px; border-radius:999px; background:rgba(255,255,255,.08); color:var(--ink)}
 .card .btn{margin-top:auto; align-self:flex-start}
 .featured{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
-.game-page .hero{padding:22px 0 14px}
-.game-page .hero h1{font-size:clamp(1.6rem,3.4vw,2.4rem)}
-.game-page .hero .kicker{margin-bottom:8px}
-.game-page .hero .lead{margin-top:8px; font-size:1rem; line-height:1.45; max-width:90ch}
+.game-page .hero{padding:14px 0 8px}
+.game-page .hero h1{font-size:clamp(1.4rem,2.8vw,2rem)}
+.game-page .hero .kicker{margin-bottom:6px}
+.game-page .hero .lead{margin-top:6px; font-size:.95rem; line-height:1.4; max-width:90ch}
+/* game pages: tighten vertical rhythm so board + controls fit one screen */
+.game-page section{padding:14px 0}
+.game-page main > section:first-of-type{padding-top:0}
 .play-shell{gap:14px}
 .game-page .play-stage{min-height:0; padding:14px}
 .game-page .side-panel{padding:18px}
