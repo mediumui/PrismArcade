@@ -3,3 +3,4 @@ node_modules/
 *.log
 # Kwinside API key is env-only; never commit it
 .env
+out/
