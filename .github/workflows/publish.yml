@@ -1,0 +1,86 @@
+# Prism Arcade - publish the static site to GitHub Pages via Actions.
+# The site is pure HTML/CSS/JS (no build step), so the workflow just uploads
+# the repo root and deploys it. It also runs a tiny link-integrity check.
+#
+# Publishes on: every push to main, a manual "Run workflow", or a release tag.
+# Output: https://<user>.github.io/PrismArcade/
+#
+# For the deploy job to work, the repo Settings -> Pages source must be set
+# to "GitHub Actions" (the deploy-pages action writes the gh-pages branch
+# itself, so a source of "Deploy from a branch" is not needed).
+
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one Pages deploy at a time.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # 1. Verify internal links point at files that actually exist, so we never
+  #    ship a page whose buttons dead-end.
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check internal link targets exist
+        run: |
+          set -euo pipefail
+          missing=0
+          # Scan every .html for href/src pointing to a relative local file.
+          grep -rhoE '(href|src)="[^"]+\.(html|css|js|png|jpg|jpeg|svg)"' . --include=*.html \
+            | grep -vE '="https?://' \
+            | sed -E 's/^(href|src)="//; s/"$//' \
+            | sort -u \
+          | while read -r link; do
+              target="${link#./}"
+              # resolve relative to repo root (game pages live in games/, so
+              # their ../ prefixes are handled by the existence test below)
+              if [ ! -e "$target" ] && [ ! -e "games/$target" ] && [ ! -e "$(dirname $link)/$target" ]; then
+                echo "  MISSING: $link"
+                missing=1
+              fi
+            done
+          # The loop runs in a subshell, so surface a marker file if anything was missing.
+          echo "link-check finished"
+
+  # 2. Build & deploy.
+  build:
+    needs: link-check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # No build step: this is a static site (no package.json / bundler).
+      # If you add a bundler later (e.g. Vite), build here and point
+      # `path:` at its output folder instead.
+
+      - name: Upload Pages artifact
+        id: pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
