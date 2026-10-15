@@ -34,10 +34,10 @@
       <p class="lead">Collect energy nodes, grow the trail, and stay one move ahead of yourself. Neon Snake rewards calm focus and quick reactions.</p>
     </section>
     <section>
-      <div class="play-shell">
-        <div class="play-stage">
+      <div class="play-shell" data-fit>
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Score <strong id="score">0</strong></span><span>Best <strong id="best">0</strong></span><span>Speed <strong id="speed">1</strong></span></div>
-          <canvas id="game" width="420" height="420"></canvas>
+          <canvas id="game" data-fit-target width="420" height="420"></canvas>
           <div class="snake-controls">
             <button data-dir="up">Up</button>
             <button data-dir="left">Left</button>
@@ -182,5 +182,6 @@
 
     reset();
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>

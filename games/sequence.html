@@ -26,10 +26,10 @@
       <p class="lead">Watch a sequence of glowing cells, then repeat it back. Each round grows the pattern and tightens the focus.</p>
     </section>
     <section>
-      <div class="play-shell">
-        <div class="play-stage">
+      <div class="play-shell" data-fit>
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Round <strong id="round">1</strong></span><span>Best <strong id="best">0</strong></span></div>
-          <div class="memory-grid" id="grid" style="grid-template-columns:repeat(3, 1fr); aspect-ratio:1; width:min(340px, 40vw, 60vh)"></div>
+          <div class="memory-grid" id="grid" style="grid-template-columns:repeat(3, 1fr); aspect-ratio:1"></div>
           <div class="game-controls"><button class="btn btn-ghost" id="start">Start</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
         </div>
         <aside class="side-panel">
@@ -128,5 +128,6 @@
 
     bestEl.textContent = String(best);
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>

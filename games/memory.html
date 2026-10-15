@@ -27,8 +27,8 @@
       <p class="lead">Flip two cards at a time and find every matching pair. Fewer moves means a stronger result.</p>
     </section>
     <section>
-      <div class="play-shell">
-        <div class="play-stage">
+      <div class="play-shell" data-fit>
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Moves <strong id="moves">0</strong></span><span>Pairs <strong id="pairs">0 / 8</strong></span></div>
           <div class="memory-grid" id="grid"></div>
           <div class="game-controls"><button class="btn btn-ghost" id="restart">Restart</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
@@ -117,5 +117,6 @@
     restartBtn.addEventListener('click', start);
     start();
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>

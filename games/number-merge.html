@@ -32,8 +32,8 @@
       <h1 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Number Merge</h1>
     </section>
     <section>
-      <div class="play-shell" style="grid-template-columns:1fr; gap:14px">
-        <div class="play-stage">
+      <div class="play-shell" data-fit style="grid-template-columns:1fr; gap:14px">
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Score <strong id="score">0</strong></span><span>Best Tile <strong id="maxTile">1</strong></span><span>Best Score <strong id="best">0</strong></span></div>
           <div class="merge-grid" id="grid"></div>
           <div class="game-controls" style="justify-content:center">
@@ -156,5 +156,6 @@
     attachDrag();
     bestEl.textContent = String(best);
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>

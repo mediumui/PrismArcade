@@ -29,10 +29,10 @@
       <h1 style="font-size:clamp(1.7rem,3.2vw,2.4rem)">Jump Runner</h1>
     </section>
     <section>
-      <div class="play-shell" style="grid-template-columns:1fr; gap:14px">
-        <div class="play-stage">
+      <div class="play-shell" data-fit style="grid-template-columns:1fr; gap:14px">
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Distance <strong id="dist">0</strong></span><span>Best <strong id="best">0</strong></span><span>State <strong id="state">Ready</strong></span></div>
-          <canvas id="run" class="run-canvas" width="620" height="240"></canvas>
+          <canvas id="run" data-fit-target class="run-canvas" width="620" height="240"></canvas>
           <p class="tile-hint" style="text-align:center">Press Space / tap the canvas to jump. Dodge the spikes.</p>
           <div class="game-controls" style="justify-content:center">
             <button class="btn btn-primary" id="start">Start</button>
@@ -187,5 +187,6 @@
     bestEl.textContent = String(best);
     reset();
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>

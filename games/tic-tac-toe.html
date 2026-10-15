@@ -27,8 +27,8 @@
       <p class="lead">A fast two-player logic match. Get three in a row to win. Best for quick breaks and casual strategy play.</p>
     </section>
     <section>
-      <div class="play-shell">
-        <div class="play-stage">
+      <div class="play-shell" data-fit>
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Status <strong id="status">Player X</strong></span><span>Score X <strong id="scoreX">0</strong></span><span>Score O <strong id="scoreO">0</strong></span><span>Draws <strong id="scoreD">0</strong></span></div>
           <div class="board-grid" id="board" style="max-width:300px"></div>
           <div class="game-controls"><button class="btn btn-ghost" id="resetBtn">New Round</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
@@ -114,5 +114,6 @@
 
     render();
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>

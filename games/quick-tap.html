@@ -26,10 +26,10 @@
       <p class="lead">Tap glowing cells as fast as you can before the round timer ends. Build streaks, chase your best, and keep your focus locked.</p>
     </section>
     <section>
-      <div class="play-shell">
-        <div class="play-stage">
+      <div class="play-shell" data-fit>
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Time <strong id="time">30</strong></span><span>Score <strong id="score">0</strong></span><span>Best <strong id="best">0</strong></span></div>
-          <div class="memory-grid" id="grid" style="grid-template-columns:repeat(4, 1fr); aspect-ratio:1; width:min(340px, 40vw, 60vh)"></div>
+          <div class="memory-grid" id="grid" style="grid-template-columns:repeat(4, 1fr); aspect-ratio:1"></div>
           <div class="game-controls"><button class="btn btn-ghost" id="start">Start</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
         </div>
         <aside class="side-panel">
@@ -120,5 +120,6 @@
 
     bestEl.textContent = String(best);
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>

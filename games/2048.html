@@ -34,8 +34,8 @@
       <h1 style="font-size:clamp(1.7rem,3.2vw,2.4rem)">2048</h1>
     </section>
     <section>
-      <div class="play-shell" style="grid-template-columns:1fr; gap:14px">
-        <div class="play-stage">
+      <div class="play-shell" data-fit style="grid-template-columns:1fr; gap:14px">
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Score <strong id="score">0</strong></span><span>Best <strong id="best">0</strong></span><span>State <strong id="state">Play</strong></span></div>
           <div class="g2048" id="grid"></div>
           <p class="tile-hint">Use the arrow keys or tap Swipe buttons to move.</p>
@@ -187,5 +187,6 @@
     bestEl.textContent = String(best);
     reset();
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>

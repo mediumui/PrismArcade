@@ -32,9 +32,9 @@
     </section>
     <section>
       <div class="play-shell flappy-wrap" style="grid-template-columns:1fr; gap:14px">
-        <div class="play-stage">
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Score <strong id="score">0</strong></span><span>Best <strong id="best">0</strong></span><span>State <strong id="state">Ready</strong></span></div>
-          <canvas id="flappy" width="360" height="480"></canvas>
+          <canvas id="flappy" data-fit-target width="360" height="480"></canvas>
           <p class="tap-hint">Tap the board, click, or press Space to flap.</p>
           <div class="game-controls" style="justify-content:center">
             <button class="btn btn-primary" id="flap">Flap</button>
@@ -198,5 +198,6 @@
       loop();
     })();
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>

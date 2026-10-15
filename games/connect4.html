@@ -26,10 +26,10 @@
       <p class="lead">A lighter take on the classic board game. Drop discs into the grid and race to form a four-in-a-row line.</p>
     </section>
     <section>
-      <div class="play-shell">
-        <div class="play-stage">
+      <div class="play-shell" data-fit>
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Turn <strong id="turn">Red</strong></span><span>Winner <strong id="result">—</strong></span></div>
-          <div class="memory-grid" id="board" style="grid-template-columns:repeat(7,1fr); aspect-ratio:7/6; width:min(420px, 46vw, 60vh)"></div>
+          <div class="memory-grid" id="board" style="grid-template-columns:repeat(7,1fr); aspect-ratio:7/6"></div>
           <div class="game-controls"><button class="btn btn-ghost" id="reset">New Game</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
         </div>
         <aside class="side-panel">
@@ -140,5 +140,6 @@
     emptyBoard();
     render();
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>

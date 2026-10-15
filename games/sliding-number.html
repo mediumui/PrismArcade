@@ -26,8 +26,8 @@
       <p class="lead">Slide tiles into the empty space and arrange the numbers in order. Simple to learn, satisfying to solve, and easy to replay.</p>
     </section>
     <section>
-      <div class="play-shell">
-        <div class="play-stage">
+      <div class="play-shell" data-fit>
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Moves <strong id="moves">0</strong></span><span>Timer <strong id="timer">0:00</strong></span></div>
           <div class="board-grid" id="board"></div>
           <div class="game-controls"><button class="btn btn-ghost" id="shuffle">Shuffle</button><button class="btn btn-ghost" id="solveHint">Show Hint</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
@@ -159,5 +159,6 @@
     shuffleTiles();
     startTimer();
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>

@@ -37,7 +37,7 @@
     </section>
     <section>
       <div class="play-shell wm-wrap" style="grid-template-columns:1fr; gap:14px">
-        <div class="play-stage">
+        <div class="play-stage" data-fit>
           <div class="hud"><span>Score <strong id="score">0</strong></span><span>Best <strong id="best">0</strong></span><span>Level <strong id="level">1</strong></span></div>
           <div class="wm-progress"><span id="bar" style="width:0%"></span></div>
           <p class="tap-hint" style="margin:10px 0">Tap letters to build a word. If it is a real English word, it merges into the bin for bonus points. Clear the pool to level up.</p>
@@ -165,5 +165,6 @@
       newLevel();
     })();
   </script>
+  <script src="fit.js"></script>
 </body>
 </html>
