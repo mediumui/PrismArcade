@@ -73,23 +73,34 @@
       const timeEl = document.getElementById('time');
       let solution = [], givens = [], cells = [], sel = -1, moves = 0, errs = 0, done = false, timer = 0, secs = 0;
 
+      // A valid 4x4 base. Permuting the value set {1..4} preserves validity
+      // (rows, columns and 2x2 boxes still each hold 1..4 exactly once), so we
+      // get many correct boards from a single base.
+      const BASE = [
+        [1, 2, 3, 4],
+        [3, 4, 1, 2],
+        [2, 1, 4, 3],
+        [4, 3, 2, 1]
+      ];
+      function permutations() {
+        // all 24 orderings of [1,2,3,4]
+        const v = [1, 2, 3, 4];
+        const out = [];
+        (function perm(arr, k) {
+          if (k === arr.length) { out.push(arr.slice()); return; }
+          for (let i = k; i < arr.length; i += 1) {
+            [arr[k], arr[i]] = [arr[i], arr[k]];
+            perm(arr, k + 1);
+            [arr[k], arr[i]] = [arr[i], arr[k]];
+          }
+        })(v.slice(), 0);
+        return out;
+      }
+      const PERMS = permutations();
       function generate() {
-        // build a valid 4x4 by permuting a base and swapping rows/cols within bands
-        const base = [
-          [1, 2, 3, 4],
-          [3, 4, 1, 2],
-          [2, 1, 4, 3],
-          [4, 3, 2, 1]
-        ];
-        const sol = base.map((r) => r.map((v) => 1 + Math.floor(Math.random() * 4)));
-        // swap columns 0<->1 and 2<->3 to vary
-        for (let r = 0; r < 4; r += 1) {
-          [sol[r][0], sol[r][1]] = [sol[r][0], sol[r][1]];
-          [sol[r][0], sol[r][1]] = [sol[r][1], sol[r][0]];
-          [sol[r][2], sol[r][3]] = [sol[r][3], sol[r][2]];
-        }
-        // shuffle column order per band
-        return sol;
+        // pick a random value permutation of the base (always a valid 4x4 solution)
+        const p = PERMS[Math.floor(Math.random() * PERMS.length)];
+        return BASE.map((row) => row.map((v) => p[v - 1]));
       }
 
       function newPuzzle() {
