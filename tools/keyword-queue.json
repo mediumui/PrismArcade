@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-15",
-  "method": "web-signals + intent + KD-proxy scoring",
+  "generatedAt": "2026-10-16",
+  "method": "synthetic-offline-scoring (no live volume) + prior web-signals",
   "priorityKeywords": [
     {
       "keyword": "number merge games online",
@@ -32,7 +32,18 @@
     "free html5 puzzle games no download",
     "quick tap reflex game",
     "2 player browser board games",
-    "word merge mini games"
+    "word merge mini games",
+    "number merge game no download",
+    "number merge game without download",
+    "number merge game for kids",
+    "number merge game 2 player",
+    "number merge game two player",
+    "sliding puzzle game no download",
+    "sliding puzzle game without download",
+    "sliding puzzle game for kids",
+    "sliding puzzle game 2 player",
+    "sliding puzzle game two player",
+    "sliding block puzzle without download"
   ],
   "pageKeywordMap": {
     "games/snake.html": "play snake game online no download",
@@ -57,5 +68,6 @@
     "Use each keyword once as the page H1 and once in the meta title; avoid keyword stuffing.",
     "Keep game pages under 1000 words, action-first, and mobile-friendly.",
     "Add internal links from the home page so each new game inherits topical authority."
-  ]
+  ],
+  "note": "volume column in top-keywords.csv is a relevance proxy (1-5 tier), NOT a live Google/Kwinside figure. Source=synthetic. Replace with real Kwinside data when the key is available."
 }
