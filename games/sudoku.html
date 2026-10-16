@@ -240,9 +240,11 @@
       }
       const PERMS = permutations();
       function generate() {
-        // pick a random value permutation of the base (always a valid 4x4 solution)
+        // pick a random value permutation of the base (always a valid 4x4 solution).
+        // flat(): return a 1-D 16-cell array — all game logic indexes solution[i]
+        // linearly, and a nested row array would render as "2,3,1,4" in a cell.
         const p = PERMS[Math.floor(Math.random() * PERMS.length)];
-        return BASE.map((row) => row.map((v) => p[v - 1]));
+        return BASE.flat().map((v) => p[v - 1]);
       }
 
       function newPuzzle() {
