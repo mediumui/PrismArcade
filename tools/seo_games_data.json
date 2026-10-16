@@ -24,15 +24,18 @@
     "related": [
       {
         "name": "Number Merge",
-        "file": "number-merge.html"
+        "file": "number-merge.html",
+        "desc": "Tap one tile then tap an equal tile to combine them, build the highest total score, and chase your best run. Free merge puzzle."
       },
       {
         "name": "Block Slide Puzzle",
-        "file": "block-slide.html"
+        "file": "block-slide.html",
+        "desc": "Slide blocks into the open space, clear the green targets, and finish each level with fewer moves. Free, one-screen logic game."
       },
       {
         "name": "Easy Sudoku",
-        "file": "sudoku.html"
+        "file": "sudoku.html",
+        "desc": "A fast 4x4 logic warm-up. Fill the grid so every row, column and box holds 1 to 4 exactly once."
       }
     ]
   },
