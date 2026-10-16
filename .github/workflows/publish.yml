@@ -46,6 +46,7 @@ jobs:
             | sort -u \
           | while read -r link; do
               target="${link#./}"
+              target="${target#/}"
               # resolve relative to repo root (game pages live in games/, so
               # their ../ prefixes are handled by the existence test below)
               if [ ! -e "$target" ] && [ ! -e "games/$target" ] && [ ! -e "$(dirname $link)/$target" ]; then
