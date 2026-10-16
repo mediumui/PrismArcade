@@ -142,7 +142,7 @@
       <div class="play-shell" data-fit>
         <div class="play-stage" data-fit>
           <div class="hud"><span>Round <strong id="round">1</strong></span><span>Best <strong id="best">0</strong></span><span>Combo <strong id="combo">0</strong></span></div>
-          <div class="memory-grid" id="pads" style="grid-template-columns:repeat(2, 1fr); aspect-ratio:auto"></div>
+          <div class="memory-grid" id="pads" style="grid-template-columns:repeat(2, 1fr)"></div>
           <div class="game-controls"><button class="btn btn-ghost" id="start">Start Sequence</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
         </div>
         <aside class="side-panel">
@@ -182,7 +182,7 @@
   </main>
   <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Reflex, memory, and knowledge games in one fast English arcade.</p></div><div><h3>More</h3><ul><li><a href="sequence.html">Sequence Echo</a></li><li><a href="quick-tap.html">Quick Tap Grid</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
   <style>
-    .relay-pad{display:grid;place-items:center;min-height:160px;border-radius:20px;font-size:2rem;font-weight:900;background:var(--panel-2);border:1px solid var(--line);cursor:pointer}
+    .relay-pad{display:grid;place-items:center;min-height:0;border-radius:20px;font-size:2rem;font-weight:900;background:var(--panel-2);border:1px solid var(--line);cursor:pointer}
     .relay-pad.active{background:rgba(255,179,71,.34)}
   </style>
   <script src="_shared.js"></script>

@@ -152,10 +152,10 @@ section{padding:42px 0}
   .section-title{align-items:flex-start; flex-direction:column}
 }
 
-/* Named card-grid variants used on index/about/404 (desktop layout via class) */
-.category-grid{grid-template-columns:repeat(3, minmax(0,1fr))}
-.faq-grid{grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin-top:4px}
-.design-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+/* Named card-grid variants (usable standalone — must set display:grid themselves) */
+.category-grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px}
+.faq-grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin-top:4px}
+.design-grid{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px}
 /* equal-height rows: stretch cards to the tallest card in their row (content-driven,
    not a fixed 250px) so grids look tidy without leaving big empty gaps */
 .category-grid .card,.faq-grid .card,.design-grid .card,.grid .card,.featured .card,.related-grid .card{flex:1 1 auto}
