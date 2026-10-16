@@ -1,0 +1,23 @@
+# .assetsignore —— 控制 wrangler deploy 上传到 Cloudflare 的文件（语法同 .gitignore）
+# 目的：不要把仓库内部的开发/敏感目录公开出去（尤其 .git 历史已被泄露过）
+
+# 绝对不能公开：git 仓库（含全部提交历史、曾提交过的任何密钥）
+.git
+.gitignore
+
+# 项目内部笔记 / 记忆（非站点内容）
+.workbuddy
+
+# GitHub Actions 工作流（CI 用，不应作为静态资源暴露）
+.github
+
+# 本地构建/爬取脚本（仅开发期使用，线上不需要）
+tools
+
+# 本地截图 / 预览产物
+out
+
+# 依赖 & 系统文件
+node_modules
+.DS_Store
+*.log
