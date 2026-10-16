@@ -152,10 +152,45 @@ section{padding:42px 0}
   .section-title{align-items:flex-start; flex-direction:column}
 }
 
+/* Named card-grid variants used on index/about/404 (desktop layout via class) */
+.category-grid{grid-template-columns:repeat(3, minmax(0,1fr))}
+.faq-grid{grid-template-columns:repeat(3, minmax(0,1fr))}
+.design-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+@media(max-width:640px){
+  .category-grid,.faq-grid,.design-grid{grid-template-columns:1fr}
+}
+
+/* Mobile (<640px): collapse card grids to a single column and trim page chrome so
+   cards are no longer squeezed, and boards / canvas fit the narrow viewport. */
+@media(max-width:640px){
+  .container{width:calc(100% - 20px)}
+  .nav{padding:10px 0; gap:8px}
+  .nav-links{font-size:.85rem; gap:4px}
+  .nav-links a{padding:6px 8px}
+  .btn{padding:10px 14px}
+  .hero{padding:30px 0 16px}
+  .hero-copy{gap:16px}
+  h1{font-size:clamp(1.9rem, 9vw, 2.6rem)}
+  .lead{font-size:1rem}
+  section{padding:28px 0}
+  .card{min-height:0; padding:14px}
+  .card .thumb{height:92px; font-size:1.7rem}
+  /* collapse card grids to one column so cards are not squeezed */
+  .grid,.featured,.seo-faq .faq-grid,.seo-related .related-grid{grid-template-columns:1fr; gap:12px}
+  /* boards & canvas: cap width & height to the narrow phone viewport so they fit */
+  .board-grid,.memory-grid,.g2048,.bs-grid,.merge-grid,.sud,.whack-grid{width:100%; max-width:92vw; max-height:66vh}
+  .play-stage canvas{max-width:100%}
+  .hud{gap:8px}
+  .hud span{padding:6px 10px; font-size:.8rem}
+  .game-controls{gap:8px}
+  .footer{padding:26px 0 36px}
+}
+
+/* Mid / tablet (641–960px): two-column cards keep enough breathing room */
+@media(min-width:641px) and (max-width:960px){
+  .grid,.featured,.seo-faq .faq-grid,.seo-related .related-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+
 /* SEO/GEO injected sections: FAQ, Related, Overview on game pages */
 .seo-faq, .seo-related, .seo-overview{padding:28px 0}
-.seo-faq .faq-grid, .seo-related .related-grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; margin-top:16px}
 .seo-overview .hero-card{margin:0}
-@media(max-width:960px){
-  .seo-faq .faq-grid, .seo-related .related-grid{grid-template-columns:1fr}
-}
