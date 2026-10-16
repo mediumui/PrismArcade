@@ -144,8 +144,37 @@ section{padding:42px 0}
 .footer ul{list-style:none; padding:0; margin:12px 0 0; display:grid; gap:8px}
 .footer a{color:var(--ink); text-decoration:none}
 .footer a:hover{color:var(--accent)}
+
+/* Legal / policy page */
+.legal{max-width:760px; margin:0 auto; line-height:1.75}
+.legal h2{font-size:1.5rem; margin:30px 0 10px}
+.legal h2:first-child{margin-top:0}
+.legal p{color:var(--muted); margin:0 0 12px}
+.legal a{color:var(--accent)}
+.legal strong{color:var(--ink)}
+
+/* Contact page */
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start}
+.contact-info h2{font-size:1.6rem}
+.contact-info h3{font-size:1.15rem; margin:22px 0 8px}
+.contact-info p{color:var(--muted); line-height:1.6; margin:0 0 12px}
+.contact-info a{color:var(--accent)}
+.bullets{list-style:none; padding:0; margin:0; display:grid; gap:10px}
+.bullets li{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:12px 14px; color:var(--muted); line-height:1.5}
+.bullets strong{color:var(--ink)}
+.contact-form-wrap{background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:22px; box-shadow:var(--shadow)}
+.contact-form-wrap h2{font-size:1.6rem; margin:0 0 6px}
+.contact-form{display:grid; gap:12px; margin-top:14px}
+.contact-form label{font-size:.9rem; color:var(--muted); font-weight:600}
+.contact-form input,.contact-form select,.contact-form textarea{
+  width:100%; background:var(--panel-2); border:1px solid var(--line); color:var(--ink);
+  border-radius:12px; padding:11px 13px; font-family:inherit; font-size:.95rem; resize:vertical;
+}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:2px solid var(--accent-2); outline-offset:1px}
+.contact-form .btn{margin-top:4px}
+
 @media(max-width:960px){
-  .hero-copy,.play-shell,.featured,.grid,.footer-grid{grid-template-columns:1fr}
+  .hero-copy,.play-shell,.featured,.grid,.footer-grid,.contact-grid{grid-template-columns:1fr}
   .hero-card{order:2}
   .nav{flex-direction:column; align-items:flex-start}
   .nav-links{width:100%}

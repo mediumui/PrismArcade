@@ -22,7 +22,7 @@ GLYPH = (
 HEADER_RE = re.compile(r"<header[^>]*>.*?</header>", re.DOTALL)
 
 
-def build_header(ind, home, games, featured):
+def build_header(ind, home, games, featured, about, contact, privacy):
     cta = games  # Start Playing -> games catalog
     return (
         f'{ind}<header class="site-header">\n'
@@ -34,7 +34,9 @@ def build_header(ind, home, games, featured):
         f'{ind}    <nav class="nav-links" aria-label="Primary">\n'
         f'{ind}      <a href="{home}">Home</a>\n'
         f'{ind}      <a href="{games}">Games</a>\n'
-        f'{ind}      <a href="{featured}">Featured</a>\n'
+        f'{ind}      <a href="{about}">About</a>\n'
+        f'{ind}      <a href="{contact}">Contact</a>\n'
+        f'{ind}      <a href="{privacy}">Privacy</a>\n'
         f'{ind}    </nav>\n'
         f'{ind}    <a class="btn btn-primary" href="{cta}">Start Playing</a>\n'
         f'{ind}  </div>\n'
@@ -42,7 +44,7 @@ def build_header(ind, home, games, featured):
     )
 
 
-files = [BASE / n for n in ("index.html", "about.html", "404.html")] + sorted((BASE / "games").glob("*.html"))
+files = [BASE / n for n in ("index.html", "about.html", "privacy.html", "contact.html")] + sorted((BASE / "games").glob("*.html"))
 done = 0
 for f in files:
     t = f.read_text(encoding="utf-8")
@@ -53,9 +55,11 @@ for f in files:
     line0 = t[m.start(): t.find("\n", m.start())]
     ind = line0[: len(line0) - len(line0.lstrip(" "))]
     if f.parent.name == "games":
-        block = build_header(ind, "../index.html", "../index.html#games", "../index.html#featured")
+        block = build_header(ind, "../index.html", "../index.html#games", "../index.html#featured",
+                             "../about.html", "../contact.html", "../privacy.html")
     else:
-        block = build_header(ind, "index.html", "index.html#games", "index.html#featured")
+        block = build_header(ind, "index.html", "index.html#games", "index.html#featured",
+                             "about.html", "contact.html", "privacy.html")
     t = t[: m.start()] + block + t[m.end():]
     f.write_text(t, encoding="utf-8")
     done += 1
