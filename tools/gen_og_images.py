@@ -30,6 +30,21 @@ GAMES_DATA = BASE / "seo_games_data.json"
 
 W, H = 1200, 630
 
+# schema.org game category enum -> human-readable label for the OG image.
+CATEGORY_LABEL = {
+    "PuzzleGame": "Puzzle",
+    "ActionGame": "Action",
+    "BoardGame": "Board Game",
+    "TriviaGame": "Trivia",
+    "CardGame": "Card",
+    "ArcadeGame": "Arcade",
+    "PartyGame": "Party",
+}
+
+
+def category_label(tag: str) -> str:
+    return CATEGORY_LABEL.get(tag, tag)
+
 
 def find_font(size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     """Try a few common font locations; fall back to default."""
@@ -107,7 +122,7 @@ def main():
         tag = d.get("category", "Game")
         render_og(OG_DIR / "games" / slug.replace(".html", ".jpg"), [
             name,
-            f"Free {tag} Online  •  No Download",
+            f"Free {category_label(tag)} Online  •  No Download",
         ])
 
     print(f"Done. Generated {2 + len(data)} OG images in {OG_DIR}")

@@ -114,24 +114,24 @@
     ]
   },
   "flappy.html": {
-    "name": "Flappy Bird",
-    "title": "Play Flappy Bird Online No Download | Prism Arcade",
-    "desc": "Play Flappy Bird online for free with no download. Tap to flap, glide the bird through the pipes, and chase your longest run. Fast one-screen reflex classic.",
-    "og_title": "Flappy Bird Online No Download | Prism Arcade",
+    "name": "Sky Flap",
+    "title": "Play Sky Flap Online No Download | Prism Arcade",
+    "desc": "Play Sky Flap online for free with no download. Tap to flap, glide the bird through the pipes, and chase your longest run. Fast one-screen reflex classic.",
+    "og_title": "Sky Flap Online No Download | Prism Arcade",
     "category": "ActionGame",
     "playmode": "SinglePlayer",
-    "overview": "Flappy Bird is a free online reflex game that runs directly in the browser with no download or account. Tap the screen, click, or press Space to flap the bird and glide it through the pipes. Each pipe you clear is worth one point, and the longer you survive the harder it gets. It is a one-screen classic built for short, fast sessions.",
+    "overview": "Sky Flap is a free online reflex game that runs directly in the browser with no download or account. Tap the screen, click, or press Space to flap the bird and glide it through the pipes. Each pipe you clear is worth one point, and the longer you survive the harder it gets. It is a one-screen classic built for short, fast sessions.",
     "faq": [
       {
-        "q": "Can I play Flappy Bird online for free?",
-        "a": "Yes. Flappy Bird is free to play directly in the browser with no download, no sign-up, and no payment."
+        "q": "Can I play Sky Flap online for free?",
+        "a": "Yes. Sky Flap is free to play directly in the browser with no download, no sign-up, and no payment."
       },
       {
-        "q": "How do I control Flappy Bird?",
+        "q": "How do I control Sky Flap?",
         "a": "Tap the board, click, or press the Space bar to flap. Time each flap carefully to keep the bird moving through the pipes."
       },
       {
-        "q": "What is the goal of Flappy Bird?",
+        "q": "What is the goal of Sky Flap?",
         "a": "Keep the bird flying through the pipes as long as possible. Each pipe cleared adds one point, and the run ends on any impact with a pipe or the ground."
       }
     ],
@@ -396,7 +396,7 @@
     ],
     "related": [
       {
-        "name": "Flappy Bird",
+        "name": "Sky Flap",
         "file": "flappy.html"
       },
       {
@@ -515,7 +515,7 @@
         "file": "reflex-relay.html"
       },
       {
-        "name": "Flappy Bird",
+        "name": "Sky Flap",
         "file": "flappy.html"
       }
     ]
@@ -626,7 +626,7 @@
         "file": "reflex-relay.html"
       },
       {
-        "name": "Flappy Bird",
+        "name": "Sky Flap",
         "file": "flappy.html"
       }
     ]
