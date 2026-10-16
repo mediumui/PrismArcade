@@ -1,0 +1,668 @@
+{
+  "2048.html": {
+    "name": "2048",
+    "title": "Play 2048 Online No Download - Merge Puzzle | Prism Arcade",
+    "desc": "Play 2048 online for free with no download. Slide tiles to merge equal numbers, chase the 2048 tile, and beat your best score in a fast one-screen merge puzzle.",
+    "og_title": "Play 2048 Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "2048 is a free online merge puzzle that runs directly in the browser with no download or account. Slide tiles using arrow keys or on-screen swipe buttons; equal tiles merge into one. The goal is to reach the 2048 tile and rack up the highest score. Every move is instant, so sessions stay short and satisfying.",
+    "faq": [
+      {
+        "q": "Can I play 2048 online for free?",
+        "a": "Yes. 2048 is free to play directly in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I control 2048?",
+        "a": "Use the arrow keys on desktop or the on-screen Swipe buttons on mobile to move all tiles at once."
+      },
+      {
+        "q": "What is the goal of 2048?",
+        "a": "Merge equal tiles by sliding them together and try to reach the 2048 tile while earning the highest score possible."
+      }
+    ],
+    "related": [
+      {
+        "name": "Number Merge",
+        "file": "number-merge.html"
+      },
+      {
+        "name": "Block Slide Puzzle",
+        "file": "block-slide.html"
+      },
+      {
+        "name": "Easy Sudoku",
+        "file": "sudoku.html"
+      }
+    ]
+  },
+  "block-slide.html": {
+    "name": "Block Slide Puzzle",
+    "title": "Play Block Slide Puzzle Online No Download | Prism Arcade",
+    "desc": "Play Block Slide Puzzle online with no download. Slide blocks into the open space, clear the green targets, and finish each level with fewer moves. Free, one-screen logic game.",
+    "og_title": "Block Slide Puzzle Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Block Slide Puzzle is a free online sliding logic game that runs in the browser with no download or account. Tap a block next to an empty cell to slide it, and push blocks into the green targets to clear them. The goal is to clear each level using as few moves as possible, so planning ahead is the key to a low move count.",
+    "faq": [
+      {
+        "q": "Can I play Block Slide Puzzle online for free?",
+        "a": "Yes. Block Slide Puzzle is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I solve a Block Slide level?",
+        "a": "Tap a block next to an empty space to slide it into it. Slide blocks into the green target cells to clear them from the board."
+      },
+      {
+        "q": "What is the goal of Block Slide Puzzle?",
+        "a": "Clear every block on the board by sliding it into a green target, using as few moves as possible."
+      }
+    ],
+    "related": [
+      {
+        "name": "Number Slide",
+        "file": "sliding-number.html"
+      },
+      {
+        "name": "2048",
+        "file": "2048.html"
+      },
+      {
+        "name": "Easy Sudoku",
+        "file": "sudoku.html"
+      }
+    ]
+  },
+  "connect4.html": {
+    "name": "Connect 4 Lite",
+    "title": "Play Connect 4 Online 2 Players No Download | Prism Arcade",
+    "desc": "Play Connect 4 online for two players with no download. Drop discs, build four-in-a-row lines, and win with tactical board strategy. Free, local two-player arcade game.",
+    "og_title": "Connect 4 Online 2 Players No Download | Prism Arcade",
+    "category": "BoardGame",
+    "playmode": "MultiPlayer",
+    "overview": "Connect 4 Lite is a free online two-player board game that runs in the browser with no download or account. Red and Blue alternate turns dropping discs into a grid. The goal is to connect four discs in a row horizontally, vertically, or diagonally before your opponent does. It is a clean local two-player strategy match designed for quick breaks.",
+    "faq": [
+      {
+        "q": "Can I play Connect 4 online for free?",
+        "a": "Yes. Connect 4 Lite is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "Does Connect 4 Lite support two players?",
+        "a": "Yes. It is a local two-player game where Red and Blue share the same screen and take turns."
+      },
+      {
+        "q": "How do I win Connect 4 Lite?",
+        "a": "Be the first to line up four of your discs in a row horizontally, vertically, or diagonally. If the board fills up with no winner, the match is a draw."
+      }
+    ],
+    "related": [
+      {
+        "name": "Tic Tac Toe",
+        "file": "tic-tac-toe.html"
+      },
+      {
+        "name": "Number Slide",
+        "file": "sliding-number.html"
+      },
+      {
+        "name": "Easy Sudoku",
+        "file": "sudoku.html"
+      }
+    ]
+  },
+  "flappy.html": {
+    "name": "Flappy Bird",
+    "title": "Play Flappy Bird Online No Download | Prism Arcade",
+    "desc": "Play Flappy Bird online for free with no download. Tap to flap, glide the bird through the pipes, and chase your longest run. Fast one-screen reflex classic.",
+    "og_title": "Flappy Bird Online No Download | Prism Arcade",
+    "category": "ActionGame",
+    "playmode": "SinglePlayer",
+    "overview": "Flappy Bird is a free online reflex game that runs directly in the browser with no download or account. Tap the screen, click, or press Space to flap the bird and glide it through the pipes. Each pipe you clear is worth one point, and the longer you survive the harder it gets. It is a one-screen classic built for short, fast sessions.",
+    "faq": [
+      {
+        "q": "Can I play Flappy Bird online for free?",
+        "a": "Yes. Flappy Bird is free to play directly in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I control Flappy Bird?",
+        "a": "Tap the board, click, or press the Space bar to flap. Time each flap carefully to keep the bird moving through the pipes."
+      },
+      {
+        "q": "What is the goal of Flappy Bird?",
+        "a": "Keep the bird flying through the pipes as long as possible. Each pipe cleared adds one point, and the run ends on any impact with a pipe or the ground."
+      }
+    ],
+    "related": [
+      {
+        "name": "Jump Runner",
+        "file": "runner.html"
+      },
+      {
+        "name": "Neon Snake",
+        "file": "snake.html"
+      },
+      {
+        "name": "Whack-a-Dot",
+        "file": "whack.html"
+      }
+    ]
+  },
+  "memory.html": {
+    "name": "Memory Pairs",
+    "title": "Play Memory Pairs Online No Download - Card Game | Prism Arcade",
+    "desc": "Play a free memory matching game online with no download. Flip two cards at a time, track your moves, and clear the board in as few flips as possible.",
+    "og_title": "Free Memory Game Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Memory Pairs is a free online card matching game that runs in the browser with no download or account. Each round uses eight symbol pairs. Flip two cards per turn; if they match, they stay open and you keep going. Fewer total moves means a stronger result, so memorizing card positions is the key skill.",
+    "faq": [
+      {
+        "q": "Can I play Memory Pairs online for free?",
+        "a": "Yes. Memory Pairs is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Memory Pairs?",
+        "a": "Flip two cards per turn. If the symbols match, both stay open. If they do not match, they flip back and you try again."
+      },
+      {
+        "q": "What is the goal of Memory Pairs?",
+        "a": "Reveal all eight pairs using the fewest total moves possible."
+      }
+    ],
+    "related": [
+      {
+        "name": "Sequence Echo",
+        "file": "sequence.html"
+      },
+      {
+        "name": "Brain Quiz",
+        "file": "quiz.html"
+      },
+      {
+        "name": "Number Slide",
+        "file": "sliding-number.html"
+      }
+    ]
+  },
+  "number-merge.html": {
+    "name": "Number Merge",
+    "title": "Play Number Merge Online No Download - Puzzle Game | Prism Arcade",
+    "desc": "Play Number Merge online with no download. Tap one tile then tap an equal tile to combine them, build the highest total score, and chase your best run. Free merge puzzle.",
+    "og_title": "Number Merge Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Number Merge is a free online merge puzzle that runs in the browser with no download or account. Tap one tile, then tap an equal tile to combine them into the next number. Every merge adds points equal to the new tile value. The goal is to build the highest tile and the biggest score before the board fills up.",
+    "faq": [
+      {
+        "q": "Can I play Number Merge online for free?",
+        "a": "Yes. Number Merge is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I merge tiles in Number Merge?",
+        "a": "Tap one tile, then tap another tile with the same value. The two merge into a single tile with the next number up."
+      },
+      {
+        "q": "What is the goal of Number Merge?",
+        "a": "Keep merging equal tiles to build the highest possible tile value and earn the biggest score."
+      }
+    ],
+    "related": [
+      {
+        "name": "2048",
+        "file": "2048.html"
+      },
+      {
+        "name": "Block Slide Puzzle",
+        "file": "block-slide.html"
+      },
+      {
+        "name": "Quick Tap Grid",
+        "file": "quick-tap.html"
+      }
+    ]
+  },
+  "quick-tap.html": {
+    "name": "Quick Tap Grid",
+    "title": "Play Quick Tap Grid Online No Download - Reflex Game | Prism Arcade",
+    "desc": "Play a quick reflex tap game online with no download. Hit glowing targets before they disappear, build streaks, and beat your best score in 30-second rounds.",
+    "og_title": "Quick Reflex Tap Game Online | Prism Arcade",
+    "category": "ActionGame",
+    "playmode": "SinglePlayer",
+    "overview": "Quick Tap Grid is a free online reflex game that runs in the browser with no download or account. A random cell lights up in a 4x4 grid; tap it before it disappears to score. Each successful tap adds one point, and consecutive correct taps build your streak. Rounds last 30 seconds, so focus and speed are the key skills.",
+    "faq": [
+      {
+        "q": "Can I play Quick Tap Grid online for free?",
+        "a": "Yes. Quick Tap Grid is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Quick Tap Grid?",
+        "a": "Watch the 4x4 grid for a glowing target cell and tap it before the round timer runs out. Each correct tap scores one point."
+      },
+      {
+        "q": "What is the goal of Quick Tap Grid?",
+        "a": "Score as many points as possible in a 30-second round by tapping each glowing target before it disappears."
+      }
+    ],
+    "related": [
+      {
+        "name": "Rhythm Reflex Relay",
+        "file": "reflex-relay.html"
+      },
+      {
+        "name": "Reaction Time Test",
+        "file": "reaction-test.html"
+      },
+      {
+        "name": "Whack-a-Dot",
+        "file": "whack.html"
+      }
+    ]
+  },
+  "quiz.html": {
+    "name": "Brain Quiz",
+    "title": "Play Brain Quiz Online No Download - Free Quiz Game | Prism Arcade",
+    "desc": "Test your knowledge with Brain Quiz, a free English quiz game with mixed topics, instant feedback, and quick replay value. No download, no sign-up.",
+    "og_title": "Brain Quiz Online No Download | Prism Arcade",
+    "category": "TriviaGame",
+    "playmode": "SinglePlayer",
+    "overview": "Brain Quiz is a free online knowledge quiz that runs in the browser with no download or account. Each round presents five multiple-choice questions across mixed topics such as science, language, and general knowledge. Answer correctly to build your score; wrong answers show the correct option so you learn as you play.",
+    "faq": [
+      {
+        "q": "Can I play Brain Quiz online for free?",
+        "a": "Yes. Brain Quiz is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "What topics does Brain Quiz cover?",
+        "a": "Brain Quiz mixes general knowledge topics including science, language, technology, and everyday facts into each five-question round."
+      },
+      {
+        "q": "How many questions are in a Brain Quiz round?",
+        "a": "Each round has five multiple-choice questions. You can restart any time to try again."
+      }
+    ],
+    "related": [
+      {
+        "name": "Memory Pairs",
+        "file": "memory.html"
+      },
+      {
+        "name": "Sequence Echo",
+        "file": "sequence.html"
+      },
+      {
+        "name": "Easy Sudoku",
+        "file": "sudoku.html"
+      }
+    ]
+  },
+  "reaction-test.html": {
+    "name": "Reaction Time Test",
+    "title": "Reaction Time Test Online No Download - Reflex Benchmark | Prism Arcade",
+    "desc": "Test your reaction time online with no download. Wait for the green screen, then tap as fast as you can. A fast, one-click reflex benchmark for measuring speed.",
+    "og_title": "Reaction Time Test Online No Download | Prism Arcade",
+    "category": "ActionGame",
+    "playmode": "SinglePlayer",
+    "overview": "Reaction Time Test is a free online reflex benchmark that runs in the browser with no download or account. Wait for the screen to turn green, then tap as fast as you can. Your result is measured in milliseconds and your best time is saved on this device. It is a simple, one-click test designed for quick, repeatable runs.",
+    "faq": [
+      {
+        "q": "Can I play Reaction Time Test online for free?",
+        "a": "Yes. Reaction Time Test is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I use Reaction Time Test?",
+        "a": "Tap the screen to start. Wait for it to turn green, then tap again as fast as you can. Your reaction time in milliseconds is shown immediately."
+      },
+      {
+        "q": "Is my best reaction time saved?",
+        "a": "Yes. Your best result is stored locally on your device, so it persists between visits without an account."
+      }
+    ],
+    "related": [
+      {
+        "name": "Quick Tap Grid",
+        "file": "quick-tap.html"
+      },
+      {
+        "name": "Rhythm Reflex Relay",
+        "file": "reflex-relay.html"
+      },
+      {
+        "name": "Whack-a-Dot",
+        "file": "whack.html"
+      }
+    ]
+  },
+  "reflex-relay.html": {
+    "name": "Rhythm Reflex Relay",
+    "title": "Play Rhythm Reflex Relay Online No Download | Prism Arcade",
+    "desc": "Play a Simon-style sequence memory game online with no download. Watch the pads light up, repeat the order, and keep the combo alive as it speeds up.",
+    "og_title": "Simon Style Sequence Memory Game Online | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Rhythm Reflex Relay is a free online sequence memory game that runs in the browser with no download or account. Watch the pads light up in a pattern, then repeat the exact order. Each successful round adds one more pad to the chain, making it longer and faster. Pads can be triggered with the mouse, touch, or keys 1-4.",
+    "faq": [
+      {
+        "q": "Can I play Rhythm Reflex Relay online for free?",
+        "a": "Yes. Rhythm Reflex Relay is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I control Rhythm Reflex Relay?",
+        "a": "Watch the pads light up, then repeat the pattern using your mouse, touch, or the keys 1 through 4."
+      },
+      {
+        "q": "What happens if I make a mistake?",
+        "a": "A wrong input ends the current run. Your best round is saved locally so you can try to beat it next time."
+      }
+    ],
+    "related": [
+      {
+        "name": "Sequence Echo",
+        "file": "sequence.html"
+      },
+      {
+        "name": "Quick Tap Grid",
+        "file": "quick-tap.html"
+      },
+      {
+        "name": "Memory Pairs",
+        "file": "memory.html"
+      }
+    ]
+  },
+  "runner.html": {
+    "name": "Jump Runner",
+    "title": "Play Jump Runner Online No Download - Endless Runner | Prism Arcade",
+    "desc": "Play an endless runner jump game online with no download. Tap to leap over obstacles, build distance, and beat your best run. Free, one-click, no sign-up.",
+    "og_title": "Endless Runner Jump Game | Prism Arcade",
+    "category": "ActionGame",
+    "playmode": "SinglePlayer",
+    "overview": "Jump Runner is a free online endless runner that runs in the browser with no download or account. Press Space or tap the canvas to jump over the spikes that scroll toward you. The longer you survive, the faster the run gets. Your best distance is saved on this device for instant replay value.",
+    "faq": [
+      {
+        "q": "Can I play Jump Runner online for free?",
+        "a": "Yes. Jump Runner is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I control Jump Runner?",
+        "a": "Press the Space bar or tap the canvas to jump. Time each jump to clear the spikes as they scroll toward you."
+      },
+      {
+        "q": "What is the goal of Jump Runner?",
+        "a": "Survive as long as possible and build the most distance. One collision ends the run, and your best is saved locally."
+      }
+    ],
+    "related": [
+      {
+        "name": "Flappy Bird",
+        "file": "flappy.html"
+      },
+      {
+        "name": "Neon Snake",
+        "file": "snake.html"
+      },
+      {
+        "name": "Whack-a-Dot",
+        "file": "whack.html"
+      }
+    ]
+  },
+  "sequence.html": {
+    "name": "Sequence Echo",
+    "title": "Play Sequence Echo Online No Download - Memory Game | Prism Arcade",
+    "desc": "Play a memory pattern game online with no download. Watch a growing light sequence, repeat it back, and push your recall as the pattern gets longer.",
+    "og_title": "Memory Pattern Game Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Sequence Echo is a free online memory pattern game that runs in the browser with no download or account. Cells light up one at a time in a random pattern; when the display stops, you replay the exact same sequence. Each correct full replay advances the pattern and grows it longer. Your best round is saved on this device.",
+    "faq": [
+      {
+        "q": "Can I play Sequence Echo online for free?",
+        "a": "Yes. Sequence Echo is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Sequence Echo?",
+        "a": "Watch a sequence of cells light up, then tap the same cells in the same order. One wrong cell ends the round."
+      },
+      {
+        "q": "What is the goal of Sequence Echo?",
+        "a": "Replay the full light pattern correctly for as many rounds as possible. The pattern grows with each round, so focus and memory are the key skills."
+      }
+    ],
+    "related": [
+      {
+        "name": "Rhythm Reflex Relay",
+        "file": "reflex-relay.html"
+      },
+      {
+        "name": "Memory Pairs",
+        "file": "memory.html"
+      },
+      {
+        "name": "Brain Quiz",
+        "file": "quiz.html"
+      }
+    ]
+  },
+  "sliding-number.html": {
+    "name": "Number Slide",
+    "title": "Play Number Slide Puzzle Online No Download | Prism Arcade",
+    "desc": "Play a sliding number puzzle online with no download. Arrange tiles 1 to 8 in order, plan spatially, and beat your own move count. Free logic game.",
+    "og_title": "Sliding Number Puzzle Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Number Slide is a free online sliding number puzzle that runs in the browser with no download or account. Arrange the tiles from 1 to 8 with the empty space in the final corner. Any tile next to the empty space can slide into it. The goal is to solve the puzzle using as few moves as possible, so planning several steps ahead is the key skill.",
+    "faq": [
+      {
+        "q": "Can I play Number Slide online for free?",
+        "a": "Yes. Number Slide is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Number Slide?",
+        "a": "Tap any tile next to the empty space to slide it into it. Use the Shuffle button to start a new solvable puzzle."
+      },
+      {
+        "q": "What is the goal of Number Slide?",
+        "a": "Arrange the tiles so they read 1 to 8 in order with the empty space in the bottom-right corner, using as few moves as possible."
+      }
+    ],
+    "related": [
+      {
+        "name": "Block Slide Puzzle",
+        "file": "block-slide.html"
+      },
+      {
+        "name": "2048",
+        "file": "2048.html"
+      },
+      {
+        "name": "Easy Sudoku",
+        "file": "sudoku.html"
+      }
+    ]
+  },
+  "snake.html": {
+    "name": "Neon Snake",
+    "title": "Play Neon Snake Online No Download - Reflex Game | Prism Arcade",
+    "desc": "Play the classic snake game online with no download. Arrow keys or touch controls, a score chase loop, and a speed ramp built for quick reflex sessions.",
+    "og_title": "Play Snake Game Online No Download | Prism Arcade",
+    "category": "ActionGame",
+    "playmode": "SinglePlayer",
+    "overview": "Neon Snake is a free online reflex game that runs in the browser with no download or account. Use the arrow keys on desktop or the on-screen buttons on mobile to steer the snake and collect glowing energy nodes. Every point you collect grows the snake and slowly raises the pace. Hit a wall or your own body and the run ends, so calm focus is the key skill.",
+    "faq": [
+      {
+        "q": "Can I play Neon Snake online for free?",
+        "a": "Yes. Neon Snake is free to play directly in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I control Neon Snake?",
+        "a": "Use the arrow keys on desktop or the on-screen Up/Left/Right/Down buttons on mobile to steer the snake."
+      },
+      {
+        "q": "What is the goal of Neon Snake?",
+        "a": "Collect as many energy nodes as possible to grow the snake and raise your score. The game speeds up with every point, so the run ends when you hit a wall or your own body."
+      }
+    ],
+    "related": [
+      {
+        "name": "Quick Tap Grid",
+        "file": "quick-tap.html"
+      },
+      {
+        "name": "Rhythm Reflex Relay",
+        "file": "reflex-relay.html"
+      },
+      {
+        "name": "Flappy Bird",
+        "file": "flappy.html"
+      }
+    ]
+  },
+  "sudoku.html": {
+    "name": "Easy Sudoku",
+    "title": "Play Easy 4x4 Sudoku Online No Download | Prism Arcade",
+    "desc": "Play a fast 4x4 Sudoku online with no download. Fill the grid so each row, column and box holds 1 to 4 exactly once. A clean, one-screen logic warm-up.",
+    "og_title": "Easy 4x4 Sudoku Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Easy Sudoku is a free online 4x4 logic puzzle that runs in the browser with no download or account. Fill each empty cell with a number from 1 to 4 so that every row, column, and box contains each number exactly once. It is a fast, one-screen warm-up designed for players who want a short, satisfying logic session.",
+    "faq": [
+      {
+        "q": "Can I play Easy Sudoku online for free?",
+        "a": "Yes. Easy Sudoku is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Easy Sudoku?",
+        "a": "Select an empty cell, then tap or press the corresponding number from 1 to 4. Use the Hint button if you get stuck, and New Puzzle to start a fresh board."
+      },
+      {
+        "q": "What makes Easy Sudoku different from standard Sudoku?",
+        "a": "Easy Sudoku uses a 4x4 grid with numbers 1 to 4 instead of a 9x9 grid with 1 to 9, making it a shorter, faster puzzle ideal for beginners or quick breaks."
+      }
+    ],
+    "related": [
+      {
+        "name": "2048",
+        "file": "2048.html"
+      },
+      {
+        "name": "Block Slide Puzzle",
+        "file": "block-slide.html"
+      },
+      {
+        "name": "Connect 4 Lite",
+        "file": "connect4.html"
+      }
+    ]
+  },
+  "tic-tac-toe.html": {
+    "name": "Tic Tac Toe",
+    "title": "Play Tic Tac Toe Online 2 Players No Download | Prism Arcade",
+    "desc": "Play free two-player tic tac toe online with no download. Sharp logic duels with instant scoring and quick rematch pacing. No sign-up required.",
+    "og_title": "Play Tic Tac Toe Online 2 Players Free | Prism Arcade",
+    "category": "BoardGame",
+    "playmode": "MultiPlayer",
+    "overview": "Tic Tac Toe is a free online two-player logic game that runs in the browser with no download or account. Two players share the screen and take turns placing their mark in any empty cell. The first player to line up three in a row horizontally, vertically, or diagonally wins. The score tracker keeps the match going across multiple rounds.",
+    "faq": [
+      {
+        "q": "Can I play Tic Tac Toe online for free?",
+        "a": "Yes. Tic Tac Toe is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "Does Tic Tac Toe support two players?",
+        "a": "Yes. It is a local two-player game where Player X and Player O share the same screen and alternate turns."
+      },
+      {
+        "q": "How do I win Tic Tac Toe?",
+        "a": "Be the first to get three of your marks in a row horizontally, vertically, or diagonally. If the board fills up with no line, the round is a draw."
+      }
+    ],
+    "related": [
+      {
+        "name": "Connect 4 Lite",
+        "file": "connect4.html"
+      },
+      {
+        "name": "Neon Snake",
+        "file": "snake.html"
+      },
+      {
+        "name": "Memory Pairs",
+        "file": "memory.html"
+      }
+    ]
+  },
+  "whack.html": {
+    "name": "Whack-a-Dot",
+    "title": "Play Whack-a-Dot Online No Download - Reflex Game | Prism Arcade",
+    "desc": "Play a whack-a-mole style reflex game online with no download. Swat the dots as they pop up and chase a high score before the clock runs out.",
+    "og_title": "Whack-a-Mole Style Reflex Game Online | Prism Arcade",
+    "category": "ActionGame",
+    "playmode": "SinglePlayer",
+    "overview": "Whack-a-Dot is a free online reflex game that runs in the browser with no download or account. Dots pop up randomly in a 3x3 grid; tap or click each one before it disappears to score. The round lasts 30 seconds, so speed and accuracy are the key skills. Your best score is saved on this device for instant replay value.",
+    "faq": [
+      {
+        "q": "Can I play Whack-a-Dot online for free?",
+        "a": "Yes. Whack-a-Dot is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Whack-a-Dot?",
+        "a": "Tap or click each dot as soon as it appears in the grid. Each successful hit scores one point before the 30-second timer ends."
+      },
+      {
+        "q": "What is the goal of Whack-a-Dot?",
+        "a": "Score as many points as possible in a 30-second round by swatting the dots before they disappear."
+      }
+    ],
+    "related": [
+      {
+        "name": "Quick Tap Grid",
+        "file": "quick-tap.html"
+      },
+      {
+        "name": "Rhythm Reflex Relay",
+        "file": "reflex-relay.html"
+      },
+      {
+        "name": "Flappy Bird",
+        "file": "flappy.html"
+      }
+    ]
+  },
+  "word-merge.html": {
+    "name": "Word Merge",
+    "title": "Play Word Merge Online No Download - Word Puzzle | Prism Arcade",
+    "desc": "Play a free word merge game with no download. Drag letters and smaller words into the bin, combine them, and unlock longer words for bonus points.",
+    "og_title": "Word Merge Game Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Word Merge is a free online word puzzle that runs in the browser with no download or account. Tap letters to build real English words, then merge them into the bin for bonus points. Clear the letter pool to level up. It is a one-screen brain teaser that combines vocabulary with quick decision-making.",
+    "faq": [
+      {
+        "q": "Can I play Word Merge online for free?",
+        "a": "Yes. Word Merge is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Word Merge?",
+        "a": "Tap letters in sequence to build a word. If it is a valid English word, it merges into the bin and earns points. Clear the letter pool to advance to the next level."
+      },
+      {
+        "q": "What is the goal of Word Merge?",
+        "a": "Build as many valid English words as possible to clear the letter pool and level up, while earning bonus points for longer words."
+      }
+    ],
+    "related": [
+      {
+        "name": "Brain Quiz",
+        "file": "quiz.html"
+      },
+      {
+        "name": "Memory Pairs",
+        "file": "memory.html"
+      },
+      {
+        "name": "Easy Sudoku",
+        "file": "sudoku.html"
+      }
+    ]
+  }
+}

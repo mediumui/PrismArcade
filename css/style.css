@@ -151,3 +151,11 @@ section{padding:42px 0}
   .nav-links{width:100%}
   .section-title{align-items:flex-start; flex-direction:column}
 }
+
+/* SEO/GEO injected sections: FAQ, Related, Overview on game pages */
+.seo-faq, .seo-related, .seo-overview{padding:28px 0}
+.seo-faq .faq-grid, .seo-related .related-grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; margin-top:16px}
+.seo-overview .hero-card{margin:0}
+@media(max-width:960px){
+  .seo-faq .faq-grid, .seo-related .related-grid{grid-template-columns:1fr}
+}
