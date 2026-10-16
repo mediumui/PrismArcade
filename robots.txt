@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://prismarcade.example/sitemap.xml
+Sitemap: https://www.prismarcade.top/sitemap.xml
