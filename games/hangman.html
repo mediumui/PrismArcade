@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Play Hangman Online No Download - Word Guessing Game | Prism Arcade</title>
+  <meta name="description" content="Play Hangman online for free with no download. Guess hidden words across Animals, Fruits, Countries and General categories. A classic word game that builds vocabulary." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.prismarcade.top/games/hangman.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hangman Online No Download | Prism Arcade" />
+  <meta property="og:description" content="Play Hangman online for free with no download. Guess hidden words across Animals, Fruits, Countries and General categories. A classic word game that builds vocabulary." />
+  <meta property="og:url" content="https://www.prismarcade.top/games/hangman.html" />
+  <meta property="og:site_name" content="Prism Arcade" />
+  <meta property="og:image" content="https://www.prismarcade.top/og/games/hangman.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hangman Online No Download | Prism Arcade" />
+  <meta name="twitter:description" content="Play Hangman online for free with no download. Guess hidden words across Animals, Fruits, Countries and General categories. A classic word game that builds vocabulary." />
+  <meta name="twitter:image" content="https://www.prismarcade.top/og/games/hangman.jpg" />
+  <meta name="twitter:site" content="@prismarcade" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Play Hangman Online No Download - Word Guessing Game | Prism Arcade",
+  "url": "https://www.prismarcade.top/games/hangman.html",
+  "description": "Play Hangman online for free with no download. Guess hidden words across Animals, Fruits, Countries and General categories. A classic word game that builds vocabulary.",
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.prismarcade.top/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Games",
+      "item": "https://www.prismarcade.top/index.html#games"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Hangman",
+      "item": "https://www.prismarcade.top/games/hangman.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Game",
+  "name": "Hangman",
+  "url": "https://www.prismarcade.top/games/hangman.html",
+  "description": "Play Hangman online for free with no download. Guess hidden words across Animals, Fruits, Countries and General categories. A classic word game that builds vocabulary.",
+  "gameCategory": "WordGame",
+  "playMode": "SinglePlayer",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "offers": {
+    "@type": "Offer",
+    "price": 0,
+    "priceCurrency": "USD",
+    "url": "https://www.prismarcade.top/games/hangman.html"
+  },
+  "brand": {
+    "@type": "Organization",
+    "name": "Prism Arcade",
+    "url": "https://www.prismarcade.top/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I play Hangman online for free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Hangman is free to play in the browser with no download, no sign-up, and no payment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I play Hangman?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Choose a category, then tap or press a letter. Correct letters fill in the word; wrong letters draw another part of the gallows. Guess the word before six wrong letters."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the goal of Hangman?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reveal the hidden word before the gallows is complete. Use the hint button if you get stuck, and your win count is saved on this device."
+      }
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="../css/style.css" />
+
+
+  <style>
+    .hm-stage{display:flex; flex-direction:column; align-items:center; min-height:0; gap:14px}
+    .hm-main{display:flex; gap:22px; flex-wrap:wrap; justify-content:center; align-items:flex-start; width:100%}
+    .hm-figure{width:200px; height:220px; flex:0 0 auto}
+    .hm-figure .part{display:none}
+    .hm-figure .part.on{display:block}
+    .hm-panel{flex:1 1 280px; min-width:260px; max-width:420px}
+    .hm-word{display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 14px; justify-content:center}
+    .hm-letter{width:30px; height:38px; border-bottom:3px solid var(--ink); display:grid; place-items:center; font-size:1.4rem; font-weight:800}
+    .hm-letter.got{color:var(--accent)}
+    .hm-status{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:10px}
+    .hm-status span{background:var(--panel-2); border:1px solid var(--line); padding:8px 12px; border-radius:12px; font-size:.88rem}
+    .hm-status span strong{color:var(--accent); margin-left:6px}
+    .hm-keys{display:grid; grid-template-columns:repeat(9, 1fr); gap:6px; margin-top:6px}
+    .hm-keys button{aspect-ratio:1; border-radius:10px; border:1px solid var(--line); background:var(--panel-2); color:var(--ink); font-weight:700; cursor:pointer}
+    .hm-keys button:disabled{opacity:.32; cursor:default}
+    .hm-keys button.right{background:rgba(91,227,164,.28)}
+    .hm-keys button.wrong{background:rgba(255,82,82,.28)}
+    .hm-cats{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:6px}
+    .hm-cats .chip{cursor:pointer}
+    .hm-cats .chip.active{background:var(--accent); color:#191307; border-color:transparent}
+    @media(max-width:560px){ .hm-keys{grid-template-columns:repeat(7,1fr)} }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681646510705157" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-83BMVG4W6Q"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-83BMVG4W6Q');
+  </script>
+</head>
+<body class="game-page">
+    <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="../index.html" aria-label="Prism Arcade home">
+      <span class="brand-mark"><svg viewBox="0 0 256 256" width="20" height="20" aria-hidden="true" focusable="false"><defs><linearGradient id="bmg" x1="0.2" y1="1" x2="0.8" y2="0"><stop offset="0" stop-color="#ff5f6d"/><stop offset="0.18" stop-color="#ffb347"/><stop offset="0.36" stop-color="#ffd24d"/><stop offset="0.55" stop-color="#36d399"/><stop offset="0.74" stop-color="#4aa3ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs><path d="M128 64 L52 188 L204 188 Z" fill="url(#bmg)" stroke="#ffffff" stroke-opacity="0.92" stroke-width="12" stroke-linejoin="round"/><path d="M188 58 L190.4 66.6 L199 69 L190.4 71.4 L188 80 L185.6 71.4 L177 69 L185.6 66.6 Z" fill="#ffffff"/></svg></span>
+      <span>Prism Arcade</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#games">Games</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+    </nav>
+    <a class="btn btn-primary" href="../index.html#games">Start Playing</a>
+  </div>
+</header>
+  <main class="container">
+    <section class="hero" style="padding:28px 0 12px">
+      <p class="kicker">Word Classic</p>
+      <h1 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Hangman</h1>
+    </section>
+    <section>
+      <div class="play-shell" data-fit style="grid-template-columns:1fr; gap:14px">
+        <div class="play-stage hm-stage" data-fit>
+          <div class="hm-main">
+            <svg class="hm-figure" viewBox="0 0 200 220" aria-hidden="true">
+              <line x1="20" y1="210" x2="120" y2="210" stroke="#b7bedd" stroke-width="6"/>
+              <line x1="50" y1="210" x2="50" y2="20" stroke="#b7bedd" stroke-width="6"/>
+              <line x1="50" y1="20" x2="130" y2="20" stroke="#b7bedd" stroke-width="6"/>
+              <line x1="130" y1="20" x2="130" y2="44" stroke="#b7bedd" stroke-width="6"/>
+              <circle class="part" data-part="1" cx="130" cy="62" r="18" fill="none" stroke="#ff5f6d" stroke-width="5"/>
+              <line class="part" data-part="2" x1="130" y1="80" x2="130" y2="140" stroke="#ff5f6d" stroke-width="5"/>
+              <line class="part" data-part="3" x1="130" y1="96" x2="104" y2="120" stroke="#ff5f6d" stroke-width="5"/>
+              <line class="part" data-part="4" x1="130" y1="96" x2="156" y2="120" stroke="#ff5f6d" stroke-width="5"/>
+              <line class="part" data-part="5" x1="130" y1="140" x2="108" y2="170" stroke="#ff5f6d" stroke-width="5"/>
+              <line class="part" data-part="6" x1="130" y1="140" x2="152" y2="170" stroke="#ff5f6d" stroke-width="5"/>
+            </svg>
+            <div class="hm-panel">
+              <div class="hm-status">
+                <span>Category <strong id="cat">Animals</strong></span>
+                <span>Guesses left <strong id="left">6</strong></span>
+                <span>Wins <strong id="wins">0</strong></span>
+              </div>
+              <div class="hm-word" id="word"></div>
+              <div class="hm-keys" id="keys"></div>
+            </div>
+          </div>
+          <div class="hm-cats" id="cats">
+            <button class="chip active" data-c="Animals">Animals</button>
+            <button class="chip" data-c="Fruits">Fruits</button>
+            <button class="chip" data-c="Countries">Countries</button>
+            <button class="chip" data-c="General">General</button>
+          </div>
+          <div class="game-controls" style="justify-content:center; margin-top:10px">
+            <button class="btn btn-primary" id="new">New Word</button>
+            <button class="btn btn-ghost" id="hint">Hint</button>
+            <button class="btn btn-ghost" data-mute-toggle>Sound: On</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  <!-- SEO:INJECTED v1 -->
+      <section class="container seo-overview" aria-label="Game overview">
+        <div class="hero-card"><h3>About Hangman</h3><p>Hangman is a free online word guessing game that runs in the browser with no download or account. Pick a category, guess letters to reveal the hidden word, and avoid the gallows. With Animals, Fruits, Countries and General word lists plus a hint button, it is a relaxing way to build vocabulary and spelling for players of any age.</p></div>
+      </section>
+            <!-- GEO:HOWTO v1 -->
+      <section class="container seo-howto" aria-label="How to play">
+        <div class="section-title"><div><h2>How to Play</h2><p>Quick steps to start Hangman on Prism Arcade.</p></div></div>
+        <ul class="list">
+          <li><strong>1.</strong> Pick a word category such as Animals, Fruits, Countries, or General.</li>
+          <li><strong>2.</strong> Tap a letter or press a key to guess it.</li>
+          <li><strong>3.</strong> Correct letters fill in the hidden word; wrong letters add to the gallows.</li>
+          <li><strong>4.</strong> Reveal the whole word before six wrong guesses to win.</li>
+        </ul>
+      </section>
+
+<section class="container seo-faq" aria-label="Frequently asked questions">
+        <div class="section-title"><div><h2>FAQ</h2><p>Clear answers for players, search engines, and AI assistants.</p></div></div>
+        <div class="faq-grid">
+          <article class="card"><h3>Can I play Hangman online for free?</h3><p>Yes. Hangman is free to play in the browser with no download, no sign-up, and no payment.</p></article>
+          <article class="card"><h3>How do I play Hangman?</h3><p>Choose a category, then tap or press a letter. Correct letters fill in the word; wrong letters draw another part of the gallows. Guess the word before six wrong letters.</p></article>
+          <article class="card"><h3>What is the goal of Hangman?</h3><p>Reveal the hidden word before the gallows is complete. Use the hint button if you get stuck, and your win count is saved on this device.</p></article>
+        </div>
+      </section>
+      <section class="container seo-related" aria-label="Related games">
+        <div class="section-title"><div><h2>Related Games</h2><p>Keep playing with similar free browser games on Prism Arcade.</p></div></div>
+        <div class="grid related-grid">
+          <article class="card game-card"><div class="thumb">Game</div><h3>Word Merge</h3><p>A free English web game on Prism Arcade.</p><a class="btn btn-ghost" href="word-merge.html">Play</a></article>
+          <article class="card game-card"><div class="thumb">Game</div><h3>Brain Quiz</h3><p>A free English web game on Prism Arcade.</p><a class="btn btn-ghost" href="quiz.html">Play</a></article>
+          <article class="card game-card"><div class="thumb">Game</div><h3>Memory Pairs</h3><p>A free English web game on Prism Arcade.</p><a class="btn btn-ghost" href="memory.html">Play</a></article>
+          <article class="card game-card"><div class="thumb">All</div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>
+        </div>
+      </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free reflex, puzzle, and strategy games for international players.</p></div><div><h3>More</h3><ul><li><a href="../index.html">Back to Home</a></li><li><a href="../about.html">About</a></li><li><a href="../privacy.html">Privacy</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+  (function(){
+    const WORDS = {
+      Animals: ['ELEPHANT','GIRAFFE','PENGUIN','KANGAROO','DOLPHIN','OCTOPUS','BUTTERFLY','CHEETAH','FLAMINGO','RACCOON','HEDGEHOG','TORTOISE'],
+      Fruits: ['BANANA','WATERMELON','STRAWBERRY','PINEAPPLE','BLUEBERRY','MANGO','PAPAYA','APRICOT','GRAPEFRUIT','KIWI','LYCHEE','POMEGRANATE'],
+      Countries: ['CANADA','BRAZIL','JAPAN','GERMANY','AUSTRALIA','EGYPT','FRANCE','MEXICO','INDIA','KENYA','NORWAY','SPAIN','CHILE','VIETNAM'],
+      General: ['PRISM','ARCADE','PUZZLE','KEYBOARD','MOUNTAIN','RAINBOW','GALAXY','LIBRARY','PLANET','CASTLE','ROCKET','ISLAND']
+    };
+    const wordEl = document.getElementById('word');
+    const keysEl = document.getElementById('keys');
+    const catEl = document.getElementById('cat');
+    const leftEl = document.getElementById('left');
+    const winsEl = document.getElementById('wins');
+    const catsEl = document.getElementById('cats');
+    const figure = document.querySelector('.hm-figure');
+
+    let category = 'Animals';
+    let word = '';
+    let guessed = new Set();
+    let wrong = 0;
+    let over = false;
+    let wins = Number(localStorage.getItem('hmWins')||0);
+    const keys = {};
+
+    for (let i=65;i<=90;i++){
+      const ch = String.fromCharCode(i);
+      const b = document.createElement('button');
+      b.textContent = ch;
+      b.addEventListener('click', ()=>guess(ch));
+      keysEl.appendChild(b);
+      keys[ch] = b;
+    }
+    winsEl.textContent = String(wins);
+
+    function pick(){
+      const list = WORDS[category];
+      word = list[Math.floor(Math.random()*list.length)];
+      guessed = new Set();
+      wrong = 0; over = false;
+      updateFigure();
+      render();
+    }
+    function updateFigure(){
+      for (let p=1;p<=6;p++){
+        const el = figure.querySelector('[data-part="'+p+'"]');
+        el.classList.toggle('on', wrong >= p);
+      }
+      leftEl.textContent = String(6 - wrong);
+    }
+    function render(){
+      wordEl.innerHTML = '';
+      let all=true;
+      for (const ch of word){
+        const d = document.createElement('div');
+        d.className = 'hm-letter' + (guessed.has(ch)?' got':'');
+        d.textContent = guessed.has(ch)? ch : '';
+        wordEl.appendChild(d);
+        if (!guessed.has(ch)) all=false;
+      }
+      Object.keys(keys).forEach(ch=>{
+        const b = keys[ch];
+        b.disabled = guessed.has(ch) || over;
+        b.classList.remove('right','wrong');
+        if (guessed.has(ch)) b.classList.add(word.includes(ch)?'right':'wrong');
+      });
+      if (all && !over){ win(); }
+    }
+    function guess(ch){
+      if (over || guessed.has(ch)) return;
+      guessed.add(ch);
+      if (word.includes(ch)){ PA.sfx.click(); }
+      else { wrong++; PA.sfx.wrong(); }
+      updateFigure();
+      render();
+      if (!over && wrong>=6) lose();
+    }
+    function win(){
+      over = true; wins++; localStorage.setItem('hmWins', String(wins)); winsEl.textContent=String(wins);
+      PA.sfx.win(); PA.toast('You solved it: '+word+'!', 'good');
+    }
+    function lose(){
+      over = true;
+      PA.sfx.lose(); PA.toast('It was '+word+'.', 'bad');
+      // reveal remaining letters
+      for (const ch of word) guessed.add(ch);
+      render();
+    }
+    document.getElementById('new').addEventListener('click', pick);
+    document.getElementById('hint').addEventListener('click', ()=>{
+      if (over) return;
+      const missing = [...new Set(word.split(''))].filter(c=>!guessed.has(c));
+      if (missing.length===0) return;
+      guessed.add(missing[Math.floor(Math.random()*missing.length)]);
+      PA.sfx.flip(); render();
+    });
+    catsEl.addEventListener('click', e=>{
+      const b = e.target.closest('[data-c]'); if(!b) return;
+      category = b.dataset.c; catEl.textContent = category;
+      Array.from(catsEl.children).forEach(c=>c.classList.toggle('active', c===b));
+      pick();
+    });
+    window.addEventListener('keydown', e=>{
+      const ch = e.key.toUpperCase();
+      if (ch.length===1 && ch>='A' && ch<='Z') guess(ch);
+    });
+    pick();
+  })();
+  </script>
+  <script src="fit.js"></script>
+</body>
+</html>

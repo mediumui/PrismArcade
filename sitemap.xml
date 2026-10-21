@@ -22,4 +22,8 @@
   <url><loc>https://www.prismarcade.top/games/tic-tac-toe.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.prismarcade.top/games/whack.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.prismarcade.top/games/word-merge.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.prismarcade.top/games/color-sort.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.prismarcade.top/games/stack-tower.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.prismarcade.top/games/hangman.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.prismarcade.top/games/maze.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
 </urlset>

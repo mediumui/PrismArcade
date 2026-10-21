@@ -65,7 +65,7 @@ python tools/geo_add_howto.py
 ### D. 更新 `llms.txt`（站点根 `arcade-site/llms.txt`）
 - 在对应分类小标题下新增一行（三分类见文件内 `### Reflex & Reaction` / `### Puzzle & Strategy` / `### Memory & Brain`）：
   `- [游戏名](https://www.prismarcade.top/games/<slug>.html) — 真实描述`
-- 若游戏**总数变化**：同步更新顶部 Overview 段的数字（当前 18）与 FAQ 里的 "18 browser games"。
+- 若游戏**总数变化**：同步更新顶部 Overview 段的数字（当前 22）与 FAQ 里的 "22 browser games"。
 - 末尾 6 条 FAQ 保持不动。
 
 ### E. 更新 `sitemap.xml`

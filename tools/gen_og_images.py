@@ -107,7 +107,7 @@ def main():
     # home
     render_og(OG_DIR / "home.jpg", [
         "Prism Arcade",
-        "18 Free Online Games — No Download",
+        "22 Free Online Games — No Download",
     ])
 
     # about

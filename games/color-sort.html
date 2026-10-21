@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Play Color Sort Puzzle Online No Download - Free Brain Teaser | Prism Arcade</title>
+  <meta name="description" content="Play Color Sort Puzzle online for free with no download. Pour colored balls between tubes until each tube holds one color. A calm, always-solvable logic puzzle for quick brain breaks." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.prismarcade.top/games/color-sort.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Color Sort Puzzle Online No Download | Prism Arcade" />
+  <meta property="og:description" content="Play Color Sort Puzzle online for free with no download. Pour colored balls between tubes until each tube holds one color. A calm, always-solvable logic puzzle for quick brain breaks." />
+  <meta property="og:url" content="https://www.prismarcade.top/games/color-sort.html" />
+  <meta property="og:site_name" content="Prism Arcade" />
+  <meta property="og:image" content="https://www.prismarcade.top/og/games/color-sort.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Color Sort Puzzle Online No Download | Prism Arcade" />
+  <meta name="twitter:description" content="Play Color Sort Puzzle online for free with no download. Pour colored balls between tubes until each tube holds one color. A calm, always-solvable logic puzzle for quick brain breaks." />
+  <meta name="twitter:image" content="https://www.prismarcade.top/og/games/color-sort.jpg" />
+  <meta name="twitter:site" content="@prismarcade" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Play Color Sort Puzzle Online No Download - Free Brain Teaser | Prism Arcade",
+  "url": "https://www.prismarcade.top/games/color-sort.html",
+  "description": "Play Color Sort Puzzle online for free with no download. Pour colored balls between tubes until each tube holds one color. A calm, always-solvable logic puzzle for quick brain breaks.",
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.prismarcade.top/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Games",
+      "item": "https://www.prismarcade.top/index.html#games"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Color Sort Puzzle",
+      "item": "https://www.prismarcade.top/games/color-sort.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Game",
+  "name": "Color Sort Puzzle",
+  "url": "https://www.prismarcade.top/games/color-sort.html",
+  "description": "Play Color Sort Puzzle online for free with no download. Pour colored balls between tubes until each tube holds one color. A calm, always-solvable logic puzzle for quick brain breaks.",
+  "gameCategory": "PuzzleGame",
+  "playMode": "SinglePlayer",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "offers": {
+    "@type": "Offer",
+    "price": 0,
+    "priceCurrency": "USD",
+    "url": "https://www.prismarcade.top/games/color-sort.html"
+  },
+  "brand": {
+    "@type": "Organization",
+    "name": "Prism Arcade",
+    "url": "https://www.prismarcade.top/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I play Color Sort Puzzle online for free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Color Sort Puzzle is free to play in the browser with no download, no sign-up, and no payment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I play Color Sort Puzzle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tap a tube to pick up its top balls, then tap another tube to pour them. You can only pour onto an empty tube or one whose top color matches, and a tube holds four balls."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is every Color Sort board solvable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Each board is generated from a solved arrangement, so a winning sequence always exists, and you can use unlimited undo if you get stuck."
+      }
+    }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="../css/style.css" />
+
+
+  <style>
+    .cs-stage{display:flex; flex-direction:column; min-height:0}
+    .cs-tubes{display:flex; flex-wrap:wrap; gap:16px; justify-content:center; align-content:flex-end;
+      width:min(var(--fit-board, 340px), 380px); max-width:92vw; margin-inline:auto; padding-bottom:4px}
+    .cs-tube{width:44px; min-height:184px; border:3px solid var(--line); border-top:none;
+      border-radius:0 0 22px 22px; display:flex; flex-direction:column-reverse; overflow:hidden;
+      cursor:pointer; background:rgba(255,255,255,.04); position:relative}
+    .cs-tube::before{content:""; position:absolute; left:-3px; right:-3px; top:-10px; height:10px;
+      border:3px solid var(--line); border-bottom:none; border-radius:22px 22px 0 0}
+    .cs-tube.sel{box-shadow:0 0 0 3px var(--accent); border-color:var(--accent)}
+    .cs-cell{height:46px; width:100%}
+    .cs-cell.empty{background:transparent}
+    .cs-diffbar{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:6px}
+    .cs-diffbar .chip{cursor:pointer}
+    .cs-diffbar .chip.active{background:var(--accent); color:#191307; border-color:transparent}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681646510705157" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-83BMVG4W6Q"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-83BMVG4W6Q');
+  </script>
+</head>
+<body class="game-page">
+    <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="../index.html" aria-label="Prism Arcade home">
+      <span class="brand-mark"><svg viewBox="0 0 256 256" width="20" height="20" aria-hidden="true" focusable="false"><defs><linearGradient id="bmg" x1="0.2" y1="1" x2="0.8" y2="0"><stop offset="0" stop-color="#ff5f6d"/><stop offset="0.18" stop-color="#ffb347"/><stop offset="0.36" stop-color="#ffd24d"/><stop offset="0.55" stop-color="#36d399"/><stop offset="0.74" stop-color="#4aa3ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs><path d="M128 64 L52 188 L204 188 Z" fill="url(#bmg)" stroke="#ffffff" stroke-opacity="0.92" stroke-width="12" stroke-linejoin="round"/><path d="M188 58 L190.4 66.6 L199 69 L190.4 71.4 L188 80 L185.6 71.4 L177 69 L185.6 66.6 Z" fill="#ffffff"/></svg></span>
+      <span>Prism Arcade</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#games">Games</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+    </nav>
+    <a class="btn btn-primary" href="../index.html#games">Start Playing</a>
+  </div>
+</header>
+  <main class="container">
+    <section class="hero" style="padding:28px 0 12px">
+      <p class="kicker">Puzzle Logic</p>
+      <h1 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">Color Sort Puzzle</h1>
+    </section>
+    <section>
+      <div class="play-shell" data-fit style="grid-template-columns:1fr; gap:14px">
+        <div class="play-stage cs-stage" data-fit>
+          <div class="hud"><span>Difficulty <strong id="diff">Easy</strong></span><span>Moves <strong id="moves">0</strong></span><span>Best <strong id="best">—</strong></span></div>
+          <div class="cs-tubes fit-target" id="tubes"></div>
+          <div class="cs-diffbar" id="diffbar">
+            <button class="chip active" data-d="easy">Easy</button>
+            <button class="chip" data-d="medium">Medium</button>
+            <button class="chip" data-d="hard">Hard</button>
+          </div>
+          <div class="game-controls" style="justify-content:center; margin-top:12px">
+            <button class="btn btn-primary" id="new">New Board</button>
+            <button class="btn btn-ghost" id="undo">Undo</button>
+            <button class="btn btn-ghost" id="restart">Restart</button>
+            <button class="btn btn-ghost" data-mute-toggle>Sound: On</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  <!-- SEO:INJECTED v1 -->
+      <section class="container seo-overview" aria-label="Game overview">
+        <div class="hero-card"><h3>About Color Sort Puzzle</h3><p>Color Sort Puzzle is a free online sorting game that runs in the browser with no download or account. Move colored balls between tubes so every tube ends up holding a single color. Every board is generated backwards from a solved state, so it is always solvable, and unlimited undo lets you step back out of any dead end. The difficulty ramps from 3 colors up to 5, making it a calm but brain-teasing color sort puzzle for short breaks.</p></div>
+      </section>
+            <!-- GEO:HOWTO v1 -->
+      <section class="container seo-howto" aria-label="How to play">
+        <div class="section-title"><div><h2>How to Play</h2><p>Quick steps to start Color Sort Puzzle on Prism Arcade.</p></div></div>
+        <ul class="list">
+          <li><strong>1.</strong> Tap a tube to pick up the top balls from it.</li>
+          <li><strong>2.</strong> Tap another tube to pour them in.</li>
+          <li><strong>3.</strong> You can only pour onto an empty tube or a tube whose top color matches.</li>
+          <li><strong>4.</strong> Sort every color into its own tube, using Undo if you get stuck.</li>
+        </ul>
+      </section>
+
+<section class="container seo-faq" aria-label="Frequently asked questions">
+        <div class="section-title"><div><h2>FAQ</h2><p>Clear answers for players, search engines, and AI assistants.</p></div></div>
+        <div class="faq-grid">
+          <article class="card"><h3>Can I play Color Sort Puzzle online for free?</h3><p>Yes. Color Sort Puzzle is free to play in the browser with no download, no sign-up, and no payment.</p></article>
+          <article class="card"><h3>How do I play Color Sort Puzzle?</h3><p>Tap a tube to pick up its top balls, then tap another tube to pour them. You can only pour onto an empty tube or one whose top color matches, and a tube holds four balls.</p></article>
+          <article class="card"><h3>Is every Color Sort board solvable?</h3><p>Yes. Each board is generated from a solved arrangement, so a winning sequence always exists, and you can use unlimited undo if you get stuck.</p></article>
+        </div>
+      </section>
+      <section class="container seo-related" aria-label="Related games">
+        <div class="section-title"><div><h2>Related Games</h2><p>Keep playing with similar free browser games on Prism Arcade.</p></div></div>
+        <div class="grid related-grid">
+          <article class="card game-card"><div class="thumb">Game</div><h3>Number Merge</h3><p>A free English web game on Prism Arcade.</p><a class="btn btn-ghost" href="number-merge.html">Play</a></article>
+          <article class="card game-card"><div class="thumb">Game</div><h3>Block Slide Puzzle</h3><p>A free English web game on Prism Arcade.</p><a class="btn btn-ghost" href="block-slide.html">Play</a></article>
+          <article class="card game-card"><div class="thumb">Game</div><h3>Easy Sudoku</h3><p>A free English web game on Prism Arcade.</p><a class="btn btn-ghost" href="sudoku.html">Play</a></article>
+          <article class="card game-card"><div class="thumb">All</div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>
+        </div>
+      </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free reflex, puzzle, and strategy games for international players.</p></div><div><h3>More</h3><ul><li><a href="../index.html">Back to Home</a></li><li><a href="../about.html">About</a></li><li><a href="../privacy.html">Privacy</a></li></ul></div></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+  (function(){
+    const COLORS = ['#ff5f6d','#ffb347','#ffd24d','#36d399','#4aa3ff','#7c5cff'];
+    const CAP = 4;
+    const DIFF = {
+      easy:   { colors: 3, tubes: 5 },
+      medium: { colors: 4, tubes: 6 },
+      hard:   { colors: 5, tubes: 7 }
+    };
+    const tubesEl = document.getElementById('tubes');
+    const movesEl = document.getElementById('moves');
+    const bestEl  = document.getElementById('best');
+    const diffEl  = document.getElementById('diff');
+    const diffbar = document.getElementById('diffbar');
+
+    let diff = 'easy';
+    let tubes = [];        // array of arrays (bottom -> top)
+    let startTubes = [];   // original board for restart
+    let history = [];
+    let moves = 0;
+    let selected = -1;
+    let solved = false;
+
+    function rnd(n){ return Math.floor(Math.random()*n); }
+
+    function topRun(t){
+      if (t.length === 0) return {color:null, n:0};
+      const c = t[t.length-1];
+      let n = 0;
+      for (let i = t.length-1; i>=0 && t[i]===c; i--) n++;
+      return {color:c, n};
+    }
+
+    function isSolved(st){
+      return st.every(t => t.length===0 || (t.length===CAP && t.every(x=>x===t[0])));
+    }
+
+    function uniformFull(t){ return t.length===CAP && t.every(x=>x===t[0]); }
+
+    function genBoard(numColors, numTubes){
+      for (let attempt=0; attempt<80; attempt++){
+        const base = [];
+        for (let i=0;i<numColors;i++) base.push(Array(CAP).fill(i));
+        for (let i=0;i<numTubes-numColors;i++) base.push([]);
+        // scramble by applying random legal moves from the solved state
+        const steps = 50 + numColors*25;
+        for (let s=0;s<steps;s++){
+          const movesList = [];
+          for (let a=0;a<base.length;a++){
+            const ra = topRun(base[a]);
+            if (ra.n===0) continue;
+            for (let b=0;b<base.length;b++){
+              if (a===b) continue;
+              const tb = base[b];
+              if (tb.length===0){ movesList.push({from:a,to:b,n:ra.n}); }
+              else if (tb[tb.length-1]===ra.color && tb.length+ra.n<=CAP){ movesList.push({from:a,to:b,n:ra.n}); }
+            }
+          }
+          if (movesList.length===0) break;
+          const m = movesList[rnd(movesList.length)];
+          const run = base[m.from].slice(base[m.from].length - m.n);
+          base[m.from] = base[m.from].slice(0, base[m.from].length - m.n);
+          base[m.to] = base[m.to].concat(run);
+        }
+        if (isSolved(base)) continue;
+        const partial = base.filter(t => t.length>0 && !uniformFull(t)).length;
+        if (partial < 2) continue;
+        // never start with an already-single-color full tube that makes it trivial
+        return base.map(t=>t.slice());
+      }
+      // fallback: simple shuffle that is usually solvable
+      const flat = [];
+      for (let i=0;i<numColors;i++) for (let k=0;k<CAP;k++) flat.push(i);
+      for (let i=flat.length-1;i>0;i--){ const j=rnd(i+1); [flat[i],flat[j]]=[flat[j],flat[i]]; }
+      const out = [];
+      for (let i=0;i<numTubes;i++) out.push(flat.splice(0, Math.min(CAP, flat.length)));
+      for (let i=out.length; i<numTubes; i++) out.push([]);
+      return out;
+    }
+
+    function bestKey(){ return 'csBest_' + diff; }
+    function getBest(){ const v = Number(localStorage.getItem(bestKey())||0); return v>0? v : null; }
+    function setBest(v){ const cur = getBest(); if (!cur || v<cur) localStorage.setItem(bestKey(), String(v)); }
+
+    function render(){
+      tubesEl.innerHTML = '';
+      tubes.forEach((t, idx)=>{
+        const tube = document.createElement('div');
+        tube.className = 'cs-tube' + (selected===idx ? ' sel' : '');
+        for (let i=0;i<CAP;i++){
+          const cell = document.createElement('div');
+          cell.className = 'cs-cell' + (i>=t.length ? ' empty' : '');
+          if (i<t.length) cell.style.background = COLORS[t[i]];
+          tube.appendChild(cell);
+        }
+        tube.addEventListener('click', ()=>onTube(idx));
+        tubesEl.appendChild(tube);
+      });
+      movesEl.textContent = String(moves);
+      const b = getBest();
+      bestEl.textContent = b ? String(b) : '—';
+      diffEl.textContent = diff.charAt(0).toUpperCase()+diff.slice(1);
+    }
+
+    function onTube(idx){
+      if (solved) return;
+      if (selected === -1){ selected = idx; PA.sfx.click(); render(); return; }
+      if (selected === idx){ selected = -1; render(); return; }
+      const from = tubes[selected], to = tubes[idx];
+      const rf = topRun(from);
+      if (rf.n===0){ selected = idx; render(); return; }
+      const space = CAP - to.length;
+      if (to.length>0 && to[to.length-1]!==rf.color){ selected = idx; PA.sfx.wrong(); render(); return; }
+      if (space<=0){ selected = idx; render(); return; }
+      const moveN = Math.min(rf.n, space);
+      history.push(tubes.map(t=>t.slice()));
+      const run = from.slice(from.length-moveN);
+      tubes[selected] = from.slice(0, from.length-moveN);
+      tubes[idx] = to.concat(run);
+      moves++;
+      selected = -1;
+      PA.sfx.move();
+      if (isSolved(tubes)){
+        solved = true;
+        setBest(moves);
+        PA.sfx.win();
+        PA.toast('Solved in ' + moves + ' moves!', 'good');
+      }
+      render();
+    }
+
+    function newBoard(){
+      const cfg = DIFF[diff];
+      tubes = genBoard(cfg.colors, cfg.tubes);
+      startTubes = tubes.map(t=>t.slice());
+      history = []; moves = 0; selected = -1; solved = false;
+      render();
+    }
+
+    function undo(){
+      if (solved || history.length===0) return;
+      tubes = history.pop();
+      moves = Math.max(0, moves-1);
+      selected = -1;
+      PA.sfx.click();
+      render();
+    }
+
+    document.getElementById('new').addEventListener('click', newBoard);
+    document.getElementById('undo').addEventListener('click', undo);
+    document.getElementById('restart').addEventListener('click', ()=>{
+      tubes = startTubes.map(t=>t.slice()); history=[]; moves=0; selected=-1; solved=false; render();
+    });
+    diffbar.addEventListener('click', e=>{
+      const b = e.target.closest('[data-d]'); if (!b) return;
+      diff = b.dataset.d;
+      Array.from(diffbar.children).forEach(c=>c.classList.toggle('active', c===b));
+      newBoard();
+    });
+
+    newBoard();
+  })();
+  </script>
+  <script src="fit.js"></script>
+</body>
+</html>

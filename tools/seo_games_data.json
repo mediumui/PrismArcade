@@ -667,5 +667,153 @@
         "file": "sudoku.html"
       }
     ]
+  },
+  "color-sort.html": {
+    "name": "Color Sort Puzzle",
+    "title": "Play Color Sort Puzzle Online No Download - Free Brain Teaser | Prism Arcade",
+    "desc": "Play Color Sort Puzzle online for free with no download. Pour colored balls between tubes until each tube holds one color. A calm, always-solvable logic puzzle for quick brain breaks.",
+    "og_title": "Color Sort Puzzle Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Color Sort Puzzle is a free online sorting game that runs in the browser with no download or account. Move colored balls between tubes so every tube ends up holding a single color. Every board is generated backwards from a solved state, so it is always solvable, and unlimited undo lets you step back out of any dead end. The difficulty ramps from 3 colors up to 5, making it a calm but brain-teasing color sort puzzle for short breaks.",
+    "faq": [
+      {
+        "q": "Can I play Color Sort Puzzle online for free?",
+        "a": "Yes. Color Sort Puzzle is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Color Sort Puzzle?",
+        "a": "Tap a tube to pick up its top balls, then tap another tube to pour them. You can only pour onto an empty tube or one whose top color matches, and a tube holds four balls."
+      },
+      {
+        "q": "Is every Color Sort board solvable?",
+        "a": "Yes. Each board is generated from a solved arrangement, so a winning sequence always exists, and you can use unlimited undo if you get stuck."
+      }
+    ],
+    "related": [
+      {
+        "name": "Number Merge",
+        "file": "number-merge.html"
+      },
+      {
+        "name": "Block Slide Puzzle",
+        "file": "block-slide.html"
+      },
+      {
+        "name": "Easy Sudoku",
+        "file": "sudoku.html"
+      }
+    ]
+  },
+  "stack-tower.html": {
+    "name": "Stack Tower",
+    "title": "Play Stack Tower Online No Download - Block Stacking Game | Prism Arcade",
+    "desc": "Play Stack Tower online for free with no download. Drop sliding blocks to build the tallest tower, trim the overhang, and chase a new best height in quick one-tap rounds.",
+    "og_title": "Stack Tower Online No Download | Prism Arcade",
+    "category": "ActionGame",
+    "playmode": "SinglePlayer",
+    "overview": "Stack Tower is a free one-tap arcade game that runs in the browser with no download or account. A block slides above your tower; tap or click to drop it, and any part that overhangs the layer below gets sliced away. Perfect drops rebuild your width, so a steady rhythm beats frantic tapping. Each round is a quick two- to three-minute session built for high-score chasing.",
+    "faq": [
+      {
+        "q": "Can I play Stack Tower online for free?",
+        "a": "Yes. Stack Tower is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Stack Tower?",
+        "a": "Tap, click, or press Space to drop the sliding block onto the tower. Align it cleanly to keep its full width; any overhang is trimmed off."
+      },
+      {
+        "q": "What is the goal of Stack Tower?",
+        "a": "Build the tallest tower you can. Five clean drops in a row grow your width back, and your best height is saved on this device."
+      }
+    ],
+    "related": [
+      {
+        "name": "Sky Flap",
+        "file": "flappy.html"
+      },
+      {
+        "name": "Neon Snake",
+        "file": "snake.html"
+      },
+      {
+        "name": "Quick Tap Grid",
+        "file": "quick-tap.html"
+      }
+    ]
+  },
+  "hangman.html": {
+    "name": "Hangman",
+    "title": "Play Hangman Online No Download - Word Guessing Game | Prism Arcade",
+    "desc": "Play Hangman online for free with no download. Guess hidden words across Animals, Fruits, Countries and General categories. A classic word game that builds vocabulary.",
+    "og_title": "Hangman Online No Download | Prism Arcade",
+    "category": "WordGame",
+    "playmode": "SinglePlayer",
+    "overview": "Hangman is a free online word guessing game that runs in the browser with no download or account. Pick a category, guess letters to reveal the hidden word, and avoid the gallows. With Animals, Fruits, Countries and General word lists plus a hint button, it is a relaxing way to build vocabulary and spelling for players of any age.",
+    "faq": [
+      {
+        "q": "Can I play Hangman online for free?",
+        "a": "Yes. Hangman is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Hangman?",
+        "a": "Choose a category, then tap or press a letter. Correct letters fill in the word; wrong letters draw another part of the gallows. Guess the word before six wrong letters."
+      },
+      {
+        "q": "What is the goal of Hangman?",
+        "a": "Reveal the hidden word before the gallows is complete. Use the hint button if you get stuck, and your win count is saved on this device."
+      }
+    ],
+    "related": [
+      {
+        "name": "Word Merge",
+        "file": "word-merge.html"
+      },
+      {
+        "name": "Brain Quiz",
+        "file": "quiz.html"
+      },
+      {
+        "name": "Memory Pairs",
+        "file": "memory.html"
+      }
+    ]
+  },
+  "maze.html": {
+    "name": "Maze",
+    "title": "Play Maze Online No Download - Random Maze Puzzle | Prism Arcade",
+    "desc": "Play Maze online for free with no download. Solve a fresh random maze every time, from small to large, and race the clock to the exit with arrow keys, swipe, or a click.",
+    "og_title": "Maze Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Maze is a free online maze puzzle that runs in the browser with no download or account. Every board is a brand-new random labyrinth generated by a maze algorithm, so no two runs are alike. Move with arrow keys, WASD, a swipe on touch, or a click toward the exit, then reveal the shortest path with the Show Path button. Pick Small, Medium, or Large and try to beat your best time.",
+    "faq": [
+      {
+        "q": "Can I play Maze online for free?",
+        "a": "Yes. Maze is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Maze?",
+        "a": "Move the orange dot from the top-left corner to the green exit. Use arrow keys or WASD on desktop, swipe on mobile, or tap toward a direction. The Show Path button reveals the shortest route."
+      },
+      {
+        "q": "Are the mazes the same every time?",
+        "a": "No. Every maze is generated randomly when you open the page or press New Maze, so each puzzle is different."
+      }
+    ],
+    "related": [
+      {
+        "name": "Block Slide Puzzle",
+        "file": "block-slide.html"
+      },
+      {
+        "name": "Neon Snake",
+        "file": "snake.html"
+      },
+      {
+        "name": "Sequence Echo",
+        "file": "sequence.html"
+      }
+    ]
   }
 }

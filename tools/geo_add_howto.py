@@ -126,6 +126,30 @@ HOWTO = {
         "Time your jumps to keep your momentum.",
         "Travel the farthest distance you can without crashing.",
     ],
+    "color-sort.html": [
+        "Tap a tube to pick up the top balls from it.",
+        "Tap another tube to pour them in.",
+        "You can only pour onto an empty tube or a tube whose top color matches.",
+        "Sort every color into its own tube, using Undo if you get stuck.",
+    ],
+    "stack-tower.html": [
+        "Watch the block slide back and forth above your tower.",
+        "Tap, click, or press Space to drop it onto the tower.",
+        "Line it up cleanly so no part overhangs and gets sliced away.",
+        "Five clean drops in a row rebuild your width — chase the tallest tower.",
+    ],
+    "hangman.html": [
+        "Pick a word category such as Animals, Fruits, Countries, or General.",
+        "Tap a letter or press a key to guess it.",
+        "Correct letters fill in the hidden word; wrong letters add to the gallows.",
+        "Reveal the whole word before six wrong guesses to win.",
+    ],
+    "maze.html": [
+        "Move the orange dot from the top-left corner toward the green exit.",
+        "Use arrow keys or WASD on desktop, or swipe on mobile.",
+        "Each maze is random, so find the route before you run out of time.",
+        "Tap Show Path to reveal the shortest route to the exit.",
+    ],
 }
 
 
