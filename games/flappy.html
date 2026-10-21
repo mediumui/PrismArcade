@@ -232,6 +232,19 @@ gtag('config', 'G-83BMVG4W6Q');
       let bird, pipes, score, state, tick, gap, gravity, flapVel, pipeW, pipeGap;
       let best = Number(localStorage.getItem('flappyBest') || 0);
       bestEl.textContent = String(best);
+      // parallax scenery
+      const CLOUDS = Array.from({ length: 5 }, (i) => ({
+        x: i * 90 + Math.random() * 40,
+        y: 40 + Math.random() * 160,
+        w: 40 + Math.random() * 36,
+        sp: 0.5 + Math.random() * 0.4
+      }));
+      const STARS = Array.from({ length: 30 }, () => ({
+        x: Math.random() * 360,
+        y: Math.random() * 300,
+        r: 0.5 + Math.random() * 1.2,
+        tw: Math.random() * Math.PI * 2
+      }));
 
       function reset() {
         bird = { x: W * 0.28, y: H * 0.45, vy: 0, r: 15, flap: 0 };
@@ -299,18 +312,49 @@ gtag('config', 'G-83BMVG4W6Q');
 
       function render() {
         ctx.clearRect(0, 0, W, H);
-        // pipes
-        ctx.fillStyle = '#3fa96b';
+        // stars
+        const t = performance.now() / 1000;
+        ctx.save();
+        STARS.forEach((s) => {
+          ctx.globalAlpha = 0.3 + 0.5 * Math.abs(Math.sin(t * 1.2 + s.tw));
+          ctx.fillStyle = '#fff';
+          ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+        });
+        ctx.restore();
+        // parallax clouds
+        ctx.save();
+        ctx.globalAlpha = 0.16;
+        CLOUDS.forEach((c) => {
+          c.x -= c.sp;
+          if (c.x + c.w < 0) { c.x = W + 10; c.y = 40 + Math.random() * 160; }
+          ctx.fillStyle = '#cfe3ff';
+          ctx.beginPath();
+          ctx.ellipse(c.x, c.y, c.w * 0.5, c.w * 0.26, 0, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        ctx.restore();
+        // pipes (with neon glow)
         pipes.forEach((p) => {
+          ctx.save();
+          ctx.shadowColor = '#3fa96b';
+          ctx.shadowBlur = 14;
+          const pg = ctx.createLinearGradient(p.x, 0, p.x + pipeW, 0);
+          pg.addColorStop(0, '#2f8a56');
+          pg.addColorStop(0.5, '#3fa96b');
+          pg.addColorStop(1, '#2f8a56');
+          ctx.fillStyle = pg;
           ctx.fillRect(p.x, 0, pipeW, p.top);
           ctx.fillRect(p.x, p.top + pipeGap, pipeW, H - p.top - pipeGap);
-          ctx.fillStyle = '#2f8a56';
+          ctx.fillStyle = '#57d98c';
           ctx.fillRect(p.x - 4, p.top - 12, pipeW + 8, 12);
           ctx.fillRect(p.x - 4, p.top + pipeGap, pipeW + 8, 12);
-          ctx.fillStyle = '#3fa96b';
+          ctx.restore();
         });
         // ground
-        ctx.fillStyle = '#242a4f';
+        const gg = ctx.createLinearGradient(0, H - 8, 0, H);
+        gg.addColorStop(0, '#3a3f6e');
+        gg.addColorStop(1, '#242a4f');
+        ctx.fillStyle = gg;
         ctx.fillRect(0, H - 8, W, 8);
         // bird
         ctx.save();

@@ -211,8 +211,16 @@ gtag('config', 'G-83BMVG4W6Q');
   </main>
   <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Reflex, memory, and knowledge games in one fast arcade.</p></div><div><h3>More</h3><ul><li><a href="sequence.html">Sequence Echo</a></li><li><a href="quick-tap.html">Quick Tap Grid</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
   <style>
-    .relay-pad{display:grid;place-items:center;min-height:0;border-radius:20px;font-size:2rem;font-weight:900;background:var(--panel-2);border:1px solid var(--line);cursor:pointer}
-    .relay-pad.active{background:rgba(255,179,71,.34)}
+    .relay-pad{display:grid;place-items:center;min-height:0;border-radius:20px;font-size:2.4rem;font-weight:900;background:var(--panel-2);border:1px solid var(--line);cursor:pointer;position:relative;overflow:hidden;color:var(--muted);transition:color .15s, box-shadow .15s, background .15s}
+    .relay-pad::before{content:attr(data-glyph); position:absolute; inset:0; display:grid; place-items:center; font-size:3rem; opacity:.18; color:var(--accent)}
+    .relay-pad.active{background:var(--glow-color, rgba(255,179,71,.34)); color:#fff; box-shadow:0 0 22px var(--glow-color, rgba(255,179,71,.8)), inset 0 0 18px var(--glow-color, rgba(255,179,71,.5)); border-color:transparent}
+    .relay-pad.active::before{opacity:.4}
+    .relay-pad[data-c="0"]{--base:#ff5f6d; --glow-color:rgba(255,95,109,.4)}
+    .relay-pad[data-c="1"]{--base:#36d399; --glow-color:rgba(54,211,153,.4)}
+    .relay-pad[data-c="2"]{--base:#4aa3ff; --glow-color:rgba(74,163,255,.4)}
+    .relay-pad[data-c="3"]{--base:#7c5cff; --glow-color:rgba(124,92,255,.4)}
+    .relay-pad::before{color:var(--base)}
+    .relay-pad .key-hint{position:absolute; bottom:8px; right:10px; font-size:.7rem; font-weight:600; color:var(--muted); opacity:.7}
   </style>
   <script src="_shared.js"></script>
   <script>
@@ -231,12 +239,19 @@ gtag('config', 'G-83BMVG4W6Q');
     let accepting = false;
     let showing = false;
 
+    const glyphFor = ['◆', '▲', '●', '■'];
     labels.forEach((label, index) => {
       const pad = document.createElement('button');
       pad.type = 'button';
       pad.className = 'relay-pad';
       pad.textContent = label;
       pad.dataset.index = index;
+      pad.dataset.c = String(index);
+      pad.dataset.glyph = glyphFor[index];
+      const hint = document.createElement('span');
+      hint.className = 'key-hint';
+      hint.textContent = String(index + 1);
+      pad.appendChild(hint);
       pad.addEventListener('click', () => press(index));
       padsEl.appendChild(pad);
     });

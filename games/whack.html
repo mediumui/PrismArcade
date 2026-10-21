@@ -126,9 +126,12 @@
 <style>
     .whack-stage{display:flex; flex-direction:column; min-height:0}
     .whack-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; width:100%; max-width:420px; margin-inline:auto; aspect-ratio:1; flex:1; min-height:0}
-    .whack-hole{border-radius:14px; background:var(--panel-2); border:1px solid var(--line); display:grid; place-items:center; cursor:pointer; font-size:2.4rem; user-select:none; transition:transform .08s ease}
-    .whack-hole:active{transform:scale(.94)}
-    .whack-hole.up{background:rgba(255,179,71,.28)}
+    .whack-hole{position:relative; border-radius:14px; background:var(--panel-2); border:1px solid var(--line); display:grid; place-items:center; cursor:pointer; user-select:none; overflow:hidden}
+    .whack-hole .mole{width:58%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 35% 30%, #ffe3a3, #ffb347 55%, #ff7a59); box-shadow:0 0 18px rgba(255,179,71,.75), 0 0 34px rgba(255,179,71,.35); transform:scale(0); transition:transform .14s cubic-bezier(.34,1.56,.64,1)}
+    .whack-hole .mole::after{content:""; position:absolute; inset:auto; width:34%; height:34%; border-radius:50%; background:rgba(255,255,255,.85); left:24%; top:22%; box-shadow:0 0 8px rgba(255,255,255,.6)}
+    .whack-hole.up .mole{transform:scale(1)}
+    .whack-hole.hit .mole{transform:scale(.4); box-shadow:none; filter:brightness(1.4); transition:transform .1s ease}
+    .whack-hole::before{content:""; position:absolute; left:50%; top:55%; width:62%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle, rgba(0,0,0,.5), transparent 70%); transform:translate(-50%,-50%); z-index:0}
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681646510705157" crossorigin="anonymous"></script>
 <!-- Google tag (gtag.js) -->
@@ -222,7 +225,9 @@ gtag('config', 'G-83BMVG4W6Q');
     const holes = Array.from({ length: 9 }, () => {
       const hole = document.createElement('div');
       hole.className = 'whack-hole';
-      hole.textContent = '';
+      const mole = document.createElement('div');
+      mole.className = 'mole';
+      hole.appendChild(mole);
       hole.addEventListener('pointerdown', () => whack(hole));
       grid.appendChild(hole);
       return hole;
@@ -237,14 +242,13 @@ gtag('config', 'G-83BMVG4W6Q');
     }
 
     function clearHole() {
-      if (currentHole) currentHole.textContent = '';
+      if (currentHole) { currentHole.classList.remove('up', 'hit'); }
       currentHole = null;
     }
 
     function popUp() {
       clearHole();
       currentHole = holes[Math.floor(Math.random() * 9)];
-      currentHole.textContent = '🟢';
       currentHole.classList.add('up');
     }
 
@@ -253,7 +257,9 @@ gtag('config', 'G-83BMVG4W6Q');
       score += 1;
       PA.sfx.click();
       scoreEl.textContent = String(score);
-      clearHole();
+      hole.classList.add('hit');
+      currentHole = null;
+      setTimeout(() => { if (hole.classList.contains('hit')) hole.classList.remove('up', 'hit'); }, 110);
       popUp();
     }
 

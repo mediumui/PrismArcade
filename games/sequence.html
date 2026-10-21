@@ -211,8 +211,11 @@ gtag('config', 'G-83BMVG4W6Q');
   </main>
   <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>A clean arcade for players around the world.</p></div><div><h3>More</h3><ul><li><a href="reflex-relay.html">Rhythm Reflex Relay</a></li><li><a href="memory.html">Memory Pairs</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div></footer>
   <style>
-    .seq-cell{min-height:120px;border-radius:16px;background:var(--panel-2);border:1px solid var(--line);display:grid;place-items:center;font-size:1.4rem;color:var(--muted);cursor:pointer}
-    .seq-cell.lit{background:rgba(255,179,71,.42);color:#1b130b}
+    .seq-cell{position:relative; min-height:120px;border-radius:16px;background:var(--panel-2);border:1px solid var(--line);display:grid;place-items:center;font-size:1.4rem;color:var(--muted);cursor:pointer;overflow:hidden;transition:transform .12s, box-shadow .12s}
+    .seq-cell::before{content:attr(data-glyph); position:absolute; inset:0; display:grid; place-items:center; font-size:2.6rem; color:var(--accent); opacity:.14; transition:opacity .12s}
+    .seq-cell.lit{background:rgba(124,92,255,.42); color:#fff; box-shadow:0 0 22px rgba(124,92,255,.7), inset 0 0 18px rgba(124,92,255,.45); border-color:transparent; transform:scale(1.03)}
+    .seq-cell.lit::before{opacity:.38}
+    .seq-cell .num{position:relative; z-index:1}
   </style>
   <script src="_shared.js"></script>
   <script>
@@ -227,11 +230,16 @@ gtag('config', 'G-83BMVG4W6Q');
     let accepting = false;
     let showing = false;
 
+    const seqGlyphs = ['○','△','□','◇','☆','⬟','⊗','☘','⊕'];
     Array.from({ length: 9 }, (_, index) => {
       const cell = document.createElement('div');
       cell.className = 'seq-cell';
       cell.dataset.index = index;
-      cell.textContent = String(index + 1);
+      cell.dataset.glyph = seqGlyphs[index];
+      const num = document.createElement('span');
+      num.className = 'num';
+      num.textContent = String(index + 1);
+      cell.appendChild(num);
       cell.addEventListener('click', () => press(index));
       grid.appendChild(cell);
     });

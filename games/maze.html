@@ -116,7 +116,7 @@
 
   <style>
     .mz-stage{display:flex; flex-direction:column; align-items:center; min-height:0; gap:12px}
-    .mz-stage canvas{border-radius:14px; background:#0a0b1c; touch-action:none; max-width:92vw}
+    .mz-stage canvas{border-radius:14px; background:transparent; touch-action:none; max-width:92vw}
     .mz-sizes{display:flex; flex-wrap:wrap; gap:8px; justify-content:center}
     .mz-sizes .chip{cursor:pointer}
     .mz-sizes .chip.active{background:var(--accent); color:#191307; border-color:transparent}
@@ -287,9 +287,18 @@
     function bestKey(){ return 'mzBest_'+N; }
 
     function draw(){
+      // night background
       ctx.clearRect(0,0,SIZE,SIZE);
+      const bg = ctx.createLinearGradient(0,0,SIZE,SIZE);
+      bg.addColorStop(0,'#0d1030');
+      bg.addColorStop(1,'#0a0b1c');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0,0,SIZE,SIZE);
       const w=SIZE/N;
-      ctx.lineWidth=Math.max(2, w*0.16); ctx.strokeStyle='#b7bedd';
+      ctx.lineWidth=Math.max(2, w*0.16);
+      ctx.strokeStyle='rgba(183,190,221,.92)';
+      ctx.shadowColor='#7c5cff';
+      ctx.shadowBlur=6;
       for(let r=0;r<N;r++) for(let c=0;c<N;c++){
         const x=c*w, y=r*w, cell=cells[r][c];
         if(cell.N){ ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x+w,y); ctx.stroke(); }
@@ -297,18 +306,26 @@
         if(cell.E){ ctx.beginPath(); ctx.moveTo(x+w,y); ctx.lineTo(x+w,y+w); ctx.stroke(); }
         if(cell.S){ ctx.beginPath(); ctx.moveTo(x,y+w); ctx.lineTo(x+w,y+w); ctx.stroke(); }
       }
+      ctx.shadowBlur=0;
       if(showPath){
         const p=bfsPath();
-        ctx.fillStyle='rgba(124,92,255,.5)';
+        const pulse=0.4+0.3*Math.abs(Math.sin(performance.now()/400));
+        ctx.fillStyle='rgba(124,92,255,'+pulse+')';
         for(const [r,c] of p){ ctx.beginPath(); ctx.arc(c*w+w/2, r*w+w/2, w*0.16, 0, Math.PI*2); ctx.fill(); }
       }
       // goal star
+      ctx.save();
+      ctx.shadowColor='#36d399'; ctx.shadowBlur=14;
       ctx.fillStyle='#36d399';
       const gx=goal.c*w+w/2, gy=goal.r*w+w/2;
       ctx.beginPath(); ctx.arc(gx,gy,w*0.28,0,Math.PI*2); ctx.fill();
+      ctx.restore();
       // player
+      ctx.save();
+      ctx.shadowColor='#ffb347'; ctx.shadowBlur=14;
       ctx.fillStyle='#ffb347';
       ctx.beginPath(); ctx.arc(player.c*w+w/2, player.r*w+w/2, w*0.32, 0, Math.PI*2); ctx.fill();
+      ctx.restore();
     }
 
     function newMaze(){

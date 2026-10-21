@@ -125,9 +125,12 @@
   <link rel="stylesheet" href="../css/style.css" />
 <style>
     .bs-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; width:min(360px,42vw,60vh); margin-inline:auto; aspect-ratio:1}
-    .bs-cell{aspect-ratio:1; border-radius:12px; background:var(--panel-2); border:1px solid var(--line); display:grid; place-items:center; font-weight:900; color:var(--muted)}
+    .bs-cell{position:relative; aspect-ratio:1; border-radius:12px; background:var(--panel-2); border:1px solid var(--line); display:grid; place-items:center; font-weight:900; color:var(--muted); overflow:hidden; transition:box-shadow .15s}
+    .bs-cell .dot{width:46%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 35% 30%, #c9b8ff, #7c5cff 60%, #4a2f99); box-shadow:0 0 12px rgba(124,92,255,.7)}
+    .bs-cell .target-mark{width:62%; aspect-ratio:1; border-radius:50%; border:3px solid rgba(91,227,164,.9); box-shadow:0 0 12px rgba(91,227,164,.6), inset 0 0 8px rgba(91,227,164,.4); display:grid; place-items:center}
+    .bs-cell .target-mark::after{content:""; width:38%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 35% 30%, #d6ffe9, #36d399)}
     .bs-cell.block{background:rgba(124,92,255,.28); color:#f7f8ff}
-    .bs-cell.target{background:rgba(91,227,164,.22); color:#dffef2}
+    .bs-cell.target{background:rgba(91,227,164,.2); color:#dffef2; box-shadow:inset 0 0 14px rgba(91,227,164,.35)}
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681646510705157" crossorigin="anonymous"></script>
 <!-- Google tag (gtag.js) -->
@@ -306,7 +309,15 @@ gtag('config', 'G-83BMVG4W6Q');
       for (let i = 0; i < CELLS; i += 1) {
         const cell = document.createElement('div');
         cell.className = 'bs-cell' + (blocks.includes(i) ? ' block' : '') + (targets.includes(i) ? ' target' : '');
-        cell.textContent = blocks.includes(i) ? '#' : (targets.includes(i) ? '+' : '');
+        if (blocks.includes(i)) {
+          const d = document.createElement('span');
+          d.className = 'dot';
+          cell.appendChild(d);
+        } else if (targets.includes(i)) {
+          const t = document.createElement('span');
+          t.className = 'target-mark';
+          cell.appendChild(t);
+        }
         cell.addEventListener('click', () => clickBlock(i));
         grid.appendChild(cell);
       }
