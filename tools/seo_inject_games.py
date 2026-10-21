@@ -78,7 +78,7 @@ def build_related_html(d):
     lines.append('        <div class="section-title"><div><h2>Related Games</h2><p>Keep playing with similar free browser games on Prism Arcade.</p></div></div>')
     lines.append('        <div class="grid related-grid">')
     for r in d["related"]:
-        lines.append(f'          <article class="card game-card"><div class="thumb">Game</div><h3>{esc(r["name"])}</h3><p>A free English web game on Prism Arcade.</p><a class="btn btn-ghost" href="{r["file"]}">Play</a></article>')
+        lines.append(f'          <article class="card game-card"><div class="thumb">Game</div><h3>{esc(r["name"])}</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="{r["file"]}">Play</a></article>')
     lines.append('          <article class="card game-card"><div class="thumb">All</div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>')
     lines.append("        </div>")
     lines.append("      </section>")
