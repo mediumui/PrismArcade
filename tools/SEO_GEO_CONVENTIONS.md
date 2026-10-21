@@ -72,6 +72,25 @@ python tools/geo_add_howto.py
 - 必须包含新页面 URL：`https://www.prismarcade.top/games/<slug>.html`。
 - 若 sitemap 由脚本生成 → 重跑生成；若手维护 → 手动加 `<url>` 块。
 
+### F. 美术质量（强制，禁止只做"贴块"）
+新增游戏**不允许**只画裸矩形 / 裸三角形 / 单色色块当主体就交付（早期 runner 就是"一个正方形+三角形"被用户点名要求重做）。游戏画面主体（canvas 或 DOM）必须达到下列基准，参考已升级的 9 款（snake / stack-tower / maze / flappy / whack / reflex-relay / sequence / block-slide / quick-tap）：
+
+**Canvas 游戏至少具备：**
+1. **分层背景**——夜空/环境渐变（`createLinearGradient`）+ 闪烁星或网格，禁止纯黑/纯白底。
+2. **主体发光**——玩家与障碍用 `shadowColor`+`shadowBlur` 做霓虹光晕，主体用渐变填充而非单色 `fillRect`。
+3. **角色有"脸"或识别特征**——眼睛 / 高光 / 圆角，不是素方块。
+4. **动效反馈**——跳跃/落地/撞击/得分有粒子（`particles` 数组）；死亡有红闪或屏幕震动。
+5. **闲置预览**——游戏未开始时有 `idleLoop` 持续渲染背景，让画面"活着"。
+
+**DOM 游戏至少具备：**
+1. **状态色+光晕**——active / lit / target 态用 `box-shadow`（外光晕）+ `inset`（内光）做霓虹，禁止只贴一层 `rgba` 平涂。
+2. **图形化图标**——用图形 / SVG / CSS 造型（圆碟、靶心、字形）替代 emoji 或 `#`/`+`/纯字母当图标。
+3. **过渡**——关键状态加 `transition`（transform / box-shadow / background）。
+4. **配色体系**——复用 `style.css` 的紫橙霓虹系（`#7c5cff` / `#ffb347` / `#ffd24d` / `#36d399` / `#4aa3ff`），不要随机撞色。
+
+**验收**：交付前自问"画面有没有'发光/层次/动效'，还是只贴了个色块？"——后者打回重做。
+
+
 ---
 
 ## 二、新增非游戏页面（about / contact / privacy / 新栏目，强制清单）
@@ -95,6 +114,7 @@ python tools/geo_add_howto.py
 3. **保留标记隔离**：`SEO:INJECTED` / `SEO:CLEANED` / `GEO:HOWTO` 互不影响；重跑脚本前确认幂等，避免重复注入。重做前用 `tools/seo_clean_games.py` 清理。
 4. **全站英文界面**（目标用户是海外玩家）；meta / 结构化数据一律英文。
 5. **生产域名固定 `https://www.prismarcade.top`（带 www）**。`canonical` / `og:url` / sitemap `<loc>` / `llms.txt` 链接全部用这个，不要用裸域或 `example` 占位。
+6. **美术底线**：新增游戏的画面主体必须做"霓虹发光+分层背景+动效"，禁止只做贴块（裸矩形/裸三角/单色色块/纯字母图标）。详见「一.F 美术质量」。DOM 游戏的发光态必须用 `box-shadow` 真光晕，不许只贴一层 `rgba` 平涂。
 
 ---
 
@@ -137,3 +157,10 @@ git push origin main      # Cloudflare 自动部署
 
 > **问"这段内容 AI 能不能直接当答案引用？"** 而不是"够不够 2000 字？"
 > 能独立成立、含事实/数字/步骤的段落，比注水长文更容易被引用。证据密度（统计、引用、引语）> 字数。
+
+## 七、美术质量判断原则（给未来的自己）
+
+> **问"这个画面像不像'一个产品'，还是只贴了个色块？"**
+> 贴块 = 裸矩形/裸三角/单色 fillRect/纯字母当图标/只有一层 rgba 平涂 → 打回重做。
+> 达标 = 有发光（shadowBlur / box-shadow）、有层次（渐变背景/视差）、有反馈（粒子/动效/闲置预览）。
+> 参考基准：`games/snake.html`、`games/whack.html`（最弱两款的升级后形态），照它做就不会"太丑"。
