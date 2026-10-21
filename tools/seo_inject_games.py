@@ -65,7 +65,7 @@ def build_head(slug, d):
 
 def build_faq_html(d):
     lines = ['      <section class="container seo-faq" aria-label="Frequently asked questions">']
-    lines.append('        <div class="section-title"><div><h2>FAQ</h2><p>Clear answers for players, search engines, and AI assistants.</p></div></div>')
+    lines.append('        <div class="section-title"><div><h2>FAQ</h2><p>Common questions players ask.</p></div></div>')
     lines.append('        <div class="faq-grid">')
     for q in d["faq"]:
         lines.append(f'          <article class="card"><h3>{esc(q["q"])}</h3><p>{esc(q["a"])}</p></article>')
