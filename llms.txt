@@ -40,6 +40,7 @@ Prism Arcade's 22 games are grouped by type below.
 
 ## Key Pages
 - [Home](https://www.prismarcade.top/) — Game lineup, featured picks, and quick start.
+- [All Games](https://www.prismarcade.top/games.html) — The full catalog of 22 free browser games, filterable by reflex, puzzle, strategy, and memory, with paginated results.
 - [About Prism Arcade](https://www.prismarcade.top/about.html) — Site background, design principles, accessibility approach, and FAQ.
 - [Contact](https://www.prismarcade.top/contact.html) — How to reach the team.
 - [Privacy](https://www.prismarcade.top/privacy.html) — Data and privacy practices (no accounts, no personal data collection to play).

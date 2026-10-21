@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.prismarcade.top/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.prismarcade.top/games.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://www.prismarcade.top/about.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.prismarcade.top/contact.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.prismarcade.top/privacy.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>

@@ -124,7 +124,7 @@
 </script>
   <link rel="stylesheet" href="../css/style.css" />
 <style>
-    .run-canvas{width:100%; max-width:620px; display:block; margin-inline:auto; border-radius:14px; background:#0a0b1c}
+    .run-canvas{width:100%; max-width:620px; display:block; margin-inline:auto; border-radius:14px; background:linear-gradient(#1b1f4b,#452a68)}
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5681646510705157" crossorigin="anonymous"></script>
 <!-- Google tag (gtag.js) -->
@@ -162,7 +162,7 @@ gtag('config', 'G-83BMVG4W6Q');
       <div class="play-shell" data-fit style="grid-template-columns:1fr; gap:14px">
         <div class="play-stage" data-fit>
           <div class="hud"><span>Distance <strong id="dist">0</strong></span><span>Best <strong id="best">0</strong></span><span>State <strong id="state">Ready</strong></span></div>
-          <canvas id="run" data-fit-target class="run-canvas" width="620" height="240"></canvas>
+          <canvas id="run" data-fit-target class="run-canvas" width="620" height="240" style="width:100%;height:auto;aspect-ratio:620/240;background:transparent;display:block;margin-inline:auto"></canvas>
           <p class="tile-hint" style="text-align:center">Press Space / tap the canvas to jump. Dodge the spikes.</p>
           <div class="game-controls" style="justify-content:center">
             <button class="btn btn-primary" id="start">Start</button>
@@ -225,23 +225,40 @@ gtag('config', 'G-83BMVG4W6Q');
     const stateEl = document.getElementById('state');
     const startBtn = document.getElementById('start');
     const W = canvas.width, H = canvas.height;
-    const GROUND = H - 40;
+    const GROUND = H - 46;
     const GRAVITY = 0.85;
+    const PX_PER_M = 12;
+    const SKY_STARS = Array.from({ length: 54 }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * (GROUND - 80) + 14,
+      r: 0.6 + Math.random() * 1.4,
+      tw: Math.random() * Math.PI * 2
+    }));
+    const MOUNTAINS = Array.from({ length: 9 }, (i) => ({
+      x: i * 90 - 40, w: 100 + Math.random() * 70, h: 50 + Math.random() * 60
+    }));
     let player = { x: 90, y: GROUND, vy: 0, w: 34, h: 34, jumping: false };
     let obstacles = [];
+    let particles = [];
     let speed = 6;
     let dist = 0;
     let best = Number(localStorage.getItem('runnerBest') || 0);
     let running = false;
     let spawnTimer = 0;
+    let crashFlash = 0;
+    let shake = 0;
+    let scrollX = 0;
 
     function reset() {
       player = { x: 90, y: GROUND, vy: 0, w: 34, h: 34, jumping: false };
       obstacles = [];
+      particles = [];
       speed = 6;
       dist = 0;
       spawnTimer = 0;
       running = false;
+      crashFlash = 0;
+      shake = 0;
       stateEl.textContent = 'Ready';
       distEl.textContent = '0';
       draw();
@@ -252,21 +269,51 @@ gtag('config', 'G-83BMVG4W6Q');
         player.vy = -13;
         player.jumping = true;
         PA.sfx.click();
+        burst(player.x + player.w / 2, GROUND, '#ffb347', 8);
       }
     }
 
+    function burst(x, y, color, n) {
+      for (let i = 0; i < n; i++) {
+        const a = Math.random() * Math.PI * 2;
+        const sp = 1 + Math.random() * 3;
+        particles.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 1, life: 28, color });
+      }
+    }
+
+    function onCrash() {
+      running = false;
+      crashFlash = 14;
+      shake = 14;
+      burst(player.x + player.w / 2, player.y + player.h / 2, '#ff5f6d', 18);
+      burst(player.x + player.w / 2, player.y + player.h / 2, '#7c5cff', 14);
+      const meters = Math.floor(dist / PX_PER_M);
+      if (dist > best) {
+        best = meters;
+        localStorage.setItem('runnerBest', String(best));
+        PA.sfx.win();
+        PA.toast('New best: ' + best + 'm!', 'good');
+      } else {
+        PA.sfx.lose();
+        PA.toast('Crashed at ' + meters + 'm.', 'bad');
+      }
+      stateEl.textContent = 'Crashed';
+      distEl.textContent = String(meters);
+      bestEl.textContent = String(Math.max(best, meters));
+    }
+
     function step() {
-      // player physics
       player.y += player.vy;
       player.vy += GRAVITY;
       if (player.y >= GROUND - player.h) {
+        if (player.vy > 6) burst(player.x + player.w / 2, GROUND, '#4aa3ff', 5);
         player.y = GROUND - player.h;
         player.vy = 0;
         player.jumping = false;
       }
-      // scroll world
       dist += 1;
       speed = 6 + Math.min(6, dist / 400);
+      scrollX += speed;
       spawnTimer -= 1;
       if (spawnTimer <= 0) {
         obstacles.push({ x: W, y: GROUND - 26, w: 26, h: 26 });
@@ -274,52 +321,187 @@ gtag('config', 'G-83BMVG4W6Q');
       }
       obstacles.forEach((o) => { o.x -= speed; });
       obstacles = obstacles.filter((o) => o.x + o.w > -10);
-      // collision
+      particles.forEach((p) => { p.x += p.vx; p.y += p.vy; p.vy += 0.18; p.life -= 1; });
+      particles = particles.filter((p) => p.life > 0);
+      if (crashFlash > 0) crashFlash--;
+      if (shake > 0) shake--;
       for (const o of obstacles) {
         const px = player.x, py = player.y, pw = player.w, ph = player.h;
         if (px < o.x + o.w && px + pw > o.x && py < o.y + o.h && py + ph > o.y) {
-          running = false;
-          if (dist > best) {
-            best = dist;
-            localStorage.setItem('runnerBest', String(best));
-            PA.sfx.win();
-            PA.toast('New best: ' + dist + '!', 'good');
-          } else {
-            PA.sfx.lose();
-            PA.toast('Crashed at ' + dist + '.', 'bad');
-          }
-          stateEl.textContent = 'Crashed';
-          distEl.textContent = String(dist);
-          bestEl.textContent = String(best);
+          onCrash();
           return;
         }
       }
-      distEl.textContent = String(dist);
-      bestEl.textContent = String(Math.max(best, dist));
+      distEl.textContent = String(Math.floor(dist / PX_PER_M));
+      bestEl.textContent = String(Math.max(best, Math.floor(dist / PX_PER_M)));
       draw();
     }
 
-    function draw() {
-      ctx.fillStyle = '#0a0b1c';
-      ctx.fillRect(0, 0, W, H);
-      ctx.strokeStyle = 'rgba(255,255,255,.18)';
+    function rr(x, y, w, h, r) {
+      r = Math.min(r, w / 2, h / 2);
       ctx.beginPath();
-      ctx.moveTo(0, GROUND + player.h);
-      ctx.lineTo(W, GROUND + player.h);
-      ctx.stroke();
-      // player
-      ctx.fillStyle = '#ffb347';
-      ctx.fillRect(player.x, player.y, player.w, player.h);
-      // obstacles
-      ctx.fillStyle = '#7c5cff';
-      obstacles.forEach((o) => {
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.save();
+      if (shake > 0) {
+        ctx.translate((Math.random() - 0.5) * shake, (Math.random() - 0.5) * shake);
+      }
+
+      const sky = ctx.createLinearGradient(0, 0, 0, H);
+      sky.addColorStop(0, '#1b1f4b');
+      sky.addColorStop(0.55, '#2a1e57');
+      sky.addColorStop(1, '#452a68');
+      ctx.fillStyle = sky;
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.save();
+      ctx.shadowColor = '#fff6d8';
+      ctx.shadowBlur = 46;
+      ctx.fillStyle = '#fff6d8';
+      ctx.beginPath();
+      ctx.arc(W - 92, 56, 26, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#2a1e57';
+      ctx.globalAlpha = 0.9;
+      ctx.beginPath();
+      ctx.arc(W - 103, 50, 22, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      ctx.save();
+      const t = performance.now() / 1000;
+      SKY_STARS.forEach((s) => {
+        const sx = ((s.x - scrollX * 0.05) % W + W) % W;
+        ctx.globalAlpha = 0.35 + 0.65 * Math.abs(Math.sin(t * 1.4 + s.tw));
+        ctx.fillStyle = '#fff';
         ctx.beginPath();
-        ctx.moveTo(o.x, o.y + o.h);
-        ctx.lineTo(o.x + o.w / 2, o.y);
-        ctx.lineTo(o.x + o.w, o.y + o.h);
+        ctx.arc(sx, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.restore();
+
+      const mOffset = (scrollX * 0.25) % 90;
+      ctx.save();
+      ctx.globalAlpha = 0.55;
+      MOUNTAINS.forEach((m) => {
+        const baseX = m.x - mOffset;
+        ctx.fillStyle = '#3b2d6e';
+        ctx.beginPath();
+        ctx.moveTo(baseX, GROUND);
+        ctx.lineTo(baseX + m.w / 2, GROUND - m.h);
+        ctx.lineTo(baseX + m.w, GROUND);
         ctx.closePath();
         ctx.fill();
       });
+      ctx.restore();
+
+      const ground = ctx.createLinearGradient(0, GROUND, 0, H);
+      ground.addColorStop(0, '#171a3a');
+      ground.addColorStop(1, '#0d0f26');
+      ctx.fillStyle = ground;
+      ctx.fillRect(0, GROUND, W, H - GROUND);
+      ctx.strokeStyle = 'rgba(124,92,255,.25)';
+      ctx.lineWidth = 1;
+      const gx = (scrollX % 64);
+      for (let x = -gx; x < W; x += 64) {
+        ctx.beginPath();
+        ctx.moveTo(x, GROUND + 14);
+        ctx.lineTo(x, H);
+        ctx.stroke();
+      }
+      ctx.save();
+      ctx.strokeStyle = '#7c5cff';
+      ctx.shadowColor = '#7c5cff';
+      ctx.shadowBlur = 10;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(0, GROUND + 0.5);
+      ctx.lineTo(W, GROUND + 0.5);
+      ctx.stroke();
+      ctx.restore();
+
+      if (running) {
+        ctx.save();
+        ctx.globalAlpha = 0.25;
+        ctx.strokeStyle = '#4aa3ff';
+        ctx.lineWidth = 1.5;
+        for (let i = 0; i < 5; i++) {
+          const y = 40 + i * 32;
+          const x = W - ((scrollX * (0.6 + i * 0.12)) % (W + 80));
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x + 36 + speed * 2, y);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      obstacles.forEach((o) => {
+        ctx.save();
+        const g = ctx.createLinearGradient(o.x, o.y, o.x, o.y + o.h);
+        g.addColorStop(0, '#c9b8ff');
+        g.addColorStop(1, '#7c5cff');
+        ctx.fillStyle = g;
+        ctx.shadowColor = '#7c5cff';
+        ctx.shadowBlur = 12;
+        ctx.beginPath();
+        ctx.moveTo(o.x + 1, o.y + o.h - 1);
+        ctx.lineTo(o.x + o.w / 2, o.y + 1);
+        ctx.lineTo(o.x + o.w - 1, o.y + o.h - 1);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      });
+
+      const px = player.x, py = player.y, pw = player.w, ph = player.h;
+      ctx.save();
+      ctx.shadowColor = '#ffb347';
+      ctx.shadowBlur = 16;
+      const bg = ctx.createLinearGradient(px, py, px, py + ph);
+      bg.addColorStop(0, '#ffd24d');
+      bg.addColorStop(1, '#ff7a59');
+      ctx.fillStyle = bg;
+      rr(px + 2, py + 2, pw - 4, ph - 4, 8);
+      ctx.fill();
+      ctx.restore();
+      ctx.fillStyle = 'rgba(255,255,255,.95)';
+      const ex = px + pw * 0.58, ey = py + ph * 0.34;
+      ctx.beginPath();
+      ctx.arc(ex, ey, 3.2, 0, Math.PI * 2);
+      ctx.arc(ex + 7, ey, 3.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#1b1f4b';
+      ctx.beginPath();
+      ctx.arc(ex + 1, ey + 0.5, 1.4, 0, Math.PI * 2);
+      ctx.arc(ex + 8, ey + 0.5, 1.4, 0, Math.PI * 2);
+      ctx.fill();
+
+      particles.forEach((p) => {
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, p.life / 28);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+
+      if (crashFlash > 0) {
+        ctx.save();
+        ctx.globalAlpha = crashFlash / 22;
+        ctx.fillStyle = '#ff5f6d';
+        ctx.fillRect(0, 0, W, H);
+        ctx.restore();
+      }
+      ctx.restore();
     }
 
     function loop() {
@@ -350,6 +532,13 @@ gtag('config', 'G-83BMVG4W6Q');
 
     bestEl.textContent = String(best);
     reset();
+    (function idleLoop() {
+      if (!running) {
+        scrollX += 1.5;
+        draw();
+      }
+      requestAnimationFrame(idleLoop);
+    })();
   </script>
   <script src="fit.js"></script>
 </body>
