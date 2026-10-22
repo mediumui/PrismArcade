@@ -21,3 +21,6 @@ out
 node_modules
 .DS_Store
 *.log
+
+# 缩略图 SVG 中间产物（tools/gen_thumbs.py 可再生，仅 thumbs/*.jpg 需要上线）
+thumbs_svg

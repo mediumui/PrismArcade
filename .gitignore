@@ -4,3 +4,6 @@ node_modules/
 # Kwinside API key is env-only; never commit it
 .env
 out/
+
+# thumbnail SVG source (regenerate with tools/gen_thumbs.py; only thumbs/*.jpg ships)
+thumbs_svg/
