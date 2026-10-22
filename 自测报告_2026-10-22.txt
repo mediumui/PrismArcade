@@ -1,0 +1,32 @@
+Prism Arcade 全站游戏自测报告  2026-10-22
+==============================================
+工具：tools/selfcheck_games.mjs（无头 Chrome + CDP，真实鼠标/键盘输入）
+      tools/verify_sliders.mjs（规则感知定向验证，覆盖 4 个 WARN）
+环境：本地 http://localhost:8096（桌面 + 移动两种视口）
+
+OK   2048             282x282   
+WARN block-slide      304x304   no reaction to input
+WARN color-sort       380x191   no reaction to input
+OK   connect4         368x315   
+OK   flappy           240x320   
+OK   hangman          1180x386  
+OK   maze             364x364   
+OK   memory           316x316   
+OK   number-merge     304x304   
+OK   quick-tap        304x304   
+OK   quiz             514x194   
+OK   reaction-test    1150x237  
+OK   reflex-relay     304x304   
+OK   runner           726x281   
+OK   sequence         316x316   
+WARN sliding-number   304x304   no reaction to input
+OK   snake            301x301   
+OK   stack-tower      240x373   
+OK   sudoku           240x240   
+OK   tic-tac-toe      300x300   
+OK   whack            364x364   
+WARN word-merge       530x98    no reaction to input
+
+=== 22 games: 18 OK, 4 WARN, 0 FAIL ===
+WARN: block-slide, color-sort, sliding-number, word-merge
+EXIT=0
