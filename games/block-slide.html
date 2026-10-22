@@ -82,11 +82,6 @@
     "@type": "Organization",
     "name": "Prism Arcade",
     "url": "https://www.prismarcade.top/"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": 4.4,
-    "reviewCount": 640
   }
 }
 </script>
@@ -168,7 +163,7 @@ gtag('config', 'G-83BMVG4W6Q');
       <div class="play-shell" data-fit style="grid-template-columns:1fr; gap:14px">
         <div class="play-stage" data-fit>
           <div class="hud"><span>Level <strong id="level">1</strong></span><span>Moves <strong id="moves">0</strong></span></div>
-          <div class="bs-grid" id="grid"></div>
+          <div class="bs-grid" id="grid" data-board></div>
           <div class="game-controls" style="justify-content:center">
             <button class="btn btn-primary" id="next">Next Level</button>
             <button class="btn btn-ghost" data-mute-toggle>Silence</button>
@@ -213,10 +208,10 @@ gtag('config', 'G-83BMVG4W6Q');
       <section class="container seo-related" aria-label="Related games">
         <div class="section-title"><div><h2>Related Games</h2><p>Keep playing with similar free browser games on Prism Arcade.</p></div></div>
         <div class="grid related-grid">
-          <article class="card game-card"><div class="thumb">Game</div><h3>Number Slide</h3><p>Play a sliding number puzzle online with no download. Arrange tiles 1 to 8 in order, plan spatially, and beat your own move count. Free logic game.</p><a class="btn btn-ghost" href="sliding-number.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">Game</div><h3>2048</h3><p>Play 2048 online for free with no download. Slide tiles to merge equal numbers, chase the 2048 tile, and beat your best score in a fast one-screen merge puzzle.</p><a class="btn btn-ghost" href="2048.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">Game</div><h3>Easy Sudoku</h3><p>Play a fast 4x4 Sudoku online with no download. Fill the grid so each row, column and box holds 1 to 4 exactly once. A clean, one-screen logic warm-up.</p><a class="btn btn-ghost" href="sudoku.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">All</div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/sliding-number.jpg" alt="Number Slide game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Number Slide</h3><p>Play a sliding number puzzle online with no download. Arrange tiles 1 to 8 in order, plan spatially, and beat your own move count. Free logic game.</p><a class="btn btn-ghost" href="sliding-number.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/2048.jpg" alt="2048 game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>2048</h3><p>Play 2048 online for free with no download. Slide tiles to merge equal numbers, chase the 2048 tile, and beat your best score in a fast one-screen merge puzzle.</p><a class="btn btn-ghost" href="2048.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/sudoku.jpg" alt="Easy Sudoku game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Easy Sudoku</h3><p>Play a fast 4x4 Sudoku online with no download. Fill the grid so each row, column and box holds 1 to 4 exactly once. A clean, one-screen logic warm-up.</p><a class="btn btn-ghost" href="sudoku.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/_all-games.jpg" alt="All Games game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>
         </div>
       </section>
   </main>

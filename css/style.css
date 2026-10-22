@@ -66,7 +66,9 @@ section{padding:42px 0}
 .grid{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:16px}
 .card{background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px; display:flex; flex-direction:column; gap:12px; transition:transform .2s ease}
 .card:hover{transform:translateY(-5px)}
-.card .thumb{height:120px; border-radius:12px; background:linear-gradient(135deg, rgba(124,92,255,.32), rgba(255,179,71,.26)), var(--panel-2); display:grid; place-items:center; font-size:2.2rem}
+.card .thumb{height:150px; border-radius:12px; overflow:hidden; background:linear-gradient(135deg, rgba(124,92,255,.32), rgba(255,179,71,.26)), var(--panel-2); display:grid; place-items:center; font-size:2.2rem}
+.card .thumb img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .25s ease}
+.card:hover .thumb img{transform:scale(1.05)}
 .card h3{font-size:1.12rem}
 .card p{margin:0; color:var(--muted); font-size:.92rem; line-height:1.45}
 .badge-row{display:flex; flex-wrap:wrap; gap:6px}
@@ -206,7 +208,7 @@ section{padding:42px 0}
   .lead{font-size:1rem}
   section{padding:28px 0}
   .card{min-height:0; padding:14px}
-  .card .thumb{height:92px; font-size:1.7rem}
+  .card .thumb{height:112px; font-size:1.7rem}
   /* collapse card grids to one column so cards are not squeezed */
   .grid,.featured,.seo-faq .faq-grid,.seo-related .related-grid,.faq-grid{grid-template-columns:1fr; gap:12px}
   /* boards & canvas: cap width & height to the narrow phone viewport so they fit */

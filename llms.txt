@@ -1,6 +1,6 @@
 # Prism Arcade
 
-> Prism Arcade is a free, all-English web arcade offering 22 instant-play browser games — reflex, puzzle, strategy, memory, and brain-training — with no download, no sign-up, and no ads. Every game runs in the browser on mobile and desktop and starts in under a second.
+> Prism Arcade is a free, all-English web arcade offering 22 instant-play browser games — reflex, puzzle, strategy, memory, and brain-training — with no download and no sign-up. Every game runs in the browser on mobile and desktop and starts in under a second.
 
 ## Overview
 
@@ -48,7 +48,7 @@ Prism Arcade's 22 games are grouped by type below.
 ## Frequently Asked Questions
 
 **Is Prism Arcade free?**
-Yes. Every game is free to play with no payment, no in-app purchases, and no ads required to play.
+Yes. Every game is free to play with no payment, no in-app purchases, and no sign-up required to play.
 
 **Do I need to sign up or create an account?**
 No. Prism Arcade requires no account or login. You open a game and start playing immediately.

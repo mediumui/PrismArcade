@@ -111,6 +111,11 @@
   ]
 }
 </script>
+  <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="../icons/favicon-64.png" sizes="64x64" type="image/png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png" />
+  <link rel="mask-icon" href="../icons/favicon.svg" color="#7c5cff" />
   <link rel="stylesheet" href="../css/style.css" />
 
 
@@ -153,7 +158,7 @@
     <section>
       <div class="play-shell" data-fit style="grid-template-columns:1fr; gap:14px">
         <div class="play-stage st-stage" data-fit>
-          <canvas id="cv" width="360" height="560"></canvas>
+          <canvas id="cv" width="360" height="560" data-board></canvas>
           <p class="st-hint">Tap, click, or press Space to drop the slab.</p>
           <div class="game-controls" style="justify-content:center; margin-top:12px">
             <button class="btn btn-primary" id="start">Start</button>
@@ -189,10 +194,10 @@
       <section class="container seo-related" aria-label="Related games">
         <div class="section-title"><div><h2>Related Games</h2><p>Keep playing with similar free browser games on Prism Arcade.</p></div></div>
         <div class="grid related-grid">
-          <article class="card game-card"><div class="thumb">Game</div><h3>Sky Flap</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="flappy.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">Game</div><h3>Neon Snake</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="snake.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">Game</div><h3>Quick Tap Grid</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="quick-tap.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">All</div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/flappy.jpg" alt="Sky Flap game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Sky Flap</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="flappy.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/snake.jpg" alt="Neon Snake game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Neon Snake</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="snake.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/quick-tap.jpg" alt="Quick Tap Grid game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Quick Tap Grid</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="quick-tap.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/_all-games.jpg" alt="All Games game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>
         </div>
       </section>
   </main>

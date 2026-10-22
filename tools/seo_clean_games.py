@@ -101,9 +101,13 @@ def process(slug: str, desc_map: dict) -> None:
         )
         # count replaced cards (may appear in multiple pages' related lists)
 
-    # 2) Add aggregateRating to the Game JSON-LD block
-    #    Strategy: find the raw text of each JSON-LD block, try to parse it,
-    #    and if its @type == "Game" add the rating, then replace just that block.
+    # 2) REMOVE aggregateRating from the Game JSON-LD block.
+    #    Why: the site has no user rating/review system, so any ratingValue /
+    #    reviewCount here is fabricated. Google's structured-data policy treats
+    #    self-serving or invented review data as a violation and can issue a
+    #    site-wide manual action against rich results. Do NOT re-add ratings
+    #    until real, verifiable user ratings exist on the page.
+    #    See: tools/remove_fake_ratings.py (one-off cleanup for existing pages).
     for m in re.finditer(
         r'<script type="application/ld\+json">(.*?)</script>',
         text,
@@ -116,13 +120,9 @@ def process(slug: str, desc_map: dict) -> None:
             continue
         if gobj.get("@type") != "Game":
             continue
-        rating_val, review_count = RATINGS[slug]
         if "aggregateRating" not in gobj:
-            gobj["aggregateRating"] = {
-                "@type": "AggregateRating",
-                "ratingValue": rating_val,
-                "reviewCount": review_count,
-            }
+            break
+        del gobj["aggregateRating"]
         new_block = (
             '<script type="application/ld+json">\n'
             + json.dumps(gobj, ensure_ascii=False, indent=2)

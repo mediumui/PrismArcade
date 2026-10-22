@@ -111,6 +111,11 @@
   ]
 }
 </script>
+  <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="../icons/favicon-64.png" sizes="64x64" type="image/png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png" />
+  <link rel="mask-icon" href="../icons/favicon.svg" color="#7c5cff" />
   <link rel="stylesheet" href="../css/style.css" />
 
 
@@ -165,7 +170,7 @@
       <div class="play-shell" data-fit style="grid-template-columns:1fr; gap:14px">
         <div class="play-stage cs-stage" data-fit>
           <div class="hud"><span>Difficulty <strong id="diff">Easy</strong></span><span>Moves <strong id="moves">0</strong></span><span>Best <strong id="best">—</strong></span></div>
-          <div class="cs-tubes fit-target" id="tubes"></div>
+          <div class="cs-tubes fit-target" id="tubes" data-board></div>
           <div class="cs-diffbar" id="diffbar">
             <button class="chip active" data-d="easy">Easy</button>
             <button class="chip" data-d="medium">Medium</button>
@@ -206,10 +211,10 @@
       <section class="container seo-related" aria-label="Related games">
         <div class="section-title"><div><h2>Related Games</h2><p>Keep playing with similar free browser games on Prism Arcade.</p></div></div>
         <div class="grid related-grid">
-          <article class="card game-card"><div class="thumb">Game</div><h3>Number Merge</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="number-merge.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">Game</div><h3>Block Slide Puzzle</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="block-slide.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">Game</div><h3>Easy Sudoku</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="sudoku.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">All</div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/number-merge.jpg" alt="Number Merge game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Number Merge</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="number-merge.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/block-slide.jpg" alt="Block Slide Puzzle game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Block Slide Puzzle</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="block-slide.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/sudoku.jpg" alt="Easy Sudoku game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Easy Sudoku</h3><p>A free browser game on Prism Arcade.</p><a class="btn btn-ghost" href="sudoku.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/_all-games.jpg" alt="All Games game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>
         </div>
       </section>
   </main>

@@ -72,6 +72,13 @@ python tools/geo_add_howto.py
 - 必须包含新页面 URL：`https://www.prismarcade.top/games/<slug>.html`。
 - 若 sitemap 由脚本生成 → 重跑生成；若手维护 → 手动加 `<url>` 块。
 
+### G. 卡片缩略图（强制，2026-10-22 起）
+新游戏必须有真实感封面图，禁止 emoji 当缩略图。管线：
+1. `tools/gen_thumbs.py` 的 `ART` 字典里为该游戏写一个 `art_<slug>()` SVG 场景函数（复用 SHELL 背景/星星/发光，配色走紫橙霓虹系）→ 跑 `python tools/gen_thumbs.py`。
+2. 渲染：`node tools/render_thumbs.mjs`（需本机 Chrome；输出 `thumbs/<slug>.jpg` 640×360）。
+3. 接入页面：`python tools/apply_thumbs.py`（幂等，自动替换 index/games 卡片的 thumb）。
+4. 页面主体元素必须带 `data-board` 属性（新页面手写时直接加；存量已由 `tools/tag_board.py` 全量打标）。这是截图/未来工具定位"可玩区域"的唯一契约。
+
 ### F. 美术质量（强制，禁止只做"贴块"）
 新增游戏**不允许**只画裸矩形 / 裸三角形 / 单色色块当主体就交付（早期 runner 就是"一个正方形+三角形"被用户点名要求重做）。游戏画面主体（canvas 或 DOM）必须达到下列基准，参考已升级的 9 款（snake / stack-tower / maze / flappy / whack / reflex-relay / sequence / block-slide / quick-tap）：
 

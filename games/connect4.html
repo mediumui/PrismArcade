@@ -82,11 +82,6 @@
     "@type": "Organization",
     "name": "Prism Arcade",
     "url": "https://www.prismarcade.top/"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": 4.8,
-    "reviewCount": 1310
   }
 }
 </script>
@@ -160,7 +155,7 @@ gtag('config', 'G-83BMVG4W6Q');
       <div class="play-shell" data-fit>
         <div class="play-stage" data-fit>
           <div class="hud"><span>Turn <strong id="turn">Red</strong></span><span>Winner <strong id="result">—</strong></span></div>
-          <div class="memory-grid" id="board" style="grid-template-columns:repeat(7,1fr); aspect-ratio:7/6"></div>
+          <div class="memory-grid" id="board" style="grid-template-columns:repeat(7,1fr); aspect-ratio:7/6" data-board></div>
           <div class="game-controls"><button class="btn btn-ghost" id="reset">New Game</button><button class="btn btn-ghost" data-mute-toggle>Silence</button></div>
         </div>
         <aside class="side-panel">
@@ -202,10 +197,10 @@ gtag('config', 'G-83BMVG4W6Q');
       <section class="container seo-related" aria-label="Related games">
         <div class="section-title"><div><h2>Related Games</h2><p>Keep playing with similar free browser games on Prism Arcade.</p></div></div>
         <div class="grid related-grid">
-          <article class="card game-card"><div class="thumb">Game</div><h3>Tic Tac Toe</h3><p>Play free two-player tic tac toe online with no download. Sharp logic duels with instant scoring and quick rematch pacing. No sign-up required.</p><a class="btn btn-ghost" href="tic-tac-toe.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">Game</div><h3>Number Slide</h3><p>Play a sliding number puzzle online with no download. Arrange tiles 1 to 8 in order, plan spatially, and beat your own move count. Free logic game.</p><a class="btn btn-ghost" href="sliding-number.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">Game</div><h3>Easy Sudoku</h3><p>Play a fast 4x4 Sudoku online with no download. Fill the grid so each row, column and box holds 1 to 4 exactly once. A clean, one-screen logic warm-up.</p><a class="btn btn-ghost" href="sudoku.html">Play</a></article>
-          <article class="card game-card"><div class="thumb">All</div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/tic-tac-toe.jpg" alt="Tic Tac Toe game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Tic Tac Toe</h3><p>Play free two-player tic tac toe online with no download. Sharp logic duels with instant scoring and quick rematch pacing. No sign-up required.</p><a class="btn btn-ghost" href="tic-tac-toe.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/sliding-number.jpg" alt="Number Slide game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Number Slide</h3><p>Play a sliding number puzzle online with no download. Arrange tiles 1 to 8 in order, plan spatially, and beat your own move count. Free logic game.</p><a class="btn btn-ghost" href="sliding-number.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/sudoku.jpg" alt="Easy Sudoku game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Easy Sudoku</h3><p>Play a fast 4x4 Sudoku online with no download. Fill the grid so each row, column and box holds 1 to 4 exactly once. A clean, one-screen logic warm-up.</p><a class="btn btn-ghost" href="sudoku.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/_all-games.jpg" alt="All Games game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>
         </div>
       </section>
   </main>
@@ -215,6 +210,23 @@ gtag('config', 'G-83BMVG4W6Q');
     .c4-cell.red{background:rgba(255,82,82,.85)}
     .c4-cell.blue{background:rgba(91,182,255,.85)}
     .c4-cell.win{outline:3px solid var(--good); outline-offset:2px}
+    /* Landing preview = NEXT disc, drawn as a dashed outline so it can never
+       be mistaken for a disc that was just played. */
+    /* highlight must NOT set a background: it is applied per column and would
+       otherwise repaint already-played discs as empty slots */
+    .c4-cell.col-hot{box-shadow:inset 0 0 0 1px rgba(124,92,255,.45)}
+    .c4-cell.ghost-red{background:rgba(255,82,82,.14); outline:2px dashed rgba(255,82,82,.9); outline-offset:-4px}
+    .c4-cell.ghost-blue{background:rgba(91,182,255,.14); outline:2px dashed rgba(91,182,255,.9); outline-offset:-4px}
+    /* The disc you just dropped: falls in from the top, then keeps a white
+       ring so "my move" is obvious next to the dashed preview. */
+    .c4-cell.last-drop{animation:c4-fall .42s cubic-bezier(.34,.9,.4,1); box-shadow:0 0 0 2px rgba(255,255,255,.7), 0 0 16px rgba(255,255,255,.35)}
+    @keyframes c4-fall{
+      0%{transform:translateY(-330%); opacity:.25}
+      55%{transform:translateY(0); opacity:1}
+      100%{transform:translateY(0)}
+    }
+    @media (prefers-reduced-motion:reduce){ .c4-cell.last-drop{animation:none} }
+    .c4-cell{cursor:pointer}
   </style>
   <script src="_shared.js"></script>
   <script>
@@ -228,13 +240,40 @@ gtag('config', 'G-83BMVG4W6Q');
     let current = 'red';
     let active = true;
     let cells = [];
+    let hoveredCol = -1;
+    let lastDrop = null;
 
     function emptyBoard() {
       board = Array.from({ length: ROWS }, () => Array(COLS).fill(''));
       active = true;
       current = 'red';
+      lastDrop = null;
       turnEl.textContent = 'Red';
       resultEl.textContent = '—';
+    }
+
+    // lowest empty row of a column, or -1 when the column is full
+    function nextRow(col) {
+      for (let r = ROWS - 1; r >= 0; r -= 1) if (!board[r][col]) return r;
+      return -1;
+    }
+
+    function clearPreview() {
+      cells.forEach((el) => el.classList.remove('col-hot', 'ghost-red', 'ghost-blue'));
+    }
+
+    // hovering anywhere in a column highlights it and marks the landing cell
+    function previewCol(col) {
+      hoveredCol = col;
+      clearPreview();
+      if (!active) return;
+      const row = nextRow(col);
+      if (row < 0) return;
+      // only empty slots get the column tint — never a disc already played
+      for (let r = 0; r < ROWS; r += 1) {
+        if (!board[r][col] && r !== row) cells[r * COLS + col].classList.add('col-hot');
+      }
+      cells[row * COLS + col].classList.add(current === 'red' ? 'ghost-red' : 'ghost-blue');
     }
 
     function render() {
@@ -247,10 +286,15 @@ gtag('config', 'G-83BMVG4W6Q');
           cell.dataset.r = r;
           cell.dataset.c = c;
           cell.addEventListener('click', () => drop(c));
+          cell.addEventListener('mouseenter', () => previewCol(c));
           boardEl.appendChild(cell);
           cells.push(cell);
         }
       }
+      // render() rebuilds every cell, so re-apply transient state:
+      // the ring on the disc just played, and the preview under the cursor
+      if (lastDrop) cells[lastDrop[0] * COLS + lastDrop[1]].classList.add('last-drop');
+      if (hoveredCol >= 0) previewCol(hoveredCol);
     }
 
     function drop(col) {
@@ -258,6 +302,7 @@ gtag('config', 'G-83BMVG4W6Q');
       for (let row = ROWS - 1; row >= 0; row -= 1) {
         if (!board[row][col]) {
           board[row][col] = current;
+          lastDrop = [row, col];
           const winLine = checkWin(row, col);
           if (winLine) {
             active = false;
@@ -265,18 +310,21 @@ gtag('config', 'G-83BMVG4W6Q');
             resultEl.textContent = `${name} wins`;
             PA.sfx.win();
             PA.toast(`${name} wins!`, 'good');
+            render();
+            // highlight AFTER render: render() rebuilds the cell nodes
             winLine.forEach(([r, c]) => cells[r * COLS + c].classList.add('win'));
           } else if (board.every((line) => line.every(Boolean))) {
             active = false;
             resultEl.textContent = 'Draw';
             PA.sfx.lose();
             PA.toast('Draw.', 'bad');
+            render();
           } else {
             PA.sfx.move();
             current = current === 'red' ? 'blue' : 'red';
             turnEl.textContent = current === 'red' ? 'Red' : 'Blue';
+            render();
           }
-          render();
           return;
         }
       }
@@ -284,6 +332,7 @@ gtag('config', 'G-83BMVG4W6Q');
 
     function checkWin(r, c) {
       const color = board[r][c];
+      if (!color) return null;
       const dirs = [[0,1],[1,0],[1,1],[-1,1]];
       for (const [dr, dc] of dirs) {
         const line = [[r, c]];
@@ -298,10 +347,13 @@ gtag('config', 'G-83BMVG4W6Q');
         }
         if (line.length >= 4) return line;
       }
-      return [];
+      // must be null, not []: an empty array is truthy in JS and would
+      // make every drop look like a win
+      return null;
     }
 
     resetBtn.addEventListener('click', () => { emptyBoard(); render(); });
+    boardEl.addEventListener('mouseleave', () => { hoveredCol = -1; clearPreview(); });
     emptyBoard();
     render();
   </script>
