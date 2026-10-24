@@ -815,5 +815,125 @@
         "file": "sequence.html"
       }
     ]
+  },
+  "bubble-pop.html": {
+    "name": "Bubble Pop",
+    "title": "Play Bubble Pop — Bubble Shooter Game Online No Download | Prism Arcade",
+    "desc": "Play Bubble Pop online for free with no download. Aim the cannon, shoot colored bubbles, and match three or more to clear the board in this calm bubble shooter.",
+    "og_title": "Bubble Pop — Bubble Shooter Game Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Bubble Pop is a free online bubble shooter that runs in the browser with no download or account. Aim the cannon at the bottom, fire a colored bubble, and connect three or more of the same color to pop them. Clear the whole board to win, and use wall bounces to reach tricky spots. It is a relaxing, one-screen puzzle built for short breaks.",
+    "faq": [
+      {
+        "q": "Can I play Bubble Pop online for free?",
+        "a": "Yes. Bubble Pop is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Bubble Pop?",
+        "a": "Aim with your mouse or finger and click or tap to fire the bubble. Connect three or more bubbles of the same color to pop them."
+      },
+      {
+        "q": "What is the goal of Bubble Pop?",
+        "a": "Clear every bubble from the board. Bubbles that are no longer attached to the top fall away for bonus points."
+      }
+    ],
+    "related": [
+      {
+        "name": "Color Sort Puzzle",
+        "file": "color-sort.html",
+        "desc": "Pour colored water between tubes and group every color into its own tube in this calm sorting puzzle."
+      },
+      {
+        "name": "2048",
+        "file": "2048.html",
+        "desc": "Slide tiles to merge equal numbers, chase the 2048 tile, and beat your best score in a fast one-screen merge puzzle."
+      },
+      {
+        "name": "Easy Sudoku",
+        "file": "sudoku.html",
+        "desc": "A fast 4x4 logic warm-up. Fill the grid so every row, column and box holds 1 to 4 exactly once."
+      }
+    ]
+  },
+  "brick-breaker.html": {
+    "name": "Brick Breaker",
+    "title": "Play Brick Breaker Online No Download - Arcade Game | Prism Arcade",
+    "desc": "Play Brick Breaker online for free with no download. Move the paddle, bounce the neon ball, and smash every brick across endless levels.",
+    "og_title": "Brick Breaker Online No Download | Prism Arcade",
+    "category": "ActionGame",
+    "playmode": "SinglePlayer",
+    "overview": "Brick Breaker is a free online arcade game that runs in the browser with no download or account. Move the glowing paddle to keep the ball alive, bounce it into the brick wall, and clear every brick to win. Power-ups drop as you play, and your best score is saved on this device for instant replay.",
+    "faq": [
+      {
+        "q": "Can I play Brick Breaker online for free?",
+        "a": "Yes. Brick Breaker is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I control Brick Breaker?",
+        "a": "Move the paddle with your mouse, your finger on touch, or the left and right arrow keys. Click, tap, or press Space to launch the ball."
+      },
+      {
+        "q": "What is the goal of Brick Breaker?",
+        "a": "Smash every brick on the board with the bouncing ball. Clear the wall to win, and chase the highest score before you run out of lives."
+      }
+    ],
+    "related": [
+      {
+        "name": "Sky Flap",
+        "file": "flappy.html",
+        "desc": "Play Sky Flap online for free with no download. Tap to flap, glide the bird through the pipes, and chase your longest run."
+      },
+      {
+        "name": "Neon Snake",
+        "file": "snake.html",
+        "desc": "Play the classic snake game online with no download. Arrow keys or touch controls, a score chase loop, and a speed ramp built for quick reflex sessions."
+      },
+      {
+        "name": "Stack Tower",
+        "file": "stack-tower.html",
+        "desc": "Play Stack Tower online for free with no download. Drop sliding blocks to build the tallest tower, trim the overhang, and chase a new best height."
+      }
+    ]
+  },
+  "minesweeper.html": {
+    "name": "Minesweeper",
+    "title": "Play Minesweeper Online No Download - Logic Puzzle | Prism Arcade",
+    "desc": "Play Minesweeper online for free with no download. Reveal safe tiles, flag the mines, and clear the grid using pure logic.",
+    "og_title": "Minesweeper Online No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Minesweeper is a free online logic puzzle that runs in the browser with no download or account. Left-click to reveal a tile and read the numbers that tell you how many mines sit nearby, and right-click to flag a suspected mine. Clear every safe tile to win, and your best time is saved on this device.",
+    "faq": [
+      {
+        "q": "Can I play Minesweeper online for free?",
+        "a": "Yes. Minesweeper is free to play directly in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I play Minesweeper?",
+        "a": "Left-click a tile to reveal it. Each number shows how many mines are in the eight tiles around it. Right-click to flag a tile you think hides a mine."
+      },
+      {
+        "q": "What is the goal of Minesweeper?",
+        "a": "Reveal every tile that does not contain a mine. Use the numbers to deduce mine locations and flag them before you click one."
+      }
+    ],
+    "related": [
+      {
+        "name": "Easy Sudoku",
+        "file": "sudoku.html",
+        "desc": "A fast 4x4 logic warm-up. Fill the grid so every row, column and box holds 1 to 4 exactly once."
+      },
+      {
+        "name": "Memory Pairs",
+        "file": "memory.html",
+        "desc": "Play a free memory matching game online with no download. Flip two cards at a time, track your moves, and clear the board in as few flips as possible."
+      },
+      {
+        "name": "Brain Quiz",
+        "file": "quiz.html",
+        "desc": "Test your knowledge with Brain Quiz, a free quiz game with mixed topics, instant feedback, and quick replay value."
+      }
+    ]
   }
 }

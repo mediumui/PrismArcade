@@ -21,10 +21,9 @@ import urllib.error
 
 BASE = sys.argv[1].rstrip("/") if len(sys.argv) > 1 else "http://localhost:8080"
 NEW_GAMES = [
-    "/games/color-sort.html",
-    "/games/stack-tower.html",
-    "/games/hangman.html",
-    "/games/maze.html",
+    "/games/bubble-pop.html",
+    "/games/brick-breaker.html",
+    "/games/minesweeper.html",
 ]
 
 

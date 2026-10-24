@@ -150,6 +150,24 @@ HOWTO = {
         "Each maze is random, so find the route before you run out of time.",
         "Tap Show Path to reveal the shortest route to the exit.",
     ],
+    "bubble-pop.html": [
+        "Aim the cannon with your mouse or finger — the dotted line shows your shot, including wall bounces.",
+        "Click or tap to fire the loaded bubble toward the cluster above.",
+        "Connect three or more bubbles of the same color to pop them.",
+        "Clear every bubble from the board to win; detached bubbles fall for bonus points.",
+    ],
+    "brick-breaker.html": [
+        "Move the paddle with your mouse, finger, or the left and right arrow keys.",
+        "Click, tap, or press Space to launch the ball from the paddle.",
+        "Bounce the ball into the brick wall to smash every brick.",
+        "Catch the power-ups that drop and clear the board to win.",
+    ],
+    "minesweeper.html": [
+        "Left-click a tile to reveal it and read the number it shows.",
+        "Each number tells you how many mines are hidden in the eight tiles around it.",
+        "Right-click to flag a tile where you believe a mine is buried.",
+        "Reveal every safe tile to win — never click a flagged mine.",
+    ],
 }
 
 

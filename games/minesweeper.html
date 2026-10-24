@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../icons/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="../icons/favicon-64.png" sizes="64x64" type="image/png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png" />
+    <link rel="mask-icon" href="../icons/favicon.svg" color="#7c5cff" />
+  <title>Play Minesweeper Online No Download - Logic Puzzle | Prism Arcade</title>
+  <meta name="description" content="Play Minesweeper online for free with no download. Reveal safe tiles, flag the mines, and clear the grid using pure logic." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.prismarcade.top/games/minesweeper.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Minesweeper Online No Download | Prism Arcade" />
+  <meta property="og:description" content="Play Minesweeper online for free with no download. Reveal safe tiles, flag the mines, and clear the grid using pure logic." />
+  <meta property="og:url" content="https://www.prismarcade.top/games/minesweeper.html" />
+  <meta property="og:site_name" content="Prism Arcade" />
+  <meta property="og:image" content="https://www.prismarcade.top/og/games/minesweeper.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Minesweeper Online No Download | Prism Arcade" />
+  <meta property="twitter:description" content="Play Minesweeper online for free with no download. Reveal safe tiles, flag the mines, and clear the grid." />
+  <meta name="twitter:image" content="https://www.prismarcade.top/og/games/minesweeper.jpg" />
+  <meta name="twitter:site" content="@prismarcade" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Play Minesweeper Online No Download - Logic Puzzle | Prism Arcade",
+  "url": "https://www.prismarcade.top/games/minesweeper.html",
+  "description": "Play Minesweeper online for free with no download. Reveal safe tiles, flag the mines, and clear the grid using pure logic.",
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.prismarcade.top/" },
+    { "@type": "ListItem", "position": 2, "name": "Games", "item": "https://www.prismarcade.top/index.html#games" },
+    { "@type": "ListItem", "position": 3, "name": "Minesweeper", "item": "https://www.prismarcade.top/games/minesweeper.html" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Game",
+  "name": "Minesweeper",
+  "url": "https://www.prismarcade.top/games/minesweeper.html",
+  "description": "Play Minesweeper online for free with no download. Reveal safe tiles, flag the mines, and clear the grid using pure logic.",
+  "gameCategory": "PuzzleGame",
+  "playMode": "SinglePlayer",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "offers": { "@type": "Offer", "price": 0, "priceCurrency": "USD", "url": "https://www.prismarcade.top/games/minesweeper.html" },
+  "brand": { "@type": "Organization", "name": "Prism Arcade", "url": "https://www.prismarcade.top/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Can I play Minesweeper online for free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Minesweeper is free to play directly in the browser with no download, no sign-up, and no payment." } },
+    { "@type": "Question", "name": "How do I play Minesweeper?", "acceptedAnswer": { "@type": "Answer", "text": "Left-click a tile to reveal it. Each number shows how many mines are in the eight tiles around it. Right-click to flag a tile you think hides a mine." } },
+    { "@type": "Question", "name": "What is the goal of Minesweeper?", "acceptedAnswer": { "@type": "Answer", "text": "Reveal every tile that does not contain a mine. Use the numbers to deduce mine locations and flag them before you click one." } }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    #game{width:min(540px, 90vw, 66vh); height:auto; aspect-ratio:1; margin-inline:auto; display:block; background:#0b0e1c; border-radius:14px}
+    .play-stage{min-height:0}
+    .hero{padding:12px 0 6px}
+    .hero .lead{margin-top:6px; font-size:.95rem}
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWV1GWSD3"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3ZWV1GWSD3');
+</script>
+</head>
+<body class="game-page">
+    <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="../index.html" aria-label="Prism Arcade home">
+      <span class="brand-mark"><svg viewBox="0 0 256 256" width="20" height="20" aria-hidden="true" focusable="false"><defs><linearGradient id="bmg" x1="0.2" y1="1" x2="0.8" y2="0"><stop offset="0" stop-color="#ff5f6d"/><stop offset="0.18" stop-color="#ffb347"/><stop offset="0.36" stop-color="#ffd24d"/><stop offset="0.55" stop-color="#36d399"/><stop offset="0.74" stop-color="#4aa3ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs><path d="M128 64 L52 188 L204 188 Z" fill="url(#bmg)" stroke="#ffffff" stroke-opacity="0.92" stroke-width="12" stroke-linejoin="round"/><path d="M188 58 L190.4 66.6 L199 69 L190.4 71.4 L188 80 L185.6 71.4 L177 69 L185.6 66.6 Z" fill="#ffffff"/></svg></span>
+      <span>Prism Arcade</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#games">Games</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy.html">Privacy</a>
+    </nav>
+    <a class="btn btn-primary" href="../index.html#games">Start Playing</a>
+  </div>
+</header>
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">Logic Puzzle</p>
+      <h1>Minesweeper</h1>
+      <p class="lead">Read the numbers, deduce the mines, and clear the whole grid with pure logic. Your first click is always safe, and your best time is saved.</p>
+    </section>
+    <section>
+      <div class="play-shell" data-fit>
+        <div class="play-stage" data-fit>
+          <div class="hud"><span>Mines <strong id="mines">0</strong></span><span>Time <strong id="time">0</strong></span><span>Best <strong id="best">—</strong></span></div>
+          <canvas id="game" data-fit-target width="540" height="540" data-board></canvas>
+          <div class="snake-controls">
+            <button class="wide" id="startBtn">New Game</button>
+            <button class="wide" id="flagBtn">Flag: Off</button>
+            <button class="wide" data-mute-toggle>Sound: On</button>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h3>Game Notes</h3>
+          <p>Left-click a tile to reveal it. Each number tells you how many mines sit in the eight tiles around it. Right-click (or use Flag mode on mobile) to mark a suspected mine.</p>
+          <ul class="list">
+            <li><strong>First click</strong> is always safe and opens an area.</li>
+            <li><strong>Reveal</strong> every safe tile to win.</li>
+            <li><strong>Flag</strong> mines to avoid clicking them.</li>
+            <li>Chord by clicking a satisfied number to clear its neighbors.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  <!-- SEO:INJECTED v1 -->
+<!-- SEO:CLEANED v2 -->
+
+      <section class="container seo-overview" aria-label="Game overview">
+        <div class="hero-card"><h3>About Minesweeper</h3><p>Minesweeper is a free online logic puzzle that runs in the browser with no download or account. Left-click to reveal a tile and read the numbers that tell you how many mines sit nearby, and right-click to flag a suspected mine. Clear every safe tile to win, and your best time is saved on this device.</p></div>
+      </section>
+            <!-- GEO:HOWTO v1 -->
+      <section class="container seo-howto" aria-label="How to play">
+        <div class="section-title"><div><h2>How to Play</h2><p>Quick steps to start Minesweeper on Prism Arcade.</p></div></div>
+        <ul class="list">
+          <li><strong>1.</strong> Left-click a tile to reveal it and read the number it shows.</li>
+          <li><strong>2.</strong> Each number tells you how many mines are hidden in the eight tiles around it.</li>
+          <li><strong>3.</strong> Right-click to flag a tile where you believe a mine is buried.</li>
+          <li><strong>4.</strong> Reveal every safe tile to win — never click a flagged mine.</li>
+        </ul>
+      </section>
+
+<section class="container seo-faq" aria-label="Frequently asked questions">
+        <div class="section-title"><div><h2>FAQ</h2><p>Common questions players ask.</p></div></div>
+        <div class="faq-grid">
+          <article class="card"><h3>Can I play Minesweeper online for free?</h3><p>Yes. Minesweeper is free to play directly in the browser with no download, no sign-up, and no payment.</p></article>
+          <article class="card"><h3>How do I play Minesweeper?</h3><p>Left-click a tile to reveal it. Each number shows how many mines are in the eight tiles around it. Right-click to flag a tile you think hides a mine.</p></article>
+          <article class="card"><h3>What is the goal of Minesweeper?</h3><p>Reveal every tile that does not contain a mine. Use the numbers to deduce mine locations and flag them before you click one.</p></article>
+        </div>
+      </section>
+      <section class="container seo-related" aria-label="Related games">
+        <div class="section-title"><div><h2>Related Games</h2><p>Keep playing with similar free browser games on Prism Arcade.</p></div></div>
+        <div class="grid related-grid">
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/sudoku.jpg" alt="Easy Sudoku game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Easy Sudoku</h3><p>A fast 4x4 logic warm-up. Fill the grid so every row, column and box holds 1 to 4 exactly once.</p><a class="btn btn-ghost" href="sudoku.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/memory.jpg" alt="Memory Pairs game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Memory Pairs</h3><p>Play a free memory matching game online with no download. Flip two cards at a time, track your moves, and clear the board in as few flips as possible.</p><a class="btn btn-ghost" href="memory.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/quiz.jpg" alt="Brain Quiz game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Brain Quiz</h3><p>Test your knowledge with Brain Quiz, a free quiz game with mixed topics, instant feedback, and quick replay value.</p><a class="btn btn-ghost" href="quiz.html">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/_all-games.jpg" alt="All Games game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../index.html#games">Browse</a></article>
+        </div>
+      </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free arcade games for players around the world.</p></div><div><h3>Related</h3><ul><li><a href="sudoku.html">Easy Sudoku</a></li><li><a href="memory.html">Memory Pairs</a></li><li><a href="quiz.html">Brain Quiz</a></li><li><a href="../index.html">Back to Home</a></li></ul></div></div><div class="footer-bottom"><a href="https://www.pickworth.top/" target="_blank" rel="noopener">PickWorth &mdash; Honest AI Tool Reviews</a></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+  (function () {
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+    const minesEl = document.getElementById('mines');
+    const timeEl = document.getElementById('time');
+    const bestEl = document.getElementById('best');
+    const startBtn = document.getElementById('startBtn');
+    const flagBtn = document.getElementById('flagBtn');
+
+    const W = canvas.width, H = canvas.height;
+    const N = 9, MINES = 12, PAD = 9;
+    const CS = Math.floor((W - PAD * 2) / N);
+    const BOARD = CS * N, OFF = (W - BOARD) / 2;
+    const NUMCOL = ['', '#4aa3ff', '#36d399', '#ff5f6d', '#7c5cff', '#ffb347', '#36d399', '#ffd24d', '#ff5f6d'];
+
+    let grid, state, flags, revealedCount, startTime, elapsed, best, flagMode, flash, particles;
+
+    best = Number(localStorage.getItem('mineBest') || 0);
+    bestEl.textContent = best ? best + 's' : '—';
+
+    function cellRect(r, c) { return { x: OFF + c * CS + 3, y: OFF + r * CS + 3, s: CS - 6 }; }
+    function cellCenter(r, c) { return { x: OFF + c * CS + CS / 2, y: OFF + r * CS + CS / 2 }; }
+
+    function reset() {
+      grid = Array.from({ length: N }, () => Array.from({ length: N }, () => ({
+        mine: false, revealed: false, flagged: false, adj: 0
+      })));
+      state = 'playing'; flags = 0; revealedCount = 0; startTime = 0; elapsed = 0;
+      flash = 0; particles = []; flagMode = false; flagBtn.textContent = 'Flag: Off';
+      minesEl.textContent = MINES; timeEl.textContent = 0;
+      draw();
+    }
+
+    function placeMines(safeR, safeC) {
+      const forbidden = new Set();
+      for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+        const rr = safeR + dr, cc = safeC + dc;
+        if (rr >= 0 && rr < N && cc >= 0 && cc < N) forbidden.add(rr + ',' + cc);
+      }
+      let placed = 0;
+      while (placed < MINES) {
+        const r = Math.floor(Math.random() * N), c = Math.floor(Math.random() * N);
+        if (grid[r][c].mine || forbidden.has(r + ',' + c)) continue;
+        grid[r][c].mine = true; placed++;
+      }
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+        if (grid[r][c].mine) continue;
+        let n = 0;
+        for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+          const rr = r + dr, cc = c + dc;
+          if (rr >= 0 && rr < N && cc >= 0 && cc < N && grid[rr][cc].mine) n++;
+        }
+        grid[r][c].adj = n;
+      }
+    }
+
+    function reveal(r, c) {
+      if (state !== 'playing' || grid[r][c].revealed || grid[r][c].flagged) return;
+      if (startTime === 0) { startTime = performance.now(); placeMines(r, c); }
+      if (grid[r][c].mine) { lose(r, c); return; }
+      const stack = [[r, c]];
+      while (stack.length) {
+        const [cr, cc] = stack.pop();
+        const cell = grid[cr][cc];
+        if (cell.revealed || cell.flagged || cell.mine) continue;
+        cell.revealed = true; revealedCount++;
+        if (cell.adj === 0) {
+          for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+            const rr = cr + dr, cc2 = cc + dc;
+            if (rr >= 0 && rr < N && cc2 >= 0 && cc2 < N && !grid[rr][cc2].revealed && !grid[rr][cc2].mine)
+              stack.push([rr, cc2]);
+          }
+        }
+      }
+      PA.sfx.flip();
+      if (revealedCount === N * N - MINES) win();
+    }
+
+    function flag(r, c) {
+      if (state !== 'playing' || grid[r][c].revealed) return;
+      grid[r][c].flagged = !grid[r][c].flagged;
+      flags += grid[r][c].flagged ? 1 : -1;
+      minesEl.textContent = MINES - flags;
+      PA.sfx.click();
+    }
+
+    // chord: clicking a satisfied number reveals unflagged neighbors
+    function chord(r, c) {
+      const cell = grid[r][c];
+      if (!cell.revealed || cell.adj === 0) return;
+      let flagged = 0; const neigh = [];
+      for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+        const rr = r + dr, cc = c + dc;
+        if (rr < 0 || rr >= N || cc < 0 || cc >= N) continue;
+        if (grid[rr][cc].flagged) flagged++;
+        else if (!grid[rr][cc].revealed) neigh.push([rr, cc]);
+      }
+      if (flagged === cell.adj) for (const [rr, cc] of neigh) reveal(rr, cc);
+    }
+
+    function lose(hr, hc) {
+      state = 'over';
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) if (grid[r][c].mine) grid[r][c].revealed = true;
+      grid[hr][hc].hit = true; flash = 18; PA.sfx.lose();
+      PA.toast('Boom! A mine went off.', 'bad');
+    }
+
+    function win() {
+      state = 'win';
+      elapsed = Math.floor((performance.now() - startTime) / 1000);
+      if (!best || elapsed < best) { best = elapsed; localStorage.setItem('mineBest', String(best)); bestEl.textContent = best + 's'; }
+      PA.sfx.win(); PA.toast('Solved in ' + elapsed + 's!', 'good');
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+        if (!grid[r][c].mine) { const p = cellCenter(r, c); for (let i = 0; i < 4; i++) burst(p.x, p.y, '#36d399'); }
+      }
+    }
+
+    function burst(x, y, color) {
+      for (let i = 0; i < 6; i++) {
+        const a = Math.random() * 6.28, s = 1 + Math.random() * 2.4;
+        particles.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, life: 22, color });
+      }
+    }
+
+    function draw() {
+      ctx.fillStyle = '#0b0e1c'; ctx.fillRect(0, 0, W, H);
+      ctx.strokeStyle = 'rgba(124,92,255,.06)'; ctx.lineWidth = 1;
+      for (let x = 0; x <= W; x += 30) { ctx.beginPath(); ctx.moveTo(x + .5, 0); ctx.lineTo(x + .5, H); ctx.stroke(); }
+
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
+        const cell = grid[r][c]; const { x, y, s } = cellRect(r, c);
+        if (!cell.revealed) {
+          // unrevealed tile: neon panel
+          ctx.save(); ctx.shadowColor = '#7c5cff'; ctx.shadowBlur = cell.flagged ? 10 : 6;
+          const g = ctx.createLinearGradient(x, y, x, y + s);
+          g.addColorStop(0, '#262c54'); g.addColorStop(1, '#1a1f3e');
+          ctx.fillStyle = g; roundRect(x, y, s, s, 7); ctx.fill();
+          ctx.restore();
+          ctx.strokeStyle = 'rgba(124,92,255,.35)'; ctx.lineWidth = 1;
+          roundRect(x, y, s, s, 7); ctx.stroke();
+          if (cell.flagged) drawFlag(x + s / 2, y + s / 2);
+        } else if (cell.mine) {
+          ctx.save(); ctx.shadowColor = '#ff5f6d'; ctx.shadowBlur = 16;
+          ctx.fillStyle = cell.hit ? '#ff5f6d' : '#2a2030';
+          ctx.beginPath(); ctx.arc(x + s / 2, y + s / 2, s * 0.3, 0, 6.28); ctx.fill();
+          ctx.restore();
+          drawSpikes(x + s / 2, y + s / 2, s * 0.42);
+        } else {
+          // revealed empty / number
+          ctx.fillStyle = '#11152e'; roundRect(x, y, s, s, 7); ctx.fill();
+          if (cell.adj > 0) {
+            ctx.save(); ctx.shadowColor = NUMCOL[cell.adj]; ctx.shadowBlur = 8;
+            ctx.fillStyle = NUMCOL[cell.adj]; ctx.font = 'bold ' + Math.floor(s * 0.5) + 'px Inter, Arial';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(cell.adj, x + s / 2, y + s / 2 + 1); ctx.restore();
+          }
+        }
+      }
+
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy; p.vy += 0.08; p.life--;
+        ctx.globalAlpha = Math.max(0, p.life / 22); ctx.fillStyle = p.color;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 2.4, 0, 6.28); ctx.fill();
+      });
+      ctx.globalAlpha = 1; particles = particles.filter(p => p.life > 0);
+
+      if (flash > 0) { ctx.save(); ctx.globalAlpha = flash / 20; ctx.fillStyle = '#ff5f6d'; ctx.fillRect(0, 0, W, H); ctx.restore(); flash--; }
+      if (state === 'playing' && startTime) { elapsed = Math.floor((performance.now() - startTime) / 1000); timeEl.textContent = elapsed; }
+    }
+
+    function roundRect(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+    }
+    function drawFlag(cx, cy) {
+      ctx.save(); ctx.shadowColor = '#ffb347'; ctx.shadowBlur = 10;
+      ctx.strokeStyle = '#ffd24d'; ctx.lineWidth = 2.4;
+      ctx.beginPath(); ctx.moveTo(cx, cy - 10); ctx.lineTo(cx, cy + 10); ctx.stroke();
+      ctx.fillStyle = '#ff5f6d'; ctx.beginPath();
+      ctx.moveTo(cx, cy - 10); ctx.lineTo(cx + 12, cy - 5); ctx.lineTo(cx, cy); ctx.closePath(); ctx.fill();
+      ctx.restore();
+    }
+    function drawSpikes(cx, cy, R) {
+      ctx.strokeStyle = 'rgba(255,95,109,.7)'; ctx.lineWidth = 2;
+      for (let i = 0; i < 8; i++) {
+        const a = i * Math.PI / 4;
+        ctx.beginPath(); ctx.moveTo(cx + Math.cos(a) * R * 0.55, cy + Math.sin(a) * R * 0.55);
+        ctx.lineTo(cx + Math.cos(a) * R, cy + Math.sin(a) * R); ctx.stroke();
+      }
+    }
+
+    function loop() { draw(); requestAnimationFrame(loop); }
+
+    function cellFromEvent(e) {
+      const rect = canvas.getBoundingClientRect();
+      const px = (e.clientX - rect.left) * (W / rect.width);
+      const py = (e.clientY - rect.top) * (H / rect.height);
+      const c = Math.floor((px - OFF) / CS), r = Math.floor((py - OFF) / CS);
+      if (r < 0 || r >= N || c < 0 || c >= N) return null;
+      return [r, c];
+    }
+    canvas.addEventListener('mousedown', (e) => {
+      const cell = cellFromEvent(e); if (!cell) return; const [r, c] = cell;
+      if (e.button === 2) { flag(r, c); return; }
+      if (flagMode) flag(r, c); else { reveal(r, c); if (state === 'playing' && grid[r][c].revealed && grid[r][c].adj > 0) chord(r, c); }
+    });
+    canvas.addEventListener('contextmenu', (e) => { e.preventDefault(); const cell = cellFromEvent(e); if (cell) flag(cell[0], cell[1]); });
+    canvas.addEventListener('touchstart', (e) => {
+      e.preventDefault(); const t = e.touches[0]; const cell = cellFromEvent(t); if (!cell) return;
+      const [r, c] = cell;
+      if (flagMode) flag(r, c); else { reveal(r, c); if (state === 'playing' && grid[r][c].revealed && grid[r][c].adj > 0) chord(r, c); }
+    }, { passive: false });
+    flagBtn.addEventListener('click', () => { flagMode = !flagMode; flagBtn.textContent = 'Flag: ' + (flagMode ? 'On' : 'Off'); });
+    startBtn.addEventListener('click', () => { reset(); PA.sfx.click(); });
+
+    reset(); loop();
+  })();
+  </script>
+  <script src="fit.js"></script>
+</body>
+</html>
