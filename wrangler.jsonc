@@ -7,11 +7,12 @@
     // 静态资源目录 = 仓库根（index.html / css / games / 404.html 都在这里）
     "directory": "./",
     // 关键修复：请求不匹配任何静态文件时，返回根目录的 404.html 并带 404 状态码
-    "not_found_handling": "404-page",
-    // SEO 修复（2026-10-26）：禁用 Cloudflare 的 clean-URL 改写，
-    // 否则 /games/snake.html 会被 307 重定向到 /games/snake，而 canonical 指向 .html，
-    // 造成「备用网页（规范标记）」无法被索引。设 none 后 .html 直接 200 返回。
-    "html_handling": "none"
+    "not_found_handling": "404-page"
+    // 注意（2026-10-26）：曾设 html_handling:"none" 以禁用 clean-URL 改写（修 GSC 备用网页），
+    // 但该设置同时关掉了根目录索引，导致 https://www.prismarcade.top/ 整页 404。
+    // 已移除，回退到 Cloudflare 默认行为（/ 正常映射 index.html）。
+    // 若要彻底消除 GSC「备用网页」问题，正确做法是让 canonical/sitemap 改用 clean URL
+    // （不带 .html，与 Cloudflare 默认服务一致），而不是关掉目录索引。待后续单独处理。
     // 如果你后续写了自定义 Worker 脚本（如边缘中间件），再加：
     // "main": "./worker.js"
   }
