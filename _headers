@@ -6,6 +6,13 @@
 # These files have no content hash, so a short max-age plus
 # stale-while-revalidate is used instead of a year-long immutable cache.
 #
+# Cache-Control is deliberately NOT set on /* : Cloudflare concatenates the
+# headers of every matching rule, so a global Cache-Control plus an asset one
+# produced "max-age=300, ..., max-age=86400, ..." and browsers applied the first
+# value. HTML therefore keeps the platform default (max-age=0, must-revalidate),
+# which is what you want for entry documents anyway — stale HTML would point at
+# old asset URLs after a deploy.
+#
 # Strict-Transport-Security is set to a deliberately short max-age (1 day).
 # Raise it to 31536000 only after a week of clean HTTPS-only traffic, because
 # browsers remember HSTS for the whole max-age and it cannot be taken back.
@@ -18,7 +25,6 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
-  Cache-Control: public, max-age=300, stale-while-revalidate=86400
   Strict-Transport-Security: max-age=86400
   Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://www.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com; font-src 'self' data:; connect-src 'self' https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google; frame-src https://googleads.g.doubleclick.net https://www.googletagmanager.com https://ep2.adtrafficquality.google https://www.google.com; object-src 'none'; base-uri 'self'
 
