@@ -1,0 +1,34 @@
+# Cloudflare Workers static assets: custom response headers.
+# Authored 2026-10-28 during the site quality audit.
+#
+# Default (no _headers) was "Cache-Control: public, max-age=0, must-revalidate"
+# on every asset, so browsers re-validated CSS/JS/images on every navigation.
+# These files have no content hash, so a short max-age plus
+# stale-while-revalidate is used instead of a year-long immutable cache.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Cache-Control: public, max-age=300, stale-while-revalidate=86400
+
+/css/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/js/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/games/_shared.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/games/fit.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/thumbs/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
+/og/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+
+/icons/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000

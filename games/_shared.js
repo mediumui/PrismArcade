@@ -89,6 +89,50 @@
     btn.setAttribute("role", "button");
   }
 
+  /* Pause-aware animation driver (added 2026-10-28).
+     A game must never burn frames while it is idle, scrolled off-screen, or
+     sitting in a background tab — that is what pushed LCP past 6s and INP past
+     200ms on mobile. Use this instead of a bare requestAnimationFrame chain.
+
+       var drv = PA.animate(el, shouldRun, frame, fps);
+         el        - element watched for visibility (pass null to skip the check)
+         shouldRun - () => boolean; when false the loop parks itself
+         frame     - (ts) => void; one animation step
+         fps       - optional cap, e.g. 12 for a slow idle preview
+       drv.kick()  - wake a parked loop (call this when the game starts)
+       drv.stop()  - cancel for good
+  */
+  function animate(el, shouldRun, frame, fps) {
+    var minDelta = fps ? 1000 / fps : 0;
+    var visible = true, raf = 0, alive = true, last = 0;
+
+    function tick(ts) {
+      raf = 0;
+      if (!alive) return;
+      if (document.hidden || !visible) return;
+      if (!shouldRun()) return;
+      if (ts - last >= minDelta) { last = ts; frame(ts); }
+      schedule();
+    }
+    function schedule() { if (!raf && alive) raf = requestAnimationFrame(tick); }
+    function kick() { last = 0; schedule(); }
+
+    if (el && window.IntersectionObserver) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        if (visible) kick();
+      }, { threshold: 0.01 }).observe(el);
+    }
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) kick();
+    });
+    schedule();
+    return {
+      kick: kick,
+      stop: function () { alive = false; if (raf) cancelAnimationFrame(raf); }
+    };
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     // Unlock audio on first interaction (browser autoplay policy)
     const unlock = function () { audio(); window.removeEventListener("pointerdown", unlock); };
@@ -96,5 +140,5 @@
     bindMuteBtn();
   });
 
-  window.PA = { sfx: sfx, toast: toast, isMuted: function () { return muted; } };
+  window.PA = { sfx: sfx, toast: toast, animate: animate, isMuted: function () { return muted; } };
 })(window);

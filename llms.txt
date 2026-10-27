@@ -11,42 +11,42 @@ Prism Arcade is a free online games website built for global English-speaking pl
 Prism Arcade's 25 games are grouped by type below.
 
 ### Reflex & Reaction
-- [Neon Snake](https://www.prismarcade.top/games/snake.html) — The classic snake game: arrow keys or touch controls, a score-chase loop, and a speed ramp built for quick reflex sessions.
-- [Quick Tap Grid](https://www.prismarcade.top/games/quick-tap.html) — A quick reflex tap game: hit glowing targets before they disappear, build streaks, and beat your best score in 30-second rounds.
-- [Reaction Time Test](https://www.prismarcade.top/games/reaction-test.html) — A fast one-click reflex benchmark: wait for the green screen, then tap as fast as you can to measure your speed.
-- [Whack-a-Dot](https://www.prismarcade.top/games/whack.html) — A whack-a-mole style reflex game: swat the dots as they pop up and chase a high score before the clock runs out.
-- [Sky Flap](https://www.prismarcade.top/games/flappy.html) — A fast one-screen reflex classic: tap to flap, glide the bird through the pipes, and chase your longest run.
-- [Jump Runner](https://www.prismarcade.top/games/runner.html) — An endless runner jump game: tap to leap over obstacles, build distance, and beat your best run.
-- [Stack Tower](https://www.prismarcade.top/games/stack-tower.html) — A one-tap stacking game: drop each block, trim the overhang, and build the tallest tower you can.
-- [Rhythm Reflex Relay](https://www.prismarcade.top/games/reflex-relay.html) — A Simon-style sequence memory game: watch the pads light up, repeat the order, and keep the combo alive as it speeds up.
-- [Brick Breaker](https://www.prismarcade.top/games/brick-breaker.html) — A neon Breakout arcade game: control the paddle, bounce the ball to smash every brick, and grab falling-star power-ups for extra points.
+- [Neon Snake](https://www.prismarcade.top/games/snake) — The classic snake game: arrow keys or touch controls, a score-chase loop, and a speed ramp built for quick reflex sessions.
+- [Quick Tap Grid](https://www.prismarcade.top/games/quick-tap) — A quick reflex tap game: hit glowing targets before they disappear, build streaks, and beat your best score in 30-second rounds.
+- [Reaction Time Test](https://www.prismarcade.top/games/reaction-test) — A fast one-click reflex benchmark: wait for the green screen, then tap as fast as you can to measure your speed.
+- [Whack-a-Dot](https://www.prismarcade.top/games/whack) — A whack-a-mole style reflex game: swat the dots as they pop up and chase a high score before the clock runs out.
+- [Sky Flap](https://www.prismarcade.top/games/flappy) — A fast one-screen reflex classic: tap to flap, glide the bird through the pipes, and chase your longest run.
+- [Jump Runner](https://www.prismarcade.top/games/runner) — An endless runner jump game: tap to leap over obstacles, build distance, and beat your best run.
+- [Stack Tower](https://www.prismarcade.top/games/stack-tower) — A one-tap stacking game: drop each block, trim the overhang, and build the tallest tower you can.
+- [Rhythm Reflex Relay](https://www.prismarcade.top/games/reflex-relay) — A Simon-style sequence memory game: watch the pads light up, repeat the order, and keep the combo alive as it speeds up.
+- [Brick Breaker](https://www.prismarcade.top/games/brick-breaker) — A neon Breakout arcade game: control the paddle, bounce the ball to smash every brick, and grab falling-star power-ups for extra points.
 
 ### Puzzle & Strategy
-- [2048](https://www.prismarcade.top/games/2048.html) — Slide tiles to merge equal numbers, chase the 2048 tile, and beat your best score in a fast one-screen merge puzzle.
-- [Number Merge](https://www.prismarcade.top/games/number-merge.html) — Tap one tile then an equal tile to combine them, build the highest total score, and chase your best run.
-- [Block Slide Puzzle](https://www.prismarcade.top/games/block-slide.html) — Slide blocks into the open space, clear the green targets, and finish each level with fewer moves.
-- [Number Slide Puzzle](https://www.prismarcade.top/games/sliding-number.html) — Arrange tiles 1 to 8 in order, plan spatially, and beat your own move count.
-- [Easy 4x4 Sudoku](https://www.prismarcade.top/games/sudoku.html) — A fast 4x4 Sudoku: fill the grid so each row, column, and box holds 1 to 4 exactly once.
-- [Connect 4 Lite](https://www.prismarcade.top/games/connect4.html) — Two-player Connect 4: drop discs, build four-in-a-row lines, and win with tactical board strategy.
-- [Tic Tac Toe](https://www.prismarcade.top/games/tic-tac-toe.html) — Free two-player tic tac toe with instant scoring and quick rematch pacing.
-- [Word Merge](https://www.prismarcade.top/games/word-merge.html) — Drag letters and smaller words into the bin, combine them, and unlock longer words for bonus points.
-- [Color Sort Puzzle](https://www.prismarcade.top/games/color-sort.html) — Pour colored water between tubes and group every color into its own tube in this calm sorting puzzle.
-- [Hangman](https://www.prismarcade.top/games/hangman.html) — A classic word-guessing game: pick letters, dodge the gallows, and solve words across animals, fruits, countries, and general topics.
-- [Maze Runner](https://www.prismarcade.top/games/maze.html) — Navigate a fresh random maze each round, race the clock, and reveal the shortest path when you need a hint.
-- [Bubble Pop](https://www.prismarcade.top/games/bubble-pop.html) — A calm bubble shooter: aim the cannon, match three or more same-color bubbles, pop clusters, and clear the board at your own pace.
-- [Minesweeper](https://www.prismarcade.top/games/minesweeper.html) — A logic puzzle classic: reveal safe tiles, read the number clues, and flag every mine without triggering an explosion.
+- [2048](https://www.prismarcade.top/games/2048) — Slide tiles to merge equal numbers, chase the 2048 tile, and beat your best score in a fast one-screen merge puzzle.
+- [Number Merge](https://www.prismarcade.top/games/number-merge) — Tap one tile then an equal tile to combine them, build the highest total score, and chase your best run.
+- [Block Slide Puzzle](https://www.prismarcade.top/games/block-slide) — Slide blocks into the open space, clear the green targets, and finish each level with fewer moves.
+- [Number Slide Puzzle](https://www.prismarcade.top/games/sliding-number) — Arrange tiles 1 to 8 in order, plan spatially, and beat your own move count.
+- [Easy 4x4 Sudoku](https://www.prismarcade.top/games/sudoku) — A fast 4x4 Sudoku: fill the grid so each row, column, and box holds 1 to 4 exactly once.
+- [Connect 4 Lite](https://www.prismarcade.top/games/connect4) — Two-player Connect 4: drop discs, build four-in-a-row lines, and win with tactical board strategy.
+- [Tic Tac Toe](https://www.prismarcade.top/games/tic-tac-toe) — Free two-player tic tac toe with instant scoring and quick rematch pacing.
+- [Word Merge](https://www.prismarcade.top/games/word-merge) — Drag letters and smaller words into the bin, combine them, and unlock longer words for bonus points.
+- [Color Sort Puzzle](https://www.prismarcade.top/games/color-sort) — Pour colored water between tubes and group every color into its own tube in this calm sorting puzzle.
+- [Hangman](https://www.prismarcade.top/games/hangman) — A classic word-guessing game: pick letters, dodge the gallows, and solve words across animals, fruits, countries, and general topics.
+- [Maze Runner](https://www.prismarcade.top/games/maze) — Navigate a fresh random maze each round, race the clock, and reveal the shortest path when you need a hint.
+- [Bubble Pop](https://www.prismarcade.top/games/bubble-pop) — A calm bubble shooter: aim the cannon, match three or more same-color bubbles, pop clusters, and clear the board at your own pace.
+- [Minesweeper](https://www.prismarcade.top/games/minesweeper) — A logic puzzle classic: reveal safe tiles, read the number clues, and flag every mine without triggering an explosion.
 
 ### Memory & Brain
-- [Memory Pairs](https://www.prismarcade.top/games/memory.html) — A free memory matching game: flip two cards at a time, track your moves, and clear the board in as few flips as possible.
-- [Sequence Echo](https://www.prismarcade.top/games/sequence.html) — A memory pattern game: watch a growing light sequence, repeat it back, and push your recall as the pattern gets longer.
-- [Brain Quiz](https://www.prismarcade.top/games/quiz.html) — A free English quiz game with mixed topics, instant feedback, and quick replay value.
+- [Memory Pairs](https://www.prismarcade.top/games/memory) — A free memory matching game: flip two cards at a time, track your moves, and clear the board in as few flips as possible.
+- [Sequence Echo](https://www.prismarcade.top/games/sequence) — A memory pattern game: watch a growing light sequence, repeat it back, and push your recall as the pattern gets longer.
+- [Brain Quiz](https://www.prismarcade.top/games/quiz) — A free English quiz game with mixed topics, instant feedback, and quick replay value.
 
 ## Key Pages
 - [Home](https://www.prismarcade.top/) — Game lineup, featured picks, and quick start.
-- [All Games](https://www.prismarcade.top/games.html) — The full catalog of 25 free browser games, filterable by reflex, puzzle, strategy, and memory, with paginated results.
-- [About Prism Arcade](https://www.prismarcade.top/about.html) — Site background, design principles, accessibility approach, and FAQ.
-- [Contact](https://www.prismarcade.top/contact.html) — How to reach the team.
-- [Privacy](https://www.prismarcade.top/privacy.html) — Data and privacy practices (no accounts, no personal data collection to play).
+- [All Games](https://www.prismarcade.top/games) — The full catalog of 25 free browser games, filterable by reflex, puzzle, strategy, and memory, with paginated results.
+- [About Prism Arcade](https://www.prismarcade.top/about) — Site background, design principles, accessibility approach, and FAQ.
+- [Contact](https://www.prismarcade.top/contact) — How to reach the team.
+- [Privacy](https://www.prismarcade.top/privacy) — Data and privacy practices (no accounts, no personal data collection to play).
 
 ## Frequently Asked Questions
 

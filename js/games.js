@@ -117,9 +117,17 @@
       if (top) top.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    function setPressed(chip) {
+      chips.forEach(function (c) {
+        c.classList.toggle('active', c === chip);
+        c.setAttribute('aria-pressed', c === chip ? 'true' : 'false');
+      });
+    }
+
     chips.forEach(function (chip) {
+      chip.setAttribute('aria-pressed', chip.classList.contains('active') ? 'true' : 'false');
       chip.addEventListener('click', function () {
-        chips.forEach(function (c) { c.classList.toggle('active', c === chip); });
+        setPressed(chip);
         state.filter = chip.dataset.filter;
         state.page = 1;
         render();
