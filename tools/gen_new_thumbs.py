@@ -158,16 +158,138 @@ def post_mines(d, w, h):
                font=font, fill=hx(ORANGE))
 
 
+def scene_typing(d, w, h):
+    """Neon keyboard + caret: typing test."""
+    rows, cols = 3, 8
+    kw = w * 0.085
+    kh = h * 0.13
+    gap = w * 0.012
+    gx = w * 0.5 - (cols * (kw + gap) - gap) / 2
+    gy = h * 0.30
+    lit = (1, 3)
+    for r in range(rows):
+        for c in range(cols):
+            x = gx + c * (kw + gap) + (r * kw * 0.22)
+            y = gy + r * (kh + gap)
+            col = PALETTE[(r * cols + c) % len(PALETTE)]
+            if (r, c) == lit:
+                d.rounded_rectangle([x, y, x + kw, y + kh], radius=kh * 0.28, fill=hx(ORANGE))
+            else:
+                d.rounded_rectangle([x, y, x + kw, y + kh], radius=kh * 0.28,
+                                    outline=hx(col), width=max(2, int(w * 0.005)))
+    # passage lines above the keyboard
+    for i in range(2):
+        lw = w * (0.44 if i == 0 else 0.30)
+        lx = w * 0.5 - lw / 2
+        ly = h * 0.12 + i * h * 0.075
+        d.rounded_rectangle([lx, ly, lx + lw, ly + h * 0.035],
+                            radius=h * 0.017, fill=(120, 132, 190))
+    # caret
+    cx = w * 0.5 + w * 0.15
+    cy = h * 0.12
+    d.rounded_rectangle([cx, cy, cx + w * 0.014, cy + h * 0.035],
+                        radius=w * 0.006, fill=hx(YELLOW))
+
+
+def scene_wordsearch(d, w, h):
+    """Letter grid with a found word beam."""
+    cols, rows = 8, 5
+    cw = w * 0.088
+    ch = h * 0.115
+    gx = w * 0.5 - cols * cw / 2
+    gy = h * 0.10
+    for r in range(rows):
+        for c in range(cols):
+            x = gx + c * cw
+            y = gy + r * ch
+            d.rounded_rectangle([x + cw * 0.12, y + ch * 0.12,
+                                 x + cw * 0.88, y + ch * 0.88],
+                                radius=cw * 0.14,
+                                outline=hx(PURPLE), width=max(2, int(w * 0.004)))
+    # neon beam across one diagonal word
+    x1, y1 = gx + cw * 1.5, gy + ch * 3.5
+    x2, y2 = gx + cw * 6.5, gy + ch * 0.5
+    d.line([x1, y1, x2, y2], fill=hx(GREEN), width=max(6, int(w * 0.022)))
+
+
+def scene_blockfit(d, w, h):
+    """8x8 board with placed blocks and a clearing row."""
+    n = 8
+    cs = min(w * 0.072, h * 0.085)
+    gx = w * 0.5 - n * cs / 2
+    gy = h * 0.08
+    for r in range(n):
+        for c in range(n):
+            x = gx + c * cs
+            y = gy + r * cs
+            d.rounded_rectangle([x + cs * 0.08, y + cs * 0.08,
+                                 x + cs * 0.92, y + cs * 0.92],
+                                radius=cs * 0.2,
+                                outline=hx(PURPLE), width=1)
+    placed = [(0, 0), (1, 0), (0, 1), (4, 2), (5, 2), (4, 3), (5, 3), (7, 5), (7, 6)]
+    for i, (c, r) in enumerate(placed):
+        x = gx + c * cs
+        y = gy + r * cs
+        col = PALETTE[i % len(PALETTE)]
+        d.rounded_rectangle([x + cs * 0.1, y + cs * 0.1, x + cs * 0.9, y + cs * 0.9],
+                            radius=cs * 0.2, fill=hx(col))
+    # cleared row highlight
+    ry = gy + 4 * cs
+    d.rounded_rectangle([gx, ry + cs * 0.1, gx + n * cs, ry + cs * 0.9],
+                        radius=cs * 0.2, fill=hx(YELLOW))
+
+
+def scene_nonogram(d, w, h):
+    """Grid with clue numbers and solved blocks."""
+    n = 7
+    cs = min(w * 0.085, h * 0.1)
+    gx = w * 0.5 - n * cs / 2 + w * 0.04
+    gy = h * 0.22
+    for r in range(n):
+        for c in range(n):
+            x = gx + c * cs
+            y = gy + r * cs
+            d.rounded_rectangle([x + cs * 0.08, y + cs * 0.08,
+                                 x + cs * 0.92, y + cs * 0.92],
+                                radius=cs * 0.18,
+                                outline=hx(PURPLE), width=1)
+    filled = [(0, 2), (1, 2), (2, 2), (0, 3), (2, 3), (4, 0), (4, 1), (5, 1), (6, 4), (6, 5), (6, 6), (3, 5)]
+    for i, (c, r) in enumerate(filled):
+        x = gx + c * cs
+        y = gy + r * cs
+        d.rounded_rectangle([x + cs * 0.12, y + cs * 0.12, x + cs * 0.88, y + cs * 0.88],
+                            radius=cs * 0.18, fill=hx(PURPLE if i % 2 == 0 else BLUE))
+    # clue bars on the left and top
+    for r in range(n):
+        bw = cs * 0.4
+        d.rounded_rectangle([gx - cs * 0.62, gy + r * cs + cs * 0.32,
+                             gx - cs * 0.22, gy + r * cs + cs * 0.68],
+                            radius=cs * 0.1, fill=hx(ORANGE) if r % 3 else (110, 120, 175))
+    for c in range(n):
+        bh = cs * 0.4
+        d.rounded_rectangle([gx + c * cs + cs * 0.32, gy - cs * 0.62,
+                             gx + c * cs + cs * 0.68, gy - cs * 0.22],
+                            radius=cs * 0.1, fill=hx(ORANGE) if c % 2 else (110, 120, 175))
+
+
 SCENES = {
     "bubble-pop": scene_bubbles,
     "brick-breaker": scene_bricks,
     "minesweeper": scene_mines,
+    "typing-test": scene_typing,
+    "word-search": scene_wordsearch,
+    "block-fit": scene_blockfit,
+    "nonogram": scene_nonogram,
 }
 POST_TEXT = {"minesweeper": post_mines}
 TITLES = {
     "bubble-pop": "Bubble Pop",
     "brick-breaker": "Brick Breaker",
     "minesweeper": "Minesweeper",
+    "typing-test": "Typing Test",
+    "word-search": "Word Search",
+    "block-fit": "Block Fit",
+    "nonogram": "Nonogram",
 }
 
 

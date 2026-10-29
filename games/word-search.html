@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin />
+  <link rel="dns-prefetch" href="https://static.cloudflareinsights.com" />
+  <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../icons/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="../icons/favicon-64.png" sizes="64x64" type="image/png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png" />
+  <link rel="mask-icon" href="../icons/favicon.svg" color="#7c5cff" />
+  <title>Play Word Search Online Free - No Download Puzzle | Prism Arcade</title>
+  <meta name="description" content="Play free word search online with no download. Drag across the grid to find every hidden word, track your time, and try a new themed puzzle each round." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.prismarcade.top/games/word-search" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Word Search Online Free - No Download | Prism Arcade" />
+  <meta property="og:description" content="Play free word search online with no download. Drag across the grid to find every hidden word, track your time, and try a new themed puzzle each round." />
+  <meta property="og:url" content="https://www.prismarcade.top/games/word-search" />
+  <meta property="og:site_name" content="Prism Arcade" />
+  <meta property="og:image" content="https://www.prismarcade.top/og/games/word-search.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Word Search Online Free - No Download | Prism Arcade" />
+  <meta property="twitter:description" content="Play free word search online with no download. Find every hidden word and beat your best time." />
+  <meta name="twitter:image" content="https://www.prismarcade.top/og/games/word-search.jpg" />
+  <meta name="twitter:site" content="@prismarcade" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Play Word Search Online Free - No Download Puzzle | Prism Arcade",
+  "url": "https://www.prismarcade.top/games/word-search",
+  "description": "Play free word search online with no download. Drag across the grid to find every hidden word, track your time, and try a new themed puzzle each round.",
+  "inLanguage": "en"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.prismarcade.top/" },
+    { "@type": "ListItem", "position": 2, "name": "Games", "item": "https://www.prismarcade.top/#games" },
+    { "@type": "ListItem", "position": 3, "name": "Word Search", "item": "https://www.prismarcade.top/games/word-search" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Game",
+  "name": "Word Search",
+  "url": "https://www.prismarcade.top/games/word-search",
+  "description": "Play free word search online with no download. Drag across the grid to find every hidden word, track your time, and try a new themed puzzle each round.",
+  "gameCategory": "PuzzleGame",
+  "playMode": "SinglePlayer",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "offers": { "@type": "Offer", "price": 0, "priceCurrency": "USD", "url": "https://www.prismarcade.top/games/word-search" },
+  "brand": { "@type": "Organization", "name": "Prism Arcade", "url": "https://www.prismarcade.top/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Can I play word search online for free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Word Search is free to play in the browser with no download, no sign-up, and no payment." } },
+    { "@type": "Question", "name": "How do I select a word in the grid?", "acceptedAnswer": { "@type": "Answer", "text": "Press on the first letter and drag to the last letter in a straight line — across, down, or diagonal. Release to submit, and reverse selections also count." } },
+    { "@type": "Question", "name": "Is there a new puzzle every round?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Each round builds a fresh grid from a themed word list such as animals, fruits, countries, or space." } }
+  ]
+}
+</script>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    #game{width:min(560px, 92vw, 66vh); height:auto; aspect-ratio:1; margin-inline:auto; display:block;
+      background:#0b0e1c; border-radius:16px; touch-action:none;
+      box-shadow:0 18px 50px rgba(6,8,24,.6), inset 0 0 60px rgba(124,92,255,.06)}
+    .play-stage{min-height:0}
+    .hero{padding:12px 0 6px}
+    .hero .lead{margin-top:6px; font-size:.95rem}
+    .wordlist{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:12px auto 0; max-width:560px}
+    .wordlist li{list-style:none; padding:6px 12px; border-radius:999px; font-size:.82rem; font-weight:700;
+      letter-spacing:.06em; color:#c9d1f2; background:rgba(20,25,58,.8); border:1px solid rgba(124,92,255,.32);
+      box-shadow:inset 0 0 12px rgba(124,92,255,.15); transition:transform .18s ease, box-shadow .22s ease, color .22s ease, background .22s ease}
+    .wordlist li.found{color:#06231a; background:linear-gradient(180deg,#36d399,#1fa87a); border-color:transparent;
+      box-shadow:0 0 16px rgba(54,211,153,.7), 0 0 34px rgba(54,211,153,.32);
+      text-decoration:line-through; text-decoration-thickness:2px; transform:translateY(-2px)}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4276717672284472" crossorigin="anonymous"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3ZWV1GWSD3"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3ZWV1GWSD3');
+</script>
+</head>
+<body class="game-page">
+    <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="../" aria-label="Prism Arcade home">
+      <span class="brand-mark"><svg viewBox="0 0 256 256" width="20" height="20" aria-hidden="true" focusable="false"><defs><linearGradient id="bmg" x1="0.2" y1="1" x2="0.8" y2="0"><stop offset="0" stop-color="#ff5f6d"/><stop offset="0.18" stop-color="#ffb347"/><stop offset="0.36" stop-color="#ffd24d"/><stop offset="0.55" stop-color="#36d399"/><stop offset="0.74" stop-color="#4aa3ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs><path d="M128 64 L52 188 L204 188 Z" fill="url(#bmg)" stroke="#ffffff" stroke-opacity="0.92" stroke-width="12" stroke-linejoin="round"/><path d="M188 58 L190.4 66.6 L199 69 L190.4 71.4 L188 80 L185.6 71.4 L177 69 L185.6 66.6 Z" fill="#ffffff"/></svg></span>
+      <span>Prism Arcade</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../">Home</a>
+      <a href="../#games">Games</a>
+      <a href="../about">About</a>
+      <a href="../contact">Contact</a>
+      <a href="../privacy">Privacy</a>
+    </nav>
+    <a class="btn btn-primary" href="../#games">Start Playing</a>
+  </div>
+</header>
+  <main class="container">
+    <section class="hero">
+      <p class="kicker">Word Puzzle</p>
+      <h1>Play Word Search Online — Free, No Download</h1>
+      <p class="lead">Drag across the letters to circle hidden words in a fresh themed grid. Word Search runs free in your browser with no download, no account, and a timer you can race.</p>
+    </section>
+    <section>
+      <div class="play-shell" data-fit>
+        <div class="play-stage" data-fit>
+          <div class="hud"><span>Found <strong id="found">0/6</strong></span><span>Time <strong id="time">0</strong></span><span>Best <strong id="best">—</strong></span></div>
+          <canvas id="game" data-fit-target width="560" height="560" data-board></canvas>
+          <ul class="wordlist" id="wordlist" aria-label="Words to find"></ul>
+          <div class="snake-controls">
+            <button class="wide" id="newBtn">New Puzzle</button>
+            <button class="wide" id="hintBtn">Hint: 3</button>
+            <button class="wide" data-mute-toggle>Sound: On</button>
+          </div>
+        </div>
+        <aside class="side-panel">
+          <h2>Game Notes</h2>
+          <p>Words hide across, down, and diagonally — forwards or backwards. Press the first letter, drag to the last one, and release.</p>
+          <ul class="list">
+            <li><strong>Drag</strong> in a straight line; reversed words count.</li>
+            <li><strong>Hint</strong> flashes the first letter of a missing word.</li>
+            <li><strong>Timer</strong> starts on your first drag.</li>
+            <li>Clear every word to log your best time.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  <!-- SEO:INJECTED v1 -->
+
+      <section class="container seo-overview" aria-label="Game overview">
+        <div class="hero-card"><h3>About Word Search</h3><p>Word Search is a free online word puzzle that runs in the browser with no download or account. Each round builds a fresh grid from a themed word list — animals, fruits, countries, or space — and hides the words across, down, and diagonally in both directions. Drag across a word to circle it, and your best time is saved on this device.</p></div>
+      </section>
+              <!-- GEO:HOWTO v1 -->
+      <section class="container seo-howto" aria-label="How to play">
+        <div class="section-title"><div><h2>How to Play</h2><p>Quick steps to start Word Search on Prism Arcade.</p></div></div>
+        <ul class="list">
+          <li><strong>1.</strong> Read the word list under the grid and pick a word to hunt for.</li>
+          <li><strong>2.</strong> Press the first letter of the word and drag in a straight line to the last letter.</li>
+          <li><strong>3.</strong> Release to submit — words hidden backwards count too.</li>
+          <li><strong>4.</strong> Circle every word on the list to finish and log your best time.</li>
+        </ul>
+      </section>
+
+<section class="container seo-faq" aria-label="Frequently asked questions">
+        <div class="section-title"><div><h2>FAQ</h2><p>Common questions players ask.</p></div></div>
+        <div class="faq-grid">
+          <article class="card"><h3>Can I play word search online for free?</h3><p>Yes. Word Search is free to play in the browser with no download, no sign-up, and no payment.</p></article>
+          <article class="card"><h3>How do I select a word in the grid?</h3><p>Press on the first letter and drag to the last letter in a straight line — across, down, or diagonal. Release to submit, and reverse selections also count.</p></article>
+          <article class="card"><h3>Is there a new puzzle every round?</h3><p>Yes. Each round builds a fresh grid from a themed word list such as animals, fruits, countries, or space.</p></article>
+        </div>
+      </section>
+      <section class="container seo-related" aria-label="Related games">
+        <div class="section-title"><div><h2>Related Games</h2><p>Keep playing with similar free browser games on Prism Arcade.</p></div></div>
+        <div class="grid related-grid">
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/hangman.webp" alt="Hangman game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Hangman</h3><p>Guess letters to reveal the hidden word before the gallows is complete.</p><a class="btn btn-ghost" href="hangman">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/typing-test.webp" alt="Typing Speed Test game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Typing Speed Test</h3><p>Type a passage for 60 seconds and read your live WPM and accuracy.</p><a class="btn btn-ghost" href="typing-test">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/quiz.webp" alt="Brain Quiz game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>Brain Quiz</h3><p>Test your knowledge with mixed-topic questions, instant feedback, and quick replay value.</p><a class="btn btn-ghost" href="quiz">Play</a></article>
+          <article class="card game-card"><div class="thumb"><img src="../thumbs/_all-games.webp" alt="All Games game preview" width="640" height="360" loading="lazy" decoding="async"></div><h3>All Games</h3><p>Browse the full Prism Arcade catalog.</p><a class="btn btn-ghost" href="../#games">Browse</a></article>
+        </div>
+      </section>
+  </main>
+  <footer class="footer"><div class="container footer-grid"><div><h3>Prism Arcade</h3><p>Free arcade games for players around the world.</p></div><div><h3>Related</h3><ul><li><a href="hangman">Hangman</a></li><li><a href="typing-test">Typing Speed Test</a></li><li><a href="quiz">Brain Quiz</a></li><li><a href="../">Back to Home</a></li></ul></div></div><div class="footer-bottom"><a href="https://www.pickworth.top/" target="_blank" rel="noopener">PickWorth &mdash; Honest AI Tool Reviews</a></div></footer>
+  <script src="_shared.js"></script>
+  <script>
+  (function () {
+    var THEMES = {
+      Animals: ['TIGER', 'PANDA', 'ZEBRA', 'OTTER', 'KOALA', 'WHALE', 'EAGLE', 'HORSE'],
+      Fruits: ['APPLE', 'MANGO', 'GRAPE', 'PEACH', 'LEMON', 'BERRY', 'OLIVE', 'BANANA'],
+      Countries: ['JAPAN', 'BRAZIL', 'CANADA', 'EGYPT', 'INDIA', 'KENYA', 'SPAIN', 'CHILE'],
+      Space: ['ORBIT', 'COMET', 'VENUS', 'MARS', 'LUNAR', 'SOLAR', 'NEBULA', 'ROCKET'],
+      Sports: ['SOCCER', 'TENNIS', 'BOXING', 'SKIING', 'GOLF', 'RUGBY', 'CRICKET', 'HOCKEY']
+    };
+    var N = 10, WORDS_PER = 6;
+    var DIRS = [[1,0],[0,1],[1,1],[1,-1],[-1,0],[0,-1],[-1,-1],[-1,1]];
+
+    var canvas = document.getElementById('game');
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width, H = canvas.height;
+    var PAD = 16, CS = Math.floor((W - PAD * 2) / N), OFF = (W - CS * N) / 2;
+    var listEl = document.getElementById('wordlist');
+    var foundEl = document.getElementById('found');
+    var timeEl = document.getElementById('time');
+    var bestEl = document.getElementById('best');
+    var hintBtn = document.getElementById('hintBtn');
+
+    var COLORS = ['#7c5cff', '#ffb347', '#ffd24d', '#36d399', '#4aa3ff', '#ff5f6d'];
+    var grid, placed, words, themeName, hintLeft;
+    var sel = null, particles = [], stars = [], foundCount = 0;
+    var startTime = 0, elapsed = 0, running = false, done = false, flash = 0;
+    var best = Number(localStorage.getItem('wsBest') || 0);
+    bestEl.textContent = best ? best + 's' : '—';
+
+    for (var s = 0; s < 80; s++) {
+      stars.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.6 + 0.3, p: Math.random() * 6.28 });
+    }
+
+    function pickWords() {
+      var names = Object.keys(THEMES);
+      themeName = names[Math.floor(Math.random() * names.length)];
+      var pool = THEMES[themeName].slice();
+      var out = [];
+      while (out.length < WORDS_PER && pool.length) {
+        out.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+      }
+      return out;
+    }
+
+    function build() {
+      words = pickWords();
+      grid = []; placed = [];
+      for (var r = 0; r < N; r++) { grid.push([]); for (var c = 0; c < N; c++) grid[r].push({ ch: '', used: false, found: false, color: null }); }
+
+      words.forEach(function (w, wi) {
+        for (var attempt = 0; attempt < 400; attempt++) {
+          var d = DIRS[Math.floor(Math.random() * DIRS.length)];
+          var len = w.length;
+          var r0 = Math.floor(Math.random() * N), c0 = Math.floor(Math.random() * N);
+          var rE = r0 + d[0] * (len - 1), cE = c0 + d[1] * (len - 1);
+          if (rE < 0 || rE >= N || cE < 0 || cE >= N) continue;
+          var ok = true, cells = [];
+          for (var i = 0; i < len; i++) {
+            var rr = r0 + d[0] * i, cc = c0 + d[1] * i;
+            if (grid[rr][cc].ch !== '' && grid[rr][cc].ch !== w[i]) { ok = false; break; }
+            cells.push({ r: rr, c: cc });
+          }
+          if (!ok) continue;
+          cells.forEach(function (p, i) { grid[p.r][p.c].ch = w[i]; });
+          placed.push({ word: w, cells: cells, found: false, color: COLORS[wi % COLORS.length] });
+          return;
+        }
+      });
+
+      var AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      for (var r2 = 0; r2 < N; r2++) for (var c2 = 0; c2 < N; c2++) {
+        if (grid[r2][c2].ch === '') grid[r2][c2].ch = AZ[Math.floor(Math.random() * 26)];
+      }
+    }
+
+    function renderList() {
+      listEl.innerHTML = '';
+      placed.forEach(function (p) {
+        var li = document.createElement('li');
+        li.textContent = p.word;
+        if (p.found) li.className = 'found';
+        li.dataset.w = p.word;
+        listEl.appendChild(li);
+      });
+    }
+
+    function reset() {
+      build(); renderList();
+      foundCount = 0; foundEl.textContent = '0/' + placed.length;
+      hintLeft = 3; hintBtn.textContent = 'Hint: 3';
+      sel = null; particles = []; flash = 0;
+      startTime = 0; elapsed = 0; running = false; done = false;
+      timeEl.textContent = '0';
+      // read-only snapshot for automated self-checks (not used by the game)
+      window.__ws = { grid: grid, placed: placed, N: N, OFF: OFF, CS: CS, get sel() { return sel; } };
+      invalidate();
+    }
+
+    function cellAt(px, py) {
+      var c = Math.floor((px - OFF) / CS), r = Math.floor((py - OFF) / CS);
+      if (r < 0 || r >= N || c < 0 || c >= N) return null;
+      return { r: r, c: c };
+    }
+
+    function lineCells(a, b) {
+      var dr = b.r - a.r, dc = b.c - a.c;
+      if (dr === 0 && dc === 0) return [a];
+      if (dr !== 0 && dc !== 0 && Math.abs(dr) !== Math.abs(dc)) return null;
+      var steps = Math.max(Math.abs(dr), Math.abs(dc));
+      var sr = Math.sign(dr), sc = Math.sign(dc), out = [];
+      for (var i = 0; i <= steps; i++) out.push({ r: a.r + sr * i, c: a.c + sc * i });
+      return out;
+    }
+
+    function submit(cells) {
+      if (!cells) return;
+      var fwd = cells.map(function (p) { return grid[p.r][p.c].ch; }).join('');
+      var rev = fwd.split('').reverse().join('');
+      for (var i = 0; i < placed.length; i++) {
+        var p = placed[i];
+        if (p.found) continue;
+        if (fwd === p.word || rev === p.word) {
+          p.found = true; foundCount++;
+          p.cells.forEach(function (q) {
+            grid[q.r][q.c].found = true; grid[q.r][q.c].color = p.color;
+            burst(center(q).x, center(q).y, p.color);
+          });
+          PA.sfx.match();
+          renderList();
+          foundEl.textContent = foundCount + '/' + placed.length;
+          if (foundCount === placed.length) win();
+          return;
+        }
+      }
+      PA.sfx.wrong();
+    }
+
+    function win() {
+      done = true; running = false;
+      elapsed = Math.floor((performance.now() - startTime) / 1000);
+      if (!best || elapsed < best) { best = elapsed; localStorage.setItem('wsBest', String(best)); bestEl.textContent = best + 's'; }
+      PA.sfx.win(); PA.toast('All words found in ' + elapsed + 's!', 'good');
+      for (var i = 0; i < 60; i++) burst(Math.random() * W, Math.random() * H, COLORS[i % COLORS.length]);
+    }
+
+    function hint() {
+      if (hintLeft <= 0 || done) return;
+      var rest = placed.filter(function (p) { return !p.found; });
+      if (!rest.length) return;
+      var p = rest[Math.floor(Math.random() * rest.length)];
+      var q = p.cells[0];
+      var cc = center(q);
+      for (var i = 0; i < 14; i++) burst(cc.x, cc.y, '#ffd24d');
+      hintLeft--; hintBtn.textContent = 'Hint: ' + hintLeft;
+      PA.sfx.flip();
+      invalidate();
+    }
+
+    function burst(x, y, color) {
+      for (var i = 0; i < 8; i++) {
+        var a = Math.random() * 6.283, sp = 1 + Math.random() * 3;
+        particles.push({ x: x, y: y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, life: 26, color: color });
+      }
+    }
+
+    function center(p) { return { x: OFF + p.c * CS + CS / 2, y: OFF + p.r * CS + CS / 2 }; }
+
+    function draw(ts) {
+      // layered background
+      var g = ctx.createLinearGradient(0, 0, W * 0.7, H);
+      g.addColorStop(0, '#1a1140'); g.addColorStop(0.55, '#101538'); g.addColorStop(1, '#0a0e22');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      var halo = ctx.createRadialGradient(W * 0.5, H * 0.32, 12, W * 0.5, H * 0.32, W * 0.72);
+      halo.addColorStop(0, 'rgba(124,92,255,.26)'); halo.addColorStop(1, 'rgba(124,92,255,0)');
+      ctx.fillStyle = halo; ctx.fillRect(0, 0, W, H);
+      for (var i = 0; i < stars.length; i++) {
+        var st = stars[i];
+        ctx.globalAlpha = 0.25 + 0.4 * Math.abs(Math.sin(ts / 900 + st.p));
+        ctx.fillStyle = '#d7ddff';
+        ctx.beginPath(); ctx.arc(st.x, st.y, st.r, 0, 6.283); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      // board plate
+      var plate = ctx.createLinearGradient(OFF, OFF, OFF + CS * N, OFF + CS * N);
+      plate.addColorStop(0, 'rgba(18,22,52,.92)'); plate.addColorStop(1, 'rgba(12,16,38,.92)');
+      ctx.fillStyle = plate;
+      roundRect(OFF - 6, OFF - 6, CS * N + 12, CS * N + 12, 16); ctx.fill();
+      ctx.strokeStyle = 'rgba(124,92,255,.35)'; ctx.lineWidth = 1.5;
+      roundRect(OFF - 6, OFF - 6, CS * N + 12, CS * N + 12, 16); ctx.stroke();
+
+      // letters
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.font = 'bold ' + Math.floor(CS * 0.52) + 'px Inter, Arial, sans-serif';
+      for (var r = 0; r < N; r++) for (var c = 0; c < N; c++) {
+        var cell = grid[r][c], p = { r: r, c: c }, ct = center(p);
+        if (cell.found) {
+          ctx.save();
+          ctx.shadowColor = cell.color; ctx.shadowBlur = 16;
+          ctx.fillStyle = cell.color;
+          ctx.fillText(cell.ch, ct.x, ct.y + 1);
+          ctx.restore();
+        } else {
+          ctx.save();
+          ctx.shadowColor = 'rgba(124,92,255,.55)'; ctx.shadowBlur = 6;
+          ctx.fillStyle = '#aab3dc';
+          ctx.fillText(cell.ch, ct.x, ct.y + 1);
+          ctx.restore();
+        }
+      }
+
+      // found word beams
+      placed.forEach(function (p) {
+        if (!p.found) return;
+        var a = center(p.cells[0]), b = center(p.cells[p.cells.length - 1]);
+        ctx.save();
+        var lg = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
+        lg.addColorStop(0, hexA(p.color, .10)); lg.addColorStop(0.5, hexA(p.color, .30)); lg.addColorStop(1, hexA(p.color, .10));
+        ctx.strokeStyle = lg; ctx.lineWidth = CS * 0.82; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        ctx.shadowColor = p.color; ctx.shadowBlur = 14;
+        ctx.strokeStyle = hexA(p.color, .85); ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        ctx.restore();
+      });
+
+      // active selection
+      if (sel && sel.cells) {
+        var a2 = center(sel.cells[0]), b2 = center(sel.cells[sel.cells.length - 1]);
+        ctx.save();
+        ctx.shadowColor = '#ffd24d'; ctx.shadowBlur = 18;
+        ctx.strokeStyle = 'rgba(255,210,77,.42)'; ctx.lineWidth = CS * 0.82; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(a2.x, a2.y); ctx.lineTo(b2.x, b2.y); ctx.stroke();
+        ctx.strokeStyle = 'rgba(255,255,255,.8)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(a2.x, a2.y); ctx.lineTo(b2.x, b2.y); ctx.stroke();
+        ctx.restore();
+      }
+
+      // particles
+      for (var k = particles.length - 1; k >= 0; k--) {
+        var pa = particles[k];
+        pa.x += pa.vx; pa.y += pa.vy; pa.vy += 0.07; pa.life--;
+        if (pa.life <= 0) { particles.splice(k, 1); continue; }
+        ctx.globalAlpha = Math.max(0, pa.life / 26);
+        ctx.fillStyle = pa.color;
+        ctx.beginPath(); ctx.arc(pa.x, pa.y, 2.6, 0, 6.283); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      if (flash > 0) { ctx.save(); ctx.globalAlpha = flash / 22; ctx.fillStyle = '#ffd24d'; ctx.fillRect(0, 0, W, H); ctx.restore(); flash--; }
+
+      if (running && !done) {
+        elapsed = Math.floor((performance.now() - startTime) / 1000);
+        timeEl.textContent = elapsed;
+      }
+    }
+
+    function hexA(hex, a) {
+      var h = hex.replace('#', '');
+      var r = parseInt(h.substring(0, 2), 16), g2 = parseInt(h.substring(2, 4), 16), b = parseInt(h.substring(4, 6), 16);
+      return 'rgba(' + r + ',' + g2 + ',' + b + ',' + a + ')';
+    }
+    function roundRect(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+    }
+
+    // Render on demand + a slow idle shimmer so the board always looks alive.
+    var dirty = true;
+    var drv = PA.animate(canvas, function () { return dirty || particles.length > 0 || true; }, function (ts) { draw(ts); }, 30);
+    function invalidate() { drv.kick(); }
+
+    function eventPos(e) {
+      var rect = canvas.getBoundingClientRect();
+      var src = e.touches && e.touches.length ? e.touches[0] : (e.changedTouches && e.changedTouches.length ? e.changedTouches[0] : e);
+      return { x: (src.clientX - rect.left) * (W / rect.width), y: (src.clientY - rect.top) * (H / rect.height) };
+    }
+
+    function down(e) {
+      e.preventDefault();
+      if (done) return;
+      var p = eventPos(e); var cell = cellAt(p.x, p.y);
+      if (!cell) return;
+      if (!running) { running = true; startTime = performance.now(); }
+      sel = { start: cell, cells: [cell] };
+      invalidate();
+    }
+    function move(e) {
+      if (!sel) return;
+      e.preventDefault();
+      var p = eventPos(e); var cell = cellAt(p.x, p.y);
+      if (!cell) return;
+      var cells = lineCells(sel.start, cell);
+      sel.cells = cells || [sel.start];
+      invalidate();
+    }
+    function up() {
+      if (!sel) return;
+      submit(sel.cells);
+      sel = null;
+      invalidate();
+    }
+
+    canvas.addEventListener('mousedown', down);
+    window.addEventListener('mousemove', function (e) { if (sel) move(e); });
+    window.addEventListener('mouseup', up);
+    canvas.addEventListener('touchstart', down, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', up);
+
+    document.getElementById('newBtn').addEventListener('click', function () { reset(); PA.sfx.click(); });
+    hintBtn.addEventListener('click', hint);
+
+    reset();
+  })();
+  </script>
+  <script src="fit.js"></script>
+</body>
+</html>

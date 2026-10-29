@@ -85,8 +85,9 @@ def main():
     # 7. About/Author signals
     s2, b2 = get("/about.html")
     about_ok = s2 == 200 and ("about" in b2.lower() or "author" in b2.lower())
-    # homepage must also link to about
-    link_ok = s == 200 and "about.html" in b
+    # homepage must also link to about; the site now serves clean URLs
+    # (/about), so accept either form
+    link_ok = s == 200 and ("about.html" in b or 'href="about"' in b)
     results.append(check("About/Author signals", about_ok and link_ok,
                          f"about.html HTTP {s2}, home->about link={'yes' if link_ok else 'no'}"))
 

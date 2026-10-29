@@ -2,181 +2,205 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.prismarcade.top/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/about</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/about.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/contact</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/contact.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/privacy</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/privacy.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/2048</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/2048.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/block-slide</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/block-fit.html</loc>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/brick-breaker</loc>
-    <lastmod>2026-10-24</lastmod>
+    <loc>https://www.prismarcade.top/games/block-slide.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/bubble-pop</loc>
-    <lastmod>2026-10-24</lastmod>
+    <loc>https://www.prismarcade.top/games/brick-breaker.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/color-sort</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/bubble-pop.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/connect4</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/color-sort.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/flappy</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/connect4.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/hangman</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/flappy.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/maze</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/hangman.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/memory</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/maze.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/minesweeper</loc>
-    <lastmod>2026-10-24</lastmod>
+    <loc>https://www.prismarcade.top/games/memory.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/number-merge</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/minesweeper.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/quick-tap</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/nonogram.html</loc>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/quiz</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/number-merge.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/reaction-test</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/quick-tap.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/reflex-relay</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/quiz.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/runner</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/reaction-test.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/sequence</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/reflex-relay.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/sliding-number</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/runner.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/snake</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/sequence.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/stack-tower</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/sliding-number.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/sudoku</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/snake.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/tic-tac-toe</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/stack-tower.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/whack</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/sudoku.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.prismarcade.top/games/word-merge</loc>
-    <lastmod>2026-10-23</lastmod>
+    <loc>https://www.prismarcade.top/games/tic-tac-toe.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.prismarcade.top/games/typing-test.html</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.prismarcade.top/games/whack.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.prismarcade.top/games/word-merge.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.prismarcade.top/games/word-search.html</loc>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

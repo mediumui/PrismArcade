@@ -935,5 +935,165 @@
         "desc": "Test your knowledge with Brain Quiz, a free quiz game with mixed topics, instant feedback, and quick replay value."
       }
     ]
+  },
+  "typing-test.html": {
+    "name": "Typing Speed Test",
+    "title": "Free Typing Speed Test Online No Download - WPM & Accuracy | Prism Arcade",
+    "desc": "Take a free online typing speed test with no download. Type the passage, get live WPM and accuracy, and beat your personal best in 60 seconds.",
+    "og_title": "Free Typing Speed Test Online - WPM & Accuracy | Prism Arcade",
+    "category": "EducationalGame",
+    "playmode": "SinglePlayer",
+    "overview": "The Typing Speed Test is a free online typing test that runs in your browser with no download and no account. Type the on-screen passage for 60 seconds and read your live WPM, accuracy, character count, and error count as you go. Your personal best is stored on this device so you can track progress across sessions.",
+    "faq": [
+      {
+        "q": "Can I take a typing speed test online for free?",
+        "a": "Yes. The typing test is free, runs in the browser, and needs no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How is WPM calculated in this typing test?",
+        "a": "WPM is your correctly typed characters divided by five, then divided by the minutes elapsed. Accuracy is the share of keystrokes that matched the passage."
+      },
+      {
+        "q": "How long does the typing test last?",
+        "a": "The default run is 60 seconds and starts on your first keystroke. You can restart at any time for another attempt."
+      }
+    ],
+    "related": [
+      {
+        "name": "Word Search",
+        "file": "word-search.html",
+        "desc": "Find hidden words in a fresh themed grid with drag-to-select controls."
+      },
+      {
+        "name": "Brain Quiz",
+        "file": "quiz.html",
+        "desc": "Test your knowledge with mixed-topic questions, instant feedback, and quick replay value."
+      },
+      {
+        "name": "Hangman",
+        "file": "hangman.html",
+        "desc": "Guess letters to reveal the hidden word before the gallows is complete."
+      }
+    ]
+  },
+  "word-search.html": {
+    "name": "Word Search",
+    "title": "Play Word Search Online Free - No Download Puzzle | Prism Arcade",
+    "desc": "Play free word search online with no download. Drag across the grid to find every hidden word, track your time, and try a new themed puzzle each round.",
+    "og_title": "Word Search Online Free - No Download | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Word Search is a free online word puzzle that runs in the browser with no download or account. Each round builds a fresh grid from a themed word list — animals, fruits, countries, or space — and hides the words across, down, and diagonally in both directions. Drag across a word to circle it, and your best time is saved on this device.",
+    "faq": [
+      {
+        "q": "Can I play word search online for free?",
+        "a": "Yes. Word Search is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do I select a word in the grid?",
+        "a": "Press on the first letter and drag to the last letter in a straight line — across, down, or diagonal. Release to submit, and reverse selections also count."
+      },
+      {
+        "q": "Is there a new puzzle every round?",
+        "a": "Yes. Each round builds a fresh grid from a themed word list such as animals, fruits, countries, or space."
+      }
+    ],
+    "related": [
+      {
+        "name": "Hangman",
+        "file": "hangman.html",
+        "desc": "Guess letters to reveal the hidden word before the gallows is complete."
+      },
+      {
+        "name": "Typing Speed Test",
+        "file": "typing-test.html",
+        "desc": "Type a passage for 60 seconds and read your live WPM and accuracy."
+      },
+      {
+        "name": "Brain Quiz",
+        "file": "quiz.html",
+        "desc": "Test your knowledge with mixed-topic questions, instant feedback, and quick replay value."
+      }
+    ]
+  },
+  "block-fit.html": {
+    "name": "Block Fit",
+    "title": "Play Block Fit Online Free - Block Puzzle No Download | Prism Arcade",
+    "desc": "Play Block Fit, a free block puzzle game online with no download. Drag shapes onto the 8x8 grid, clear full rows and columns, and chase a combo high score.",
+    "og_title": "Block Fit - Free Block Puzzle Online | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Block Fit is a free online block puzzle that runs in the browser with no download or account. Drag one of three shapes onto an 8x8 grid, pack the space carefully, and clear any full row or column for points. Clearing several lines in a single move raises a combo multiplier, and the run ends when no tray shape fits anywhere on the board.",
+    "faq": [
+      {
+        "q": "Can I play this block puzzle online for free?",
+        "a": "Yes. Block Fit is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do you score in Block Fit?",
+        "a": "You score one point per square placed, plus ten points for every row or column you clear. Clearing more than one line in a move raises the combo multiplier."
+      },
+      {
+        "q": "When does a Block Fit run end?",
+        "a": "The run ends when none of the three shapes in the tray can fit anywhere on the 8x8 grid."
+      }
+    ],
+    "related": [
+      {
+        "name": "2048",
+        "file": "2048.html",
+        "desc": "Slide and merge equal tiles to build the 2048 tile in a classic one-screen puzzle."
+      },
+      {
+        "name": "Number Merge",
+        "file": "number-merge.html",
+        "desc": "Tap equal tiles to combine them and build the highest total you can."
+      },
+      {
+        "name": "Block Slide Puzzle",
+        "file": "block-slide.html",
+        "desc": "Slide blocks into the open space and clear every green target."
+      }
+    ]
+  },
+  "nonogram.html": {
+    "name": "Nonogram",
+    "title": "Play Nonogram Online Free - Logic Picture Puzzle No Download | Prism Arcade",
+    "desc": "Play Nonogram online for free with no download. Use the row and column number clues to fill the grid, reveal the hidden picture, and race your best time.",
+    "og_title": "Nonogram Online Free - Logic Picture Puzzle | Prism Arcade",
+    "category": "PuzzleGame",
+    "playmode": "SinglePlayer",
+    "overview": "Nonogram is a free online logic picture puzzle that runs in the browser with no download or account. The numbers beside each row and above each column tell you the lengths of the solid blocks of filled squares, with at least one empty square between blocks. Every puzzle generated here is verified by a solver to have exactly one solution, so it can always be finished with logic alone.",
+    "faq": [
+      {
+        "q": "Can I play Nonogram online for free?",
+        "a": "Yes. Nonogram is free to play in the browser with no download, no sign-up, and no payment."
+      },
+      {
+        "q": "How do you solve a Nonogram?",
+        "a": "Each number at the side of a row is the length of a solid block of filled squares in that row, and blocks are separated by at least one empty square. Combine the row and column clues to deduce which squares are filled."
+      },
+      {
+        "q": "Does this Nonogram have more than one solution?",
+        "a": "No. Every puzzle generated here is checked by a solver so it has exactly one solution, which means it can always be finished by logic alone."
+      }
+    ],
+    "related": [
+      {
+        "name": "Minesweeper",
+        "file": "minesweeper.html",
+        "desc": "Reveal safe tiles, read the number clues, and flag every mine without triggering an explosion."
+      },
+      {
+        "name": "Easy Sudoku",
+        "file": "sudoku.html",
+        "desc": "A fast 4x4 logic warm-up. Fill the grid so every row, column and box holds 1 to 4 exactly once."
+      },
+      {
+        "name": "Maze Runner",
+        "file": "maze.html",
+        "desc": "Navigate a fresh random maze each round, race the clock, and reveal the shortest path."
+      }
+    ]
   }
 }

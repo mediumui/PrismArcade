@@ -1,14 +1,14 @@
 # Prism Arcade
 
-> Prism Arcade is a free, all-English web arcade offering 25 instant-play browser games — reflex, puzzle, strategy, memory, and brain-training — with no download and no sign-up. Every game runs in the browser on mobile and desktop and starts in under a second.
+> Prism Arcade is a free, all-English web arcade offering 29 instant-play browser games — reflex, puzzle, strategy, memory, and brain-training — with no download and no sign-up. Every game runs in the browser on mobile and desktop and starts in under a second.
 
 ## Overview
 
-Prism Arcade is a free online games website built for global English-speaking players. It hosts 25 browser games across reflex, puzzle, strategy, and memory categories. Every title loads instantly in the browser, requires no installation and no account, and is free to play. The site is fully in English so players from any country can understand the controls, scoring, and rules without translation.
+Prism Arcade is a free online games website built for global English-speaking players. It hosts 29 browser games across reflex, puzzle, strategy, and memory categories. Every title loads instantly in the browser, requires no installation and no account, and is free to play. The site is fully in English so players from any country can understand the controls, scoring, and rules without translation.
 
 ## Games
 
-Prism Arcade's 25 games are grouped by type below.
+Prism Arcade's 29 games are grouped by type below.
 
 ### Reflex & Reaction
 - [Neon Snake](https://www.prismarcade.top/games/snake) — The classic snake game: arrow keys or touch controls, a score-chase loop, and a speed ramp built for quick reflex sessions.
@@ -35,15 +35,19 @@ Prism Arcade's 25 games are grouped by type below.
 - [Maze Runner](https://www.prismarcade.top/games/maze) — Navigate a fresh random maze each round, race the clock, and reveal the shortest path when you need a hint.
 - [Bubble Pop](https://www.prismarcade.top/games/bubble-pop) — A calm bubble shooter: aim the cannon, match three or more same-color bubbles, pop clusters, and clear the board at your own pace.
 - [Minesweeper](https://www.prismarcade.top/games/minesweeper) — A logic puzzle classic: reveal safe tiles, read the number clues, and flag every mine without triggering an explosion.
+- [Word Search](https://www.prismarcade.top/games/word-search) — Play free word search online: drag across the grid to circle hidden words in a fresh themed puzzle.
+- [Block Fit](https://www.prismarcade.top/games/block-fit) — A free block puzzle: drag shapes onto an 8x8 grid, clear rows and columns, and build combo multipliers.
+- [Nonogram](https://www.prismarcade.top/games/nonogram) — A free logic picture puzzle: fill squares from row and column number clues; every puzzle has one solution.
 
 ### Memory & Brain
 - [Memory Pairs](https://www.prismarcade.top/games/memory) — A free memory matching game: flip two cards at a time, track your moves, and clear the board in as few flips as possible.
 - [Sequence Echo](https://www.prismarcade.top/games/sequence) — A memory pattern game: watch a growing light sequence, repeat it back, and push your recall as the pattern gets longer.
 - [Brain Quiz](https://www.prismarcade.top/games/quiz) — A free English quiz game with mixed topics, instant feedback, and quick replay value.
+- [Typing Speed Test](https://www.prismarcade.top/games/typing-test) — A free online typing test: type for 60 seconds and read live WPM, accuracy, and personal bests.
 
 ## Key Pages
 - [Home](https://www.prismarcade.top/) — Game lineup, featured picks, and quick start.
-- [All Games](https://www.prismarcade.top/games) — The full catalog of 25 free browser games, filterable by reflex, puzzle, strategy, and memory, with paginated results.
+- [All Games](https://www.prismarcade.top/games) — The full catalog of 29 free browser games, filterable by reflex, puzzle, strategy, and memory, with paginated results.
 - [About Prism Arcade](https://www.prismarcade.top/about) — Site background, design principles, accessibility approach, and FAQ.
 - [Contact](https://www.prismarcade.top/contact) — How to reach the team.
 - [Privacy](https://www.prismarcade.top/privacy) — Data and privacy practices (no accounts, no personal data collection to play).
@@ -57,7 +61,7 @@ Yes. Every game is free to play with no payment, no in-app purchases, and no sig
 No. Prism Arcade requires no account or login. You open a game and start playing immediately.
 
 **What games are available on Prism Arcade?**
-25 browser games across reflex, puzzle, strategy, and memory categories — including Neon Snake, 2048, Tic Tac Toe, Memory Pairs, Reaction Time Test, Easy Sudoku, Connect 4 Lite, Sky Flap, Whack-a-Dot, Brick Breaker, Bubble Pop, and Minesweeper.
+29 browser games across reflex, puzzle, strategy, and memory categories — including Neon Snake, 2048, Tic Tac Toe, Memory Pairs, Reaction Time Test, Easy Sudoku, Connect 4 Lite, Sky Flap, Whack-a-Dot, Brick Breaker, Bubble Pop, Minesweeper, Word Search, Block Fit, Nonogram, and the Typing Speed Test.
 
 **Can I play Prism Arcade on mobile?**
 Yes. The site is built responsive for both mobile and desktop browsers, and every game is touch-friendly.

@@ -7,9 +7,20 @@
 
 ---
 
+## 零、先选题：抓真实长尾词（强制，禁止凭感觉选游戏）
+```bash
+python tools/bing_suggest_miner.py --quick --workers 10 --out longtail-keywords.csv
+```
+- 数据源是 **Bing Autocomplete 公开接口**（`api.bing.com/osjson.aspx?mkt=en-us`），返回真实用户正在输入的联想词，无 key、无付费。
+- 产出 `tools/longtail-keywords.csv|json`（2025 次查询 → 1.8 万+ 去重长尾词，2026-10-29 实测）。
+- 选题标准（按序）：① 该品类长尾词数量大；② 意图修饰词（no download / free / online / for kids / unblocked）密集；③ 与"免费、免下载、免注册"定位契合；④ 实现可控且能过美术底线；⑤ **避开商标**（Tetris / Wordle / 1010! / Flappy Bird 等，改用自有命名，如 Block Fit、Sky Flap）；⑥ 避开 AdSense 风险品类（赌博向：Plinko / casino；强品牌：Cookie Clicker）。
+- 旧的 `top-keywords.csv` 是**合成**数据（source=synthetic，volume 为相关性代理值，非真实搜索量），只能当备选，不能当选题依据。
+
+---
+
 ## 一、新增一个游戏（强制清单）
 
-按 A→E 顺序执行，每步都不可省。
+按 A→E 顺序执行，每步都不可省。（A 之前先完成「零」的选题与长尾词归属。）
 
 ### A. 写入数据源 `tools/seo_games_data.json`
 新增一项（键为 slug，如 `"snake.html"`）：
@@ -68,9 +79,11 @@ python tools/geo_add_howto.py
 - 若游戏**总数变化**：同步更新顶部 Overview 段的数字（当前 22）与 FAQ 里的 "22 browser games"。
 - 末尾 6 条 FAQ 保持不动。
 
-### E. 更新 `sitemap.xml`
+### E. 更新 `sitemap.xml` 与 `_redirects`
 - 必须包含新页面 URL：`https://www.prismarcade.top/games/<slug>.html`。
 - 若 sitemap 由脚本生成 → 重跑生成；若手维护 → 手动加 `<url>` 块。
+- `_redirects` 也要同步（clean URL 301）：跑 `python tools/gen_redirects.py`。
+- 首页 / 目录页 / 关于页的游戏**总数**表述（含 JSON-LD `numberOfItems`、ItemList、`<h1>`、FAQ、`data-count`）必须一起改成新数字，否则自相矛盾。
 
 ### G. 卡片缩略图（强制，2026-10-22 起）
 新游戏必须有真实感封面图，禁止 emoji 当缩略图。管线：
@@ -150,6 +163,8 @@ git push origin main      # Cloudflare 自动部署
 
 | 文件 / 脚本 | 作用 |
 |---|---|
+| `tools/bing_suggest_miner.py` | 真实长尾词挖掘（Bing Autocomplete，10 线程，无 key） |
+| `tools/longtail-keywords.csv` `longtail-keywords.json` | 长尾词产出（18k+ 条，按 score 排序，含来源种子） |
 | `tools/seo_games_data.json` | 游戏数据源（驱动注入管线 + how-to 取 name） |
 | `tools/seo_inject_games.py` | SEO 注入：head + JSON-LD(WebPage/Breadcrumb/Game/FAQ) + FAQ + Related，标记 `SEO:INJECTED v1` |
 | `tools/seo_clean_games.py` | 清理注入（重做前用） |

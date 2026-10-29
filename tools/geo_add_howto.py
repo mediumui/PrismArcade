@@ -168,6 +168,30 @@ HOWTO = {
         "Right-click to flag a tile where you believe a mine is buried.",
         "Reveal every safe tile to win — never click a flagged mine.",
     ],
+    "typing-test.html": [
+        "Click the input field and start typing the passage shown above it.",
+        "The 60-second timer starts on your first keystroke and runs automatically.",
+        "Watch live WPM, accuracy, and error count update with every character you type.",
+        "Beat your saved personal best, then press Restart for another 60-second run.",
+    ],
+    "word-search.html": [
+        "Read the word list under the grid and pick a word to hunt for.",
+        "Press the first letter of the word and drag in a straight line to the last letter.",
+        "Release to submit — words hidden backwards count too.",
+        "Circle every word on the list to finish and log your best time.",
+    ],
+    "block-fit.html": [
+        "Drag a shape from the tray onto the 8x8 grid, or tap it then tap the board.",
+        "Fit it into the open squares — shapes cannot be rotated.",
+        "Fill a whole row or column to clear it and score bonus points.",
+        "Clear several lines in one move to raise the combo multiplier.",
+    ],
+    "nonogram.html": [
+        "Read the numbers beside each row — each one is the length of a solid block of filled squares.",
+        "Click or drag to fill the squares those blocks must occupy.",
+        "Switch to Mark mode to cross out squares you have proved are empty.",
+        "Use Check at any time, and finish when every filled square matches the clues.",
+    ],
 }
 
 

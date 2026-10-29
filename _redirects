@@ -8,6 +8,7 @@
 /contact.html /contact 301
 /games.html /games 301
 /games/2048.html /games/2048 301
+/games/block-fit.html /games/block-fit 301
 /games/block-slide.html /games/block-slide 301
 /games/brick-breaker.html /games/brick-breaker 301
 /games/bubble-pop.html /games/bubble-pop 301
@@ -18,6 +19,7 @@
 /games/maze.html /games/maze 301
 /games/memory.html /games/memory 301
 /games/minesweeper.html /games/minesweeper 301
+/games/nonogram.html /games/nonogram 301
 /games/number-merge.html /games/number-merge 301
 /games/quick-tap.html /games/quick-tap 301
 /games/quiz.html /games/quiz 301
@@ -30,7 +32,9 @@
 /games/stack-tower.html /games/stack-tower 301
 /games/sudoku.html /games/sudoku 301
 /games/tic-tac-toe.html /games/tic-tac-toe 301
+/games/typing-test.html /games/typing-test 301
 /games/whack.html /games/whack 301
 /games/word-merge.html /games/word-merge 301
+/games/word-search.html /games/word-search 301
 /index.html / 301
 /privacy.html /privacy 301
