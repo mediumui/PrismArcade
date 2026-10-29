@@ -21,16 +21,27 @@ import urllib.error
 
 BASE = sys.argv[1].rstrip("/") if len(sys.argv) > 1 else "http://localhost:8080"
 NEW_GAMES = [
-    "/games/bubble-pop.html",
-    "/games/brick-breaker.html",
-    "/games/minesweeper.html",
+    "/games/typing-test.html",
+    "/games/word-search.html",
+    "/games/block-fit.html",
+    "/games/nonogram.html",
 ]
+
+# Cloudflare answers 403 to the default python-urllib UA, so audits against
+# the live site must present a normal browser UA (same as the local run).
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
 
 def get(path):
     url = BASE + path
+    req = urllib.request.Request(url, headers={
+        "User-Agent": UA,
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+    })
     try:
-        with urllib.request.urlopen(url, timeout=10) as r:
+        with urllib.request.urlopen(req, timeout=15) as r:
             return r.status, r.read().decode("utf-8", "ignore")
     except urllib.error.HTTPError as e:
         return e.code, ""
