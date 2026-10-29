@@ -478,7 +478,6 @@ gtag('config', 'G-3ZWV1GWSD3');
       if (t >= 0) {
         drag = { idx: t, x: p.x, y: p.y };
         selected = t;
-        var pd = tray[t], sz = shapeSize(pd), csz = 40;
         hover = { idx: t, r: 0, c: 0 };
         invalidate();
         return;
@@ -496,9 +495,8 @@ gtag('config', 'G-3ZWV1GWSD3');
       e.preventDefault();
       var p = pos(e);
       drag.x = p.x; drag.y = p.y;
-      var pd = tray[drag.idx], sz = shapeSize(pd);
       // anchor the shape so the touched square sits under the finger
-      var anchor = pd.cells[0];
+      var anchor = tray[drag.idx].cells[0];
       var px = p.x - OFFX - (anchor[0] + 0.5) * CS;
       var py = p.y - OFFY - (anchor[1] + 0.5) * CS - 10;
       var r = Math.round(py / CS), c = Math.round(px / CS);

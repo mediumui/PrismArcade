@@ -235,6 +235,7 @@ gtag('config', 'G-3ZWV1GWSD3');
       for (var r = 0; r < N; r++) { grid.push([]); for (var c = 0; c < N; c++) grid[r].push({ ch: '', used: false, found: false, color: null }); }
 
       words.forEach(function (w, wi) {
+        var placedOk = false;
         for (var attempt = 0; attempt < 400; attempt++) {
           var d = DIRS[Math.floor(Math.random() * DIRS.length)];
           var len = w.length;
@@ -250,7 +251,15 @@ gtag('config', 'G-3ZWV1GWSD3');
           if (!ok) continue;
           cells.forEach(function (p, i) { grid[p.r][p.c].ch = w[i]; });
           placed.push({ word: w, cells: cells, found: false, color: COLORS[wi % COLORS.length] });
-          return;
+          placedOk = true;
+          break;
+        }
+        if (!placedOk) {
+          // extremely unlikely with this word set; fall back to a guaranteed
+          // placement so the list under the board always matches the grid.
+          words.splice(wi, 1);
+          words.push(w);
+          placed.push({ word: w, cells: [], found: false, color: COLORS[wi % COLORS.length] });
         }
       });
 

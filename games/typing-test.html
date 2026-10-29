@@ -395,7 +395,13 @@ gtag('config', 'G-3ZWV1GWSD3');
         var idx = typed.length - 1;
         if (text[idx] === typed[idx]) { correct++; PA.sfx.tick(); }
         else { errors++; PA.sfx.wrong(); }
-      } else { errors += Math.max(0, lastLen - typed.length) * 0; correct = recountCorrect(typed); }
+      } else if (typed.length < lastLen) {
+        // backspace / delete: recount what is correct, and charge an error
+        // for each keystroke that disappears from the typed stream.
+        var oldC = recountCorrect(typed.slice(0, lastLen));
+        errors += Math.max(0, oldC - correct);
+        correct = recountCorrect(typed);
+      }
       lastLen = typed.length;
       renderPassage(typed); litKey();
       if (typed.length >= text.length) { stats(); finish(); }
