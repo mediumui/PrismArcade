@@ -56,6 +56,12 @@ def url_for(path: Path) -> str:
     rel = path.relative_to(ROOT).as_posix()
     if rel == "index.html":
         return f"{SITE}/"
+    # Emit the CANONICAL clean URL (no .html). The sitemap must match the
+    # <link rel="canonical"> and BreadcrumbList last-item URL, otherwise Google
+    # sees two URL forms (.html from sitemap vs clean canonical) and flags the
+    # breadcrumb as "不适用" (not applicable). .html URLs still 301 -> clean.
+    if rel.endswith(".html"):
+        rel = rel[:-5]
     return f"{SITE}/{rel}"
 
 

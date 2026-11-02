@@ -80,7 +80,8 @@ python tools/geo_add_howto.py
 - 末尾 6 条 FAQ 保持不动。
 
 ### E. 更新 `sitemap.xml` 与 `_redirects`
-- 必须包含新页面 URL：`https://www.prismarcade.top/games/<slug>.html`。
+- **sitemap 必须填「干净 canonical URL」（不带 `.html`）**：`https://www.prismarcade.top/games/<slug>`。
+  ⚠️ 历史坑（2026-11-02）：sitemap 曾误填 `.html` URL，而 canonical / BreadcrumbList 末项都是干净 URL，导致 Google 同一页看到两种 URL 形态、面包屑被判「不适用」。`gen_sitemap.py` 的 `url_for()` 现已自动去 `.html`，重跑即正确。
 - 若 sitemap 由脚本生成 → 重跑生成；若手维护 → 手动加 `<url>` 块。
 - `_redirects` 也要同步（clean URL 301）：跑 `python tools/gen_redirects.py`。
 - 首页 / 目录页 / 关于页的游戏**总数**表述（含 JSON-LD `numberOfItems`、ItemList、`<h1>`、FAQ、`data-count`）必须一起改成新数字，否则自相矛盾。
